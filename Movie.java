@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Movie{
+public class Movie implements Serializable {
     /*
         enum Status{
         COMING_SOON,
@@ -27,8 +28,24 @@ public class Movie{
     private double overallRating;
     private ArrayList<Integer> pastReview;
     private int ticketSales; 
-    private int[] showTimes;
+    private ArrayList<Integer> showTimes;
     private int cinema;
+
+    public Movie(String name, int movieId, String status, String synopsis, String director, ArrayList<String> casts, String ageRating,
+                 ArrayList<Integer> pastReview, int ticketSales, ArrayList<Integer> showTimes, int cinema){
+        this.name = name;
+        this.movieId = movieId;
+        this.status = status;
+        this.synopsis = synopsis;
+        this.director = director;
+        this.casts = casts;
+        this.ageRating = ageRating;
+        this.overallRating = 0.0;
+        this.pastReview = pastReview;
+        this.ticketSales = ticketSales;
+        this.showTimes = showTimes;
+        this.cinema = cinema;
+    }
 
     public void setName(String name){
         this.name = name;
@@ -70,6 +87,10 @@ public class Movie{
         return director;
     }
 
+    public void setCasts(ArrayList<String> casts) { this.casts = casts; }
+
+    public ArrayList<String> getCasts() { return casts; }
+
     public void setAgerating(String ageRating){
         this.ageRating = ageRating;
     }
@@ -78,17 +99,19 @@ public class Movie{
         return ageRating;
     }
 
-    public void setShowTimes(int[] showTimes){
-        this.showTimes = showTimes; //is it okay to so this with arrays?
+    public void setShowTimes(ArrayList<Integer> showTimes){
+        this.showTimes = showTimes;
     }
 
-    public int[] getShowtimes(){
+    public ArrayList<Integer> getShowtimes(){
         return showTimes;
     }
 
     public void setTicketSales(int ticketSales){
         this.ticketSales = ticketSales;
     }
+
+    public ArrayList<Integer> getPastReview() { return pastReview; }
 
     public int getTicketSales(){
         return ticketSales;
@@ -113,5 +136,22 @@ public class Movie{
         else{
             overallRating = (overallRating * (pastReview.size() - 1) + customerRating) / pastReview.size();
         }
+    }
+
+    public void printInfo(){
+        System.out.println(
+                "name: " + this.name
+                + "\nmovieId: " + this.movieId
+                + "\nstatus: " + this.status
+                + "\nsynopsis: " + this.synopsis
+                + "\ndirector: " + this.director
+                + "\ncasts: " + this.casts
+                + "\nageRating: " + this.ageRating
+                + "\noveralRating: " + this.overallRating
+                + "\npastReview: " + this.pastReview
+                + "\nticketSales: " + this.ticketSales
+                + "\nshowTimes: " + this.showTimes
+                + "\ncinema: " + this.cinema
+        );
     }
 }
