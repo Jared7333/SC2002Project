@@ -1,4 +1,4 @@
-package movies;
+package sc2002Project;
 
 public class Cinema {
 	private int cinemaId;
@@ -7,10 +7,11 @@ public class Cinema {
 	private static int layout[] = new int[100];
 
 	private static CinemaSeats[] seat = new CinemaSeats[50];
+//	private static Ticket[] tickets = new Ticket[50];
 	// private int availSeats;
 	// private int unavailSeats;
 	// private String cinemaLocation;
-	private String cinemaClass;
+	private static String cinemaClass;
 
 	public Cinema(int cinemaId, int seatCount) {
 		this.cinemaId = cinemaId;
@@ -43,12 +44,13 @@ public class Cinema {
 		this.status = status;
 	}
 
-	public String getCinemaClass() {
+	public static String getCinemaClass() {
 		return cinemaClass;
 	}
 
 	public void setCinemaClass(String cinemaClass) {
 		this.cinemaClass = cinemaClass;
+		
 	}
 
 	public static void cinemaLayout(int seatId) {
@@ -96,13 +98,15 @@ public class Cinema {
 		System.out.print("\n");
 	}
 
-	public void assignSeat(int seatId) {
+	public static void assignSeat(int seatId) {
 		if (seat[seatId].isOccupied() == true) {
 			System.out.println("Seat already assigned to a customer.");
 			return;
 		}
 		seat[seatId].assign(seatId);
 		System.out.println("Seat Assigned!");
+//		tickets[seatId].setseatId(seatId);
 	}
+	
 
 }
