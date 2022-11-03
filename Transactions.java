@@ -1,3 +1,5 @@
+package sc2002Project;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -106,5 +108,9 @@ public class Transactions {
 		String moviePlusDatePlusTime = movie + date + time;
 		return moviePlusDatePlusTime;
 	}
+	
+	public int getAge(int iD) {
+		return customerList.get(iD).getAge();
+	};
 
 }
