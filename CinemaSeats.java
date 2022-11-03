@@ -1,4 +1,4 @@
-package movies;
+package sc2002Project;
 
 public class CinemaSeats {
 
