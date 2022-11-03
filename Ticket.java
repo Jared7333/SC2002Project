@@ -1,10 +1,11 @@
+package sc2002Project;
 
 public class Ticket {
 	private String movieTitle;
 	private boolean threeD;
 	private boolean blockbuster;
 	private String cinemaClass;
-	private String ageOfCust;
+	private int ageOfCust;
 	private String dayOfWeek;
 	private boolean publicHolidayOrEve;
 	private int time;
@@ -14,7 +15,7 @@ public class Ticket {
 	public Ticket() {
 	}
 
-	public Ticket(String movieTitle, boolean threeD, boolean blockbuster, String cinemaClass, String ageOfCust,
+	public Ticket(String movieTitle, boolean threeD, boolean blockbuster, String cinemaClass, int ageOfCust,
 			String dayOfWeek, boolean publicHolidayOrEve, int time, int seatId) {
 		this.movieTitle = movieTitle;
 		this.threeD = threeD;
@@ -60,11 +61,11 @@ public class Ticket {
 		this.cinemaClass = cinemaClass;
 	}
 
-	public String getageOfCust() {
+	public int getageOfCust() {
 		return ageOfCust;
 	}
 
-	public void setageOfCust(String ageOfCust) { // SeniorCitizen, Adult, Student
+	public void setageOfCust(int ageOfCust) { // SeniorCitizen, Adult, Child?
 		this.ageOfCust = ageOfCust;
 	}
 
@@ -142,15 +143,15 @@ public class Ticket {
 			}
 
 			// student discount
-			if (ageOfCust == "Student" && publicHolidayOrEve == false && time < 1800) {
-				if (threeD)
-					price = 9;
-				else
-					price = 7;
-			}
+//			if (ageOfCust == "Student" && publicHolidayOrEve == false && time < 1800) {
+//				if (threeD)
+//					price = 9;
+//				else
+//					price = 7;
+//			}
 
 			// senior citizen discount(there is no 3D discount for them)
-			if (ageOfCust == "SeniorCitizen" && publicHolidayOrEve == false && time < 1800 && threeD == false) {
+			if (ageOfCust>54 && publicHolidayOrEve == false && time < 1800 && threeD == false) {
 				price = 4;
 			}
 
@@ -167,7 +168,7 @@ public class Ticket {
 
 	public String toString() {
 		return "Title: " + movieTitle + "\n3D: " + threeD + "\nBlockbuster: " + blockbuster + "\nClass: " + cinemaClass
-				+ "\nAge Group: " + ageOfCust + "\nDay: " + dayOfWeek + "\nPublic Holiday or Eve: " + publicHolidayOrEve
+				+ "\nAge: " + ageOfCust + "\nDay: " + dayOfWeek + "\nPublic Holiday or Eve: " + publicHolidayOrEve
 				+ "\nTime: " + time + "\nSeat ID: " + seatId + "\nPrice: $" + price;
 	}
 
