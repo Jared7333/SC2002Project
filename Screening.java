@@ -1,7 +1,6 @@
-package sc2002Project;
 
 public class Screening extends Cinema {
-//	private int cinemaId;
+	private int cinemaId;
 	private int time;
 	private String movieTitle;
 	private boolean threeD;
@@ -21,6 +20,7 @@ public class Screening extends Cinema {
 	public Screening(int cinemaId, int time) {
 		super(cinemaId, 50);
 		this.time = time;
+
 		for (int i = 0; i < 50; i++) {
 			tickets[i] = new Ticket();
 		}
@@ -29,6 +29,15 @@ public class Screening extends Cinema {
 	// Cinema -> CinemaSeats
 	// Screnning: Cinema + ticket
 	// Booking: transaction + customer + ticket
+
+	public int getCinemaId() {
+		return cinemaId;
+	}
+
+	public void setCinemaId(int cinemaId) {
+		this.cinemaId = cinemaId;
+	}
+
 	public int getTime() {
 		return time;
 	}
@@ -85,7 +94,7 @@ public class Screening extends Cinema {
 	public void setSeatId(int seatId) {
 		seatId--;
 		this.seatId = seatId;
-		Screening.assignSeat(seatId);
+		assignSeat(seatId);
 		tickets[seatId].setseatId(seatId);
 		tickets[seatId].settime(getTime());
 		tickets[seatId].setmovieTitle(getMovieTitle());

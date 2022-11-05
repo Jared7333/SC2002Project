@@ -1,12 +1,11 @@
-package sc2002Project;
 
 public class Cinema {
 	private int cinemaId;
 	private int status; // 1 means vacant, 0 means taken
 	private int seatCount = 50;
-	private static int layout[] = new int[100];
+	private int layout[] = new int[100];
 
-	private static CinemaSeats[] seat = new CinemaSeats[50];
+	private CinemaSeats[] seat = new CinemaSeats[50];
 //	private static Ticket[] tickets = new Ticket[50];
 	// private int availSeats;
 	// private int unavailSeats;
@@ -50,10 +49,10 @@ public class Cinema {
 
 	public void setCinemaClass(String cinemaClass) {
 		this.cinemaClass = cinemaClass;
-		
+
 	}
 
-	public static void cinemaLayout(int seatId) {
+	public void cinemaLayout(int seatId) {
 		int size = 50; // seatCount
 
 		int s = 1;
@@ -98,7 +97,7 @@ public class Cinema {
 		System.out.print("\n");
 	}
 
-	public static void assignSeat(int seatId) {
+	public void assignSeat(int seatId) {
 		if (seat[seatId].isOccupied() == true) {
 			System.out.println("Seat already assigned to a customer.");
 			return;
@@ -107,6 +106,5 @@ public class Cinema {
 		System.out.println("Seat Assigned!");
 //		tickets[seatId].setseatId(seatId);
 	}
-	
 
 }
