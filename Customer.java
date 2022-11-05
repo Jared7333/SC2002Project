@@ -11,6 +11,7 @@ public class Customer {
 	public boolean boughtBefore;
 
 	ArrayList<String> pastMoviesTitles = new ArrayList();
+	public ArrayList<String> pastTID = new ArrayList();
 
 	public Customer() {
 		this.ID = 0;
@@ -73,6 +74,14 @@ public class Customer {
 		this.pastMoviesTitles = pastMovieTitles;
 	}
 
+	public ArrayList<String> getPastTID() {
+		return pastTID;
+	}
+
+	public void setPastTID(ArrayList<String> pastTID) {
+		this.pastTID = pastTID;
+	}
+
 	public boolean isBoughtBefore() {
 		return boughtBefore;
 	}
@@ -81,7 +90,8 @@ public class Customer {
 		this.boughtBefore = boughtBefore;
 	}
 
-	public String rankMovies(String movieTitle) { // get customer to give rating and review of the movie they just watched
+	public String rankMovies(String movieTitle) { // get customer to give rating and review of the movie they just
+													// watched
 		Scanner sc = new Scanner(System.in);
 		float rating;
 		String review, ratingAndReview;
