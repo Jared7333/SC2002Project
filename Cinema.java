@@ -5,7 +5,9 @@ public class Cinema {
 	private int seatCount = 50;
 	private int layout[] = new int[100];
 
-	private CinemaSeats[] seat = new CinemaSeats[50];
+	private CinemaSeats[] seat = new CinemaSeats[50]; // if put static here will have the problem where selecting
+														// selecting seats in one row, changes the value of other
+														// elements in the same row
 //	private static Ticket[] tickets = new Ticket[50];
 	// private int availSeats;
 	// private int unavailSeats;
