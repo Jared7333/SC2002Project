@@ -101,12 +101,16 @@ public class Ticket {
 		this.seatId = seatId;
 	}
 
-	public void setPrice(double price) {
-		this.price=price;
-	}
-	public double getPrice() {
+	public double calculateAndGetPrice() {
+		if(price==0) {
+			this.price = TicketPriceCalculator.calculatePrice(this);
+		}
 		return price;
+		
 	}
+//	public double getPrice() {
+//		return price;
+//	}
 
 	public String toString() {
 		return "Title: " + movieTitle + "\n3D: " + threeD + "\nBlockbuster: " + blockbuster + "\nClass: " + cinemaClass
