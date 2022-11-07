@@ -1,31 +1,27 @@
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class testtest {
-	public static void main(String[] args) {
-
-		// Customer cust = new Customer();
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		String testMovieName1 = "Spiderman";
 		String testMovieName2 = "Avatar";
 		String testMovieName3 = "Kingsmen";
 
-//        ArrayList<Movie> newMovieList =  new ArrayList<Movie>();
-//        Movie s = new Movie(testMovieName3, 1, "On-going", "About a Man bitten by Spider", "Spiderman's Director", null, testMovieName3, null, 0, null, 0);
-//        newMovieList.add(testMovieName1);
-
 		int showTime1 = 930, showTime2 = 1400, showTime3 = 1500, showTime4 = 1830, showTime5 = 2200;
 		ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
 		ArrayList<Screening> screeningMovieList = new ArrayList<Screening>();
-//		ArrayList<Screening> screeningList = new ArrayList<Screening>();
 		Customer newCustomer = new Customer();
 
-		int arrayCount = 0, totalCinemas = 3;
+//		int arrayCount = 0, totalCinemas = 3, cinemaId = 0;
 		int arrayMovieCount = 0, totalMovies = 3;
-		int cinemaId = 0;
 
-		int movieValue = 0;
+		int arrayShowtimes = 0, totalShowtimes = 2360, chosenShowtime = 0;
+
+		int movieId = 0;
+		String movieName = null;
 
 		int amountOfCustomers = 3;
 		int seatId = 5;
@@ -35,57 +31,20 @@ public class testtest {
 
 		while (amountOfCustomers > 0) {
 
-			System.out.println("Choose your movie");
-			String movieTitle = sc.nextLine();
-
-			System.out.println("Choose show times");
-			System.out.println("1." + showTime1 + " 2." + showTime2 + " 3." + showTime3);
-			int chosenShowTime = sc.nextInt();
-
-			// Assign Show times and Movies to their respective Screenings
-			if (chosenShowTime == showTime1 && movieTitle.equals(testMovieName1)
-					|| chosenShowTime == showTime2 && movieTitle.equals(testMovieName2)
-					|| chosenShowTime == showTime3 && movieTitle.equals(testMovieName3)) {
-				cinemaId = 1;
-				if (movieTitle.equals(testMovieName1)) {
-					movieValue = 1;
-				} else if (movieTitle.equals(testMovieName2)) {
-					movieValue = 2;
-				} else if (movieTitle.equals(testMovieName3)) {
-					movieValue = 3;
-				}
-			} else if (chosenShowTime == showTime2 && movieTitle.equals(testMovieName1)
-					|| chosenShowTime == showTime1 && movieTitle.equals(testMovieName3)
-					|| chosenShowTime == showTime3 && movieTitle.equals(testMovieName2)) {
-				cinemaId = 2;
-				if (movieTitle.equals(testMovieName1)) {
-					movieValue = 1;
-				} else if (movieTitle.equals(testMovieName2)) {
-					movieValue = 2;
-				} else if (movieTitle.equals(testMovieName3)) {
-					movieValue = 3;
-				}
-			} else if (chosenShowTime == showTime3 && movieTitle.equals(testMovieName1)
-					|| chosenShowTime == showTime2 && movieTitle.equals(testMovieName3)
-					|| chosenShowTime == showTime1 && movieTitle.equals(testMovieName2)) {
-				cinemaId = 3;
-				if (movieTitle.equals(testMovieName1)) {
-					movieValue = 1;
-				} else if (movieTitle.equals(testMovieName2)) {
-					movieValue = 2;
-				} else if (movieTitle.equals(testMovieName3)) {
-					movieValue = 3;
-				}
-			}
-
-			// End of Assign Show times and Movies to their respective Screenings
+			// Assign Movies and show times to each individual screenings(or Cinema Layouts)
+			AssignScreening testAssignScreening = new AssignScreening();
+			movieName = testAssignScreening.chooseMovie();
+			movieId = testAssignScreening.getMovieId(movieName);
+			chosenShowtime = testAssignScreening.chooseShowtime(movieId);
+			// End of Assign Movies and show times to each individual screenings(or Cinema
+			// Layouts)
 
 			// Initialize all the Screenings available
-			if (arrayCount < cinemaId || arrayMovieCount < movieValue) { // create new element each time there is new iD
+			if (arrayMovieCount < totalMovies || arrayShowtimes < totalShowtimes) {
 
-				for (int i = arrayCount; i <= totalCinemas; i++) {
-					for (int j = 0; j <= totalMovies; j++) {
-						Screening s = new Screening(cinemaId, chosenShowTime);
+				for (int i = arrayMovieCount; i <= totalMovies; i++) {
+					for (int j = 0; j <= totalShowtimes; j++) {
+						Screening s = new Screening(movieId, chosenShowtime);
 						screeningMovieList.add(s);
 					}
 					screeningList.add(new ArrayList<Screening>(screeningMovieList));
@@ -93,92 +52,47 @@ public class testtest {
 
 				}
 
-				arrayCount = cinemaId;
-				arrayMovieCount = movieValue;
+				arrayMovieCount = totalMovies;
+				arrayShowtimes = totalShowtimes;
 			}
 			// End of Initialize all the Screenings available
 
-//			newScreening.setMovieTitle(movieTitle);
-//			screeningList.get(cinemaId).setMovieTitle(movieTitle);
-			screeningList.get(cinemaId).get(movieValue).setMovieTitle(movieTitle);
+			screeningList.get(movieId).get(chosenShowtime).setMovieTitle(movieName);
 
-//			newScreening.setDayOfWeek("Wednesday"); // hardcode wednesday
-//			screeningList.get(cinemaId).setDayOfWeek("Wednesday");
-			screeningList.get(cinemaId).get(movieValue).setDayOfWeek("Wednesday");
+			screeningList.get(movieId).get(chosenShowtime).setDayOfWeek("Wednesday");
 
-//			newScreening.setTime(showTime1);
-//			screeningList.get(cinemaId).setTime(showTime1);
-			screeningList.get(cinemaId).get(movieValue).setTime(showTime1);
+			screeningList.get(movieId).get(chosenShowtime).setTime(chosenShowtime);
 
 			System.out.println("Choose your Cinema Class");
 			String cinemaClass = sc.nextLine();
-//			newScreening.setCinemaClass(cinemaClass);
-//			screeningList.get(cinemaId).setCinemaClass(cinemaClass);
-			screeningList.get(cinemaId).get(movieValue).setCinemaClass(cinemaClass);
 
-//			newScreening.cinemaLayout(0); // to display cinema layout
-//			screeningList.get(cinemaId).cinemaLayout(0);
-			screeningList.get(cinemaId).get(movieValue).cinemaLayout(0);
+			screeningList.get(movieId).get(chosenShowtime).setCinemaClass(cinemaClass);
+
+			screeningList.get(movieId).get(chosenShowtime).cinemaLayout(0);
 
 			System.out.println("Choose your seat");
 			seatId = sc.nextInt();
-//			newScreening.setSeatId(seatId);
-//			screeningList.get(cinemaId).setSeatId(seatId);
-			screeningList.get(cinemaId).get(movieValue).setSeatId(seatId);
+
+			screeningList.get(movieId).get(chosenShowtime).setSeatId(seatId);
 
 			seatId--;
 
 			System.out.println("type in customer ID, name, phoneNo, email and age");
 			int iD = sc.nextInt();
-			newTransaction.buyTicket(iD, movieTitle);
+			newTransaction.buyTicket(iD, movieName);
 			amountOfCustomers--;
 			sc.nextLine();
 
-//			newScreening.tickets[seatId].setageOfCust(newTransaction.getAge(iD)); // getting age from transaction class
-//			screeningList.get(cinemaId).tickets[seatId].setageOfCust(newTransaction.getAge(iD));
-			screeningList.get(cinemaId).get(movieValue).tickets[seatId].setageOfCust(newTransaction.getAge(iD));
+			screeningList.get(movieId).get(chosenShowtime).tickets[seatId].setageOfCust(newTransaction.getAge(iD));
 
-//			newScreening.tickets[seatId].calculatePrice();
-//			screeningList.get(cinemaId).tickets[seatId].calculatePrice();
-			screeningList.get(cinemaId).get(movieValue).tickets[seatId].calculatePrice();
+			System.out.println(
+					"Price: $" + screeningList.get(movieId).get(chosenShowtime).tickets[seatId].calculateAndGetPrice()); // print
+			// out
 
-//			System.out.println(newScreening.tickets[seatId].toString()); // print out ticket info
-//			System.out.println(screeningList.get(cinemaId).tickets[seatId].toString()); // print out ticket info
-			System.out.println(screeningList.get(cinemaId).get(movieValue).tickets[seatId].toString()); // print out
-																										// ticket info
-
-//			System.out.println(newTransaction.generateTID(iD, movieTitle));
 			newTransaction.customerBookingHistory(iD);
 			System.out.println();
 
 		}
-
-		// Debugging Check, can remove if no need
-		System.out.println();
-		System.out.println("---- Start Debugging Check ----");
-
-		for (int i = 1; i <= totalCinemas; i++) {
-			if (i == 1) {
-				System.out.println("Spiderman");
-			} else if (i == 2) {
-				System.out.println("Avatar");
-			} else if (i == 3) {
-				System.out.println("Kingsmen");
-			}
-			for (int j = 1; j <= totalMovies; j++) {
-				if (j == 1) {
-					System.out.println("Cinema ID = 1");
-				} else if (j == 2) {
-					System.out.println("Cinema ID = 2");
-				} else if (j == 3) {
-					System.out.println("Cinema ID = 3");
-				}
-				screeningList.get(j).get(i).cinemaLayout(0);
-			}
-		}
-		System.out.println("---- End of Debugging Check ----");
-
-		// End of Debugging Check, can remove if no need
 
 		// to check customer past movie history
 //		System.out.println("Enter id to check past movie");
