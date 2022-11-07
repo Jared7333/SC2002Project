@@ -54,7 +54,6 @@ public class TransactionID extends Transactions { // Implement a design pattern 
 		}
 
 		String moviePlusDatePlusTime = movie + date + time;
-		customerList.get(iD).pastTID.add(moviePlusDatePlusTime); // update customer's watch history
 		return moviePlusDatePlusTime;
 	}
 

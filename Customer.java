@@ -12,6 +12,7 @@ public class Customer {
 
 	ArrayList<String> pastMoviesTitles = new ArrayList();
 	public ArrayList<String> pastTID = new ArrayList();
+	BookingHistory checkBookingHistory = new BookingHistory();
 
 	public Customer() {
 		this.ID = 0;
@@ -110,6 +111,10 @@ public class Customer {
 		review = review + sc.nextLine();
 		ratingAndReview = rating + "\n" + review;
 		return ratingAndReview;
+	}
+
+	public void checkBookingHistory() {
+		checkBookingHistory.pastBookings(pastMoviesTitles, pastTID);
 	}
 
 }

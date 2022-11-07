@@ -6,29 +6,18 @@ abstract public class Transactions {
 	ArrayList<Customer> customerList = new ArrayList();
 	private int arrayCount = 0;
 
-	public abstract String generateTID(int iD, String movieTitle);
-
 	public Transactions() {
 		customerList = new ArrayList<Customer>();
 	}
 
-	public void pastMovies(int iD) { // display past movies that customers bought ticket for
-		System.out.println("Customer has watched: ");
-		for (int i = 0; i < customerList.get(iD).pastMoviesTitles.size(); i++) {
-			System.out.println(customerList.get(iD).pastMoviesTitles.get(i));
-		}
-		for (int i = 0; i < customerList.get(iD).pastTID.size(); i++) {
-			System.out.println(customerList.get(iD).pastTID.get(i));
-		}
-
+	public void customerBookingHistory(int iD) {
+		customerList.get(iD).checkBookingHistory();
 	}
 
 	public void buyTicket(int iD, String movieTitle) {
 		Scanner sc = new Scanner(System.in);
 
 		if (arrayCount < iD) { // create new element each time there is new iD
-
-			// arraycount did not ++
 
 			for (int i = arrayCount; i <= iD; i++) {
 				Customer c = new Customer();
@@ -59,6 +48,8 @@ abstract public class Transactions {
 		System.out.println("Customer's Email: " + customerList.get(iD).getEmail());
 		System.out.println("Customer's Age: " + customerList.get(iD).getAge());
 		customerList.get(iD).pastMoviesTitles.add(movieTitle); // update customer's watch history
+		TransactionID newTID = new TransactionID();
+		customerList.get(iD).pastTID.add(newTID.generateTID(iD, movieTitle)); // update Customer's TID
 
 	}
 

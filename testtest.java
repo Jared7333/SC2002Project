@@ -1,4 +1,3 @@
-package sc2002Project;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,6 +19,7 @@ public class testtest {
 		ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
 		ArrayList<Screening> screeningMovieList = new ArrayList<Screening>();
 //		ArrayList<Screening> screeningList = new ArrayList<Screening>();
+		Customer newCustomer = new Customer();
 
 		int arrayCount = 0, totalCinemas = 3;
 		int arrayMovieCount = 0, totalMovies = 3;
@@ -134,19 +134,21 @@ public class testtest {
 			amountOfCustomers--;
 			sc.nextLine();
 
+//			newScreening.tickets[seatId].setageOfCust(newTransaction.getAge(iD)); // getting age from transaction class
+//			screeningList.get(cinemaId).tickets[seatId].setageOfCust(newTransaction.getAge(iD));
 			screeningList.get(cinemaId).get(movieValue).tickets[seatId].setageOfCust(newTransaction.getAge(iD));
 
-			TicketPriceCalculator.calculatePrice(screeningList.get(cinemaId).get(movieValue).tickets[seatId]);
+//			newScreening.tickets[seatId].calculatePrice();
+//			screeningList.get(cinemaId).tickets[seatId].calculatePrice();
+			screeningList.get(cinemaId).get(movieValue).tickets[seatId].calculatePrice();
 
-			System.out.println("Price: $"+ screeningList.get(cinemaId).get(movieValue).tickets[seatId].getPrice()); // print out
+//			System.out.println(newScreening.tickets[seatId].toString()); // print out ticket info
+//			System.out.println(screeningList.get(cinemaId).tickets[seatId].toString()); // print out ticket info
+			System.out.println(screeningList.get(cinemaId).get(movieValue).tickets[seatId].toString()); // print out
 																										// ticket info
-			
-			
-
-			newTransaction.generateTID(iD, movieTitle);
 
 //			System.out.println(newTransaction.generateTID(iD, movieTitle));
-			newTransaction.pastMovies(iD);
+			newTransaction.customerBookingHistory(iD);
 			System.out.println();
 
 		}
