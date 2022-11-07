@@ -1,3 +1,4 @@
+package sc2002Project;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -133,18 +134,14 @@ public class testtest {
 			amountOfCustomers--;
 			sc.nextLine();
 
-//			newScreening.tickets[seatId].setageOfCust(newTransaction.getAge(iD)); // getting age from transaction class
-//			screeningList.get(cinemaId).tickets[seatId].setageOfCust(newTransaction.getAge(iD));
 			screeningList.get(cinemaId).get(movieValue).tickets[seatId].setageOfCust(newTransaction.getAge(iD));
 
-//			newScreening.tickets[seatId].calculatePrice();
-//			screeningList.get(cinemaId).tickets[seatId].calculatePrice();
-			screeningList.get(cinemaId).get(movieValue).tickets[seatId].calculatePrice();
+			TicketPriceCalculator.calculatePrice(screeningList.get(cinemaId).get(movieValue).tickets[seatId]);
 
-//			System.out.println(newScreening.tickets[seatId].toString()); // print out ticket info
-//			System.out.println(screeningList.get(cinemaId).tickets[seatId].toString()); // print out ticket info
-			System.out.println(screeningList.get(cinemaId).get(movieValue).tickets[seatId].toString()); // print out
+			System.out.println("Price: $"+ screeningList.get(cinemaId).get(movieValue).tickets[seatId].getPrice()); // print out
 																										// ticket info
+			
+			
 
 			newTransaction.generateTID(iD, movieTitle);
 
