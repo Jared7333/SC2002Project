@@ -101,67 +101,9 @@ public class Ticket {
 		this.seatId = seatId;
 	}
 
-	public void calculatePrice() {
-		boolean weekend = false;
-		if (dayOfWeek == "Saturday" || dayOfWeek == "Sunday")
-			weekend = true;
-		// weekend
-		if (weekend) {
-			if (threeD)
-				price = 15;
-			else
-				price = 11;
-		}
-		// weekday
-		else {
-			// Monday to Wednesday
-			if (dayOfWeek == "Monday" || dayOfWeek == "Tuesday" || dayOfWeek == "Wednesday") {
-				if (threeD)
-					price = 11;
-				else
-					price = 8.50;
-			}
-
-			// Thursday
-			if (dayOfWeek == "Thursday") {
-				if (threeD)
-					price = 11;
-				else
-					price = 9.50;
-			}
-
-			// Friday
-			if (dayOfWeek == "Friday") {
-				if (threeD)
-					price = 15;
-				else {
-					if (time < 1800) // before 6pm
-						price = 9.50;
-					else // from 6pm
-						price = 11;
-				}
-			}
-
-			// student discount
-//			if (ageOfCust == "Student" && publicHolidayOrEve == false && time < 1800) {
-//				if (threeD)
-//					price = 9;
-//				else
-//					price = 7;
-//			}
-
-			// senior citizen discount(there is no 3D discount for them)
-			if (ageOfCust>54 && publicHolidayOrEve == false && time < 1800 && threeD == false) {
-				price = 4;
-			}
-
-		} // end weekday else
-
-		// $1 extra for block buster
-		if (blockbuster)
-			price += 1;
+	public void setPrice(double price) {
+		this.price=price;
 	}
-
 	public double getPrice() {
 		return price;
 	}
