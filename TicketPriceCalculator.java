@@ -37,7 +37,7 @@ public class TicketPriceCalculator {
 		if (blockbuster)
 			price = price + 1;
 
-		ticket.setPrice(price);
+		//ticket.setPrice(price);
 		return price;
 		
 
