@@ -1,5 +1,3 @@
-package Body;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,6 +12,8 @@ public class Customer {
 
 	ArrayList<String> pastMoviesTitles = new ArrayList();
 	public ArrayList<String> pastTID = new ArrayList();
+	public ArrayList<Integer> pastCineplex = new ArrayList();
+
 	BookingHistory checkBookingHistory = new BookingHistory();
 
 	public Customer() {
@@ -85,6 +85,14 @@ public class Customer {
 		this.pastTID = pastTID;
 	}
 
+	public ArrayList<Integer> getPastCineplex() {
+		return pastCineplex;
+	}
+
+	public void setPastCineplex(ArrayList<Integer> pastCineplex) {
+		this.pastCineplex = pastCineplex;
+	}
+
 	public boolean isBoughtBefore() {
 		return boughtBefore;
 	}
@@ -116,7 +124,7 @@ public class Customer {
 	}
 
 	public void checkBookingHistory() {
-		checkBookingHistory.pastBookings(pastMoviesTitles, pastTID);
+		checkBookingHistory.pastBookings(pastMoviesTitles, pastTID, pastCineplex);
 	}
 
 }

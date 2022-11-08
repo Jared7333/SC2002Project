@@ -1,4 +1,3 @@
-package Body;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,7 +14,7 @@ abstract public class Transactions {
 		customerList.get(iD).checkBookingHistory();
 	}
 
-	public void buyTicket(int iD, String movieTitle) {
+	public void buyTicket(int iD, String movieTitle, int chosenCineplex) {
 		Scanner sc = new Scanner(System.in);
 
 		if (arrayCount < iD) { // create new element each time there is new iD
@@ -51,6 +50,7 @@ abstract public class Transactions {
 		customerList.get(iD).pastMoviesTitles.add(movieTitle); // update customer's watch history
 		TransactionID newTID = new TransactionID();
 		customerList.get(iD).pastTID.add(newTID.generateTID(iD, movieTitle)); // update Customer's TID
+		customerList.get(iD).pastCineplex.add(chosenCineplex);
 
 	}
 

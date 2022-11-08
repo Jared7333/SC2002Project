@@ -77,13 +77,8 @@ public class mainApp {
 			Admin forCustomerUse = null;
 			forCustomerUse = new Admin(accType, accType, accType);
 			forCustomerUse.uploadMovie(movieList);
-			ArrayList<ArrayList<Screening>> woodlandsScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
-			ArrayList<ArrayList<Screening>> punggolScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
-			ArrayList<ArrayList<Screening>> changiScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
-			ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = new ArrayList<ArrayList<ArrayList<Screening>>>();
-			cineplexScreeningList.add(woodlandsScreeningList);
-			cineplexScreeningList.add(punggolScreeningList);
-			cineplexScreeningList.add(changiScreeningList);
+			ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = AssignScreening.allScreenings(1000, 1,
+					movieList);
 
 			while (loop1) {
 				int chosenCineplex;
@@ -154,7 +149,7 @@ public class mainApp {
 
 							System.out.println("type in customer ID, name, phoneNo, email and age");
 							int iD = sc.nextInt();
-							newTransaction.buyTicket(iD, movieName);
+							newTransaction.buyTicket(iD, movieName, chosenCineplex);
 							sc.nextLine();
 
 							cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime).tickets[seatId]
