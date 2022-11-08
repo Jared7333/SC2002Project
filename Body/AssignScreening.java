@@ -89,15 +89,20 @@ public class AssignScreening {
 		System.out.println();
 	}
 
-	public static ArrayList<ArrayList<Screening>> allScreenings(int chosenShowtime, int movieID,
+	public static ArrayList<ArrayList<ArrayList<Screening>>> allScreenings(int chosenShowtime, int movieID,
 			ArrayList<Movie> movieList) {
-		ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
-		ArrayList<Screening> screeningMovieList = new ArrayList<Screening>();
+//		ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
+//		ArrayList<Screening> screeningMovieList = new ArrayList<Screening>();
+		ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = new ArrayList<ArrayList<ArrayList<Screening>>>();
+
 		int totalMovies = 4;
+		int count = 0;
 
 		int totalShowtimes = 2360;
 
-		if (arrayMovieCount < totalMovies || arrayShowtimes < totalShowtimes) {
+		while (count < 3) {
+			ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
+			ArrayList<Screening> screeningMovieList = new ArrayList<Screening>();
 
 			for (int i = arrayMovieCount; i <= totalMovies; i++) {
 				for (int j = 0; j <= totalShowtimes; j++) {
@@ -108,12 +113,15 @@ public class AssignScreening {
 				screeningMovieList.removeAll(screeningMovieList);
 
 			}
+			cineplexScreeningList.add(new ArrayList<ArrayList<Screening>>(screeningList));
+			screeningList.removeAll(screeningMovieList);
+			count++;
 
-			arrayMovieCount++;
-			arrayShowtimes++;
+//			arrayMovieCount = totalMovies;
+//			arrayShowtimes = totalShowtimes;
 		}
 
-		return screeningList;
+		return cineplexScreeningList;
 	}
 
 }
