@@ -20,6 +20,7 @@ public class Movie implements Serializable {
    
     private String name;
     private int movieId;
+    private String movieType;
     private String status;
     private String synopsis;
     private String director;
@@ -31,10 +32,11 @@ public class Movie implements Serializable {
     private ArrayList<Integer> showTimes;
     private int cinema;
 
-    public Movie(String name, int movieId, String status, String synopsis, String director, ArrayList<String> casts, String ageRating,
+    public Movie(String name, int movieId, String movieType, String status, String synopsis, String director, ArrayList<String> casts, String ageRating,
                  ArrayList<Integer> pastReview, int ticketSales, ArrayList<Integer> showTimes, int cinema){
         this.name = name;
         this.movieId = movieId;
+        this.movieType = movieType;
         this.status = status;
         this.synopsis = synopsis;
         this.director = director;
@@ -62,6 +64,10 @@ public class Movie implements Serializable {
     public int getMovieId(){
         return movieId;
     }
+
+    public void setMovieType(String movieType){ this.movieType = movieType; }
+
+    public String getMovieType() { return movieType; }
 
     public void setStatus(String status){
         this.status = status;
@@ -142,6 +148,7 @@ public class Movie implements Serializable {
         System.out.println(
                 "name: " + this.name
                 + "\nmovieId: " + this.movieId
+                + "\nmovieType: " + this.movieType
                 + "\nstatus: " + this.status
                 + "\nsynopsis: " + this.synopsis
                 + "\ndirector: " + this.director
