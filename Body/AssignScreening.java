@@ -78,17 +78,6 @@ public class AssignScreening {
 
 	}
 
-	public void browseMovies(ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
-
-//		newMovieList = s.importMovie(filenameMovie);
-		System.out.println("Movie List: ");
-
-		for (int i = 0; i < movieList.size(); i++) {
-			System.out.println(movieList.get(i).getName());
-		}
-		System.out.println();
-	}
-
 	public static ArrayList<ArrayList<ArrayList<Screening>>> allScreenings(int chosenShowtime, int movieID,
 			ArrayList<Movie> movieList) {
 //		ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
