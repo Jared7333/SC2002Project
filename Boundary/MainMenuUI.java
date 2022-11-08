@@ -1,5 +1,6 @@
 package Boundary;
 
+//import Body.*;
 import java.util.Scanner;
 
 public class MainMenuUI {
@@ -7,6 +8,8 @@ public class MainMenuUI {
         Scanner sc = new Scanner(System.in);
         boolean loop = true;
         String accType = null;
+        System.out.println("MOBLIMA");
+        LoginUI login= new LoginUI();
         while(loop){
             System.out.println("(1) Customer or (2) Admin:");
             accType = sc.nextLine();
@@ -17,14 +20,10 @@ public class MainMenuUI {
         }
         
         if (accType.equals("1") || accType.equals("customer")) {
-        	//call customerUI
+        	//call CustomerLogin?
         }
         else {
-        	//call AdminUI
+        	//call AdminLogin?
         }
-        
-        
-        
-        
 	}
 }
