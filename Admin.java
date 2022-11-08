@@ -59,6 +59,14 @@ public class Admin implements Serializable{
         movieMethods.printDetailed(movieList);
     }
 
+    public void printMovieSales(ArrayList<Movie> movieList){
+        movieMethods.sortBySales(movieList);
+    }
+
+    public void printMovieRating(ArrayList<Movie> movieList){
+        movieMethods.sortByRating(movieList);
+    }
+
     public void updateMovie(ArrayList<Movie> movieList){
         movieMethods.updateInfo(movieList);
     }
@@ -77,17 +85,6 @@ public class Admin implements Serializable{
             switch (setting) {
                 case 1 -> { // Change Password
                     adminMethods.changePassword(adminList, this);
-//                    System.out.printf("Current Password: %s \n", getPassword());
-//                    System.out.println("Enter New Password:");
-//                    toUpdate = sc.nextLine();
-//                    for (Admin a : adminList) {
-//                        if (a.getLoginID() != null && a.getLoginID().matches(getName())) {
-//                            adminList.get(index).setPassword(toUpdate);
-//                            System.out.printf("New Password: %s \n", a.getPassword());
-//                        }
-//                        index++;
-//                    }
-//                    loop = false;
                 }
                 case 2 -> { //Create new admin account
                     System.out.println("Enter New Admin Name:");

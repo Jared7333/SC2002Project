@@ -1,3 +1,4 @@
+import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -23,7 +24,9 @@ public class movieMethods {
             String[] pastReview1 = info[9].split(",");
             ArrayList<Integer> pastReview2 = new ArrayList<Integer>();
             for (String s : pastReview1) {
-                pastReview2.add(Integer.parseInt(s));
+                if(!s.isEmpty()){
+                    pastReview2.add(Integer.parseInt(s));
+                }
             }
             String[] showTimes1 = info[11].split(",");
             ArrayList<Integer> showTimes2 = new ArrayList<Integer>();
@@ -69,6 +72,34 @@ public class movieMethods {
             } else {
                 rowID--;
                 movieList.get(rowID).printInfo();
+            }
+        }
+    }
+
+    public static void sortBySales(ArrayList<Movie> movieList){
+        ArrayList<Movie> tempList = new ArrayList<>(movieList);
+        System.out.println("Sorted by Ticket Sales:");
+        Collections.sort(tempList, Movie.byTicketSales);
+        int index = 1;
+        for(Movie mov : tempList){
+            System.out.printf("(%d) %s    | Sales: %d\n", index, mov.getName(), mov.getTicketSales());
+            index++;
+            if(index > 5){
+                break;
+            }
+        }
+    }
+
+    public static void sortByRating(ArrayList<Movie> movieList){
+        ArrayList<Movie> tempList = new ArrayList<>(movieList);
+        System.out.println("Sorted by Rating:");
+        Collections.sort(tempList, Movie.byRating);
+        int index = 1;
+        for(Movie mov : tempList){
+            System.out.printf("(%d) %s    | Rating: %.2f\n", index, mov.getName(), mov.getRatingStar());
+            index++;
+            if(index > 5){
+                break;
             }
         }
     }

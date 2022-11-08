@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Movie implements Serializable {
     /*
@@ -20,8 +21,8 @@ public class Movie implements Serializable {
    
     private String name;
     private int movieId;
-	private boolean threeD;
-	private boolean blockbuster;
+    private boolean threeD;
+    private boolean blockbuster;
     private String status;
     private String synopsis;
     private String director;
@@ -37,8 +38,8 @@ public class Movie implements Serializable {
                  ArrayList<Integer> pastReview, int ticketSales, ArrayList<Integer> showTimes, int cinema){
         this.name = name;
         this.movieId = movieId;
-		this.threeD = threeD;
-		this.blockbuster = blockbuster;
+        this.threeD = threeD;
+        this.blockbuster = blockbuster;
         this.status = status;
         this.synopsis = synopsis;
         this.director = director;
@@ -67,21 +68,13 @@ public class Movie implements Serializable {
         return movieId;
     }
 
-	public boolean isthreeD() {
-		return threeD;
-	}
+    public boolean getThreeD() { return threeD; }
 
-	public void setthreeD(boolean threeD) {
-		this.threeD = threeD;
-	}
+    public void setThreeD(boolean threeD) { this.threeD = threeD; }
 
-	public boolean isblockbuster() {
-		return blockbuster;
-	}
+    public boolean getBlockbuster() { return blockbuster; }
 
-	public void setblockbuster(boolean blockbuster) { // Blockbuster, Normal
-		this.blockbuster = blockbuster;
-	}
+    public void setBlockbuster(boolean blockbuster) { this.blockbuster = blockbuster; }
 
     public void setStatus(String status){
         this.status = status;
@@ -162,8 +155,8 @@ public class Movie implements Serializable {
         System.out.println(
                 "name: " + this.name
                 + "\nmovieId: " + this.movieId
-                + "\n3D: " + this.threeD 
-                + "\nBlockbuster: " + this.blockbuster
+                + "\nthreeD: " + this.threeD
+                + "\nblockbuster: " + this.blockbuster
                 + "\nstatus: " + this.status
                 + "\nsynopsis: " + this.synopsis
                 + "\ndirector: " + this.director
@@ -176,4 +169,31 @@ public class Movie implements Serializable {
                 + "\ncinema: " + this.cinema
         );
     }
+
+    public static Comparator<Movie> byTicketSales = new Comparator<Movie>() {
+
+        public int compare(Movie m1, Movie m2) {
+
+            int ticketSales1 = m1.getTicketSales();
+            int ticketSales2 = m2.getTicketSales();
+
+            /*For ascending order*/
+            //return ticketSales1-ticketSales2;
+
+            /*For descending order*/
+            return ticketSales2-ticketSales1;
+        }
+    };
+
+    public static Comparator<Movie> byRating = new Comparator<Movie>() {
+
+        public int compare(Movie m1, Movie m2) {
+
+            /*For ascending order*/
+            //return Double.compare(m1.getRatingStar(), m2.getRatingStar());
+
+            /*For descending order*/
+            return Double.compare(m2.getRatingStar(), m1.getRatingStar());
+        }
+    };
 }
