@@ -75,4 +75,14 @@ public class AssignScreening {
 
 	}
 
+	public void browseMovies() throws IOException, ClassNotFoundException {
+		newMovieList = s.importMovie(filenameMovie);
+		System.out.println("Movie List: ");
+
+		for (int i = 0; i < newMovieList.size(); i++) {
+			System.out.println(newMovieList.get(i).getName());
+		}
+		System.out.println();
+	}
+
 }
