@@ -110,7 +110,7 @@ public class mainApp {
 
 						switch (choice) {
 						case "1":
-							testAssignScreening.browseMovies(movieList);
+							listOfMoviesForCustomers.browseMovies(movieList);
 
 							break;
 						case "2":

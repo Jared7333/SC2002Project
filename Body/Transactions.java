@@ -11,7 +11,12 @@ abstract public class Transactions {
 	}
 
 	public void customerBookingHistory(int iD) {
-		customerList.get(iD).checkBookingHistory();
+		try {
+			customerList.get(iD).checkBookingHistory();
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Customer does not exist");
+			return;
+		}
 	}
 
 	public void buyTicket(int iD, String movieTitle, int chosenCineplex) {
