@@ -1,3 +1,5 @@
+package deonAssignment;
+
 import java.io.IOException;
 
 public class Cineplex 
@@ -8,9 +10,17 @@ public class Cineplex
 	public static void showCineplex() throws IOException, ClassNotFoundException {
 		System.out.println("Available cineplexes: ");
 
-		for (int i = 0; i < cineplexName.length; i++) {
-			System.out.println(cineplexName[i]);
+		for (int i = 0; i < getCineplexName().length; i++) {
+			System.out.println((i+1)+")"+getCineplexName()[i]);
 		}
 		System.out.println();
+	}
+
+	public static String[] getCineplexName() {
+		return cineplexName;
+	}
+
+	public static void setCineplexName(String[] cineplexName) {
+		Cineplex.cineplexName = cineplexName;
 	}
 }
