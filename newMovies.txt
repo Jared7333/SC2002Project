@@ -1,0 +1,1 @@
+Cars:0001:true:false:showing:On the way to the biggest race of his life, a hotshot rookie race car gets stranded in a rundown town, and learns that winning isn't everything in life.:John Lasseter:Owen Wilson,Paul Newman:PG13:1,2,3:100:10,20,30:999
