@@ -64,33 +64,34 @@ public class Admin implements Serializable{
             for (String s : info) {
                 System.out.println(s);
             }
-            String[] casts1 = info[6].split(",");
+            String[] casts1 = info[7].split(",");
             ArrayList<String> casts2 = new ArrayList<String>();
             for (String s : casts1) {
                 casts2.add(s);
             }
-            String[] pastReview1 = info[8].split(",");
+            String[] pastReview1 = info[9].split(",");
             ArrayList<Integer> pastReview2 = new ArrayList<Integer>();
             for (String s : pastReview1) {
                 pastReview2.add(Integer.parseInt(s));
             }
-            String[] showTimes1 = info[10].split(",");
+            String[] showTimes1 = info[11].split(",");
             ArrayList<Integer> showTimes2 = new ArrayList<Integer>();
             for (String s : showTimes1) {
                 showTimes2.add(Integer.parseInt(s));
             }
             movieList.add(new Movie(info[0],
                     Integer.parseInt(info[1]),
-                    info[2],
-                    info[3],
+                    Boolean.parseBoolean(info[2]),
+                    Boolean.parseBoolean(info[3]),
                     info[4],
                     info[5],
+                    info[6],
                     casts2,
-                    info[7],
+                    info[8],
                     pastReview2,
-                    Integer.parseInt(info[9]),
+                    Integer.parseInt(info[10]),
                     showTimes2,
-                    Integer.parseInt(info[11])
+                    Integer.parseInt(info[12])
                     ));
         }
     }
@@ -140,14 +141,15 @@ public class Admin implements Serializable{
                 Enter Column to Update:
                 (1)Movie Name
                 (2)Movie ID
-                (3)Movie Type
-                (4)Movie Status
-                (5)Synopsis
-                (6)Director
-                (7)Casts
-                (8)Age Rating
-                (9)Showtimes
-                (10)Cinema Number
+                (3)Movie 3D
+                (4)Movie BlockBuster
+                (5)Movie Status
+                (6)Synopsis
+                (7)Director
+                (8)Casts
+                (9)Age Rating
+                (10)Showtimes
+                (11)Cinema Number
                 (0)Exit""");
         String colName = sc.nextLine();
         switch(colName){
@@ -169,16 +171,29 @@ public class Admin implements Serializable{
                 }
                 movieList.get(rowID).setMovieId(newID);
                 break;
-            case "3": //movie type
-                System.out.println("Current Movie Type: " + movieList.get(rowID).getMovieType());
-                System.out.println("Enter New Movie Type: ");
-                String newType = sc.nextLine();
-                if(newType.equals("0")){
-                    break;
-                }
-                movieList.get(rowID).setMovieType(newType);
-                break;
-            case "4": //status
+            case "3": //movie 3D
+            	System.out.println("Current Movie 3D Status:");
+            	System.out.println("Enter 'true' to make New Movie 3D, 'false' if New Movie is 2D");
+            	boolean three = sc.nextBoolean();
+        		movieList.get(rowID).setthreeD(three);
+        		break;
+            	
+//                System.out.println("Current Movie Type: " + movieList.get(rowID).getMovieType());
+//                System.out.println("Enter New Movie Type: ");
+//                String newType = sc.nextLine();
+//                if(newType.equals("0")){
+//                    break;
+//                }
+//                movieList.get(rowID).setMovieType(newType);
+//                break;
+            case "4": //movie BlockBuster
+            	System.out.println("Current Movie BlockBuster status:");
+            	System.out.println("Enter 'true' to make New Movie BlockBuster, 'false' if New Movie is not BlockBuster");
+            	boolean bb = sc.nextBoolean();
+            	movieList.get(rowID).setblockbuster(bb);
+            	break;
+
+            case "5": //status
                 System.out.println("Current Status: " + movieList.get(rowID).getStatus());
                 System.out.println("Enter New Status: ");
                 String newStatus = sc.nextLine();
@@ -187,7 +202,7 @@ public class Admin implements Serializable{
                 }
                 movieList.get(rowID).setStatus(newStatus);
                 break;
-            case "5": //synopsis
+            case "6": //synopsis
                 System.out.println("Current Synopsis: " + movieList.get(rowID).getSynopsis());
                 System.out.println("Enter New Synopsis: ");
                 String newSynopsis = sc.nextLine();
@@ -196,7 +211,7 @@ public class Admin implements Serializable{
                 }
                 movieList.get(rowID).setSynopsis(newSynopsis);
                 break;
-            case "6": //director
+            case "7": //director
                 System.out.println("Current Director: " + movieList.get(rowID).getDirector());
                 System.out.println("Enter New Director: ");
                 String newDirector = sc.nextLine();
@@ -205,7 +220,7 @@ public class Admin implements Serializable{
                 }
                 movieList.get(rowID).setDirector(newDirector);
                 break;
-            case "7": //casts
+            case "8": //casts
                 ArrayList<String> currentCast;
                 currentCast = movieList.get(rowID).getCasts();
                 loop = true;
@@ -239,7 +254,7 @@ public class Admin implements Serializable{
                     }
                 }
                 break;
-            case "8": //age rating
+            case "9": //age rating
                 System.out.println("Current Age Rating: " + movieList.get(rowID).getAgeRating());
                 System.out.println("Enter New Age Rating: ");
                 String newAgeRating = sc.nextLine();
@@ -248,7 +263,7 @@ public class Admin implements Serializable{
                 }
                 movieList.get(rowID).setAgerating(newAgeRating);
                 break;
-            case "9": //showtimes
+            case "10": //showtimes
                 ArrayList<Integer> currentTimes;
                 currentTimes = movieList.get(rowID).getShowtimes();
                 loop = true;
@@ -283,7 +298,7 @@ public class Admin implements Serializable{
                     }
                 }
                 break;
-            case "10": //cinema number
+            case "11": //cinema number
                 System.out.println("Current Cinema No.: " + movieList.get(rowID).getCinemaNo());
                 System.out.println("Enter '0' to Cancel\nEnter New Cinema No.: ");
                 int newCinema = sc.nextInt(); sc.nextLine();
