@@ -1,5 +1,3 @@
-package deonAssignment;
-
 public class Cinema extends Cineplex{
 	private int cinemaId;
 	private int status; // 1 means vacant, 0 means taken
