@@ -1,5 +1,3 @@
-package sc2002Project;
-
 public class TicketPriceCalculator {
 	public static double calculatePrice(Ticket ticket) {
 		String dayOfWeek = ticket.getdayOfWeek();

@@ -1,5 +1,3 @@
-package sc2002Project;
-
 public class CinemaSeats {
 
 	private int seatId;

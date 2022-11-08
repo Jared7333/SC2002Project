@@ -1,5 +1,3 @@
-package sc2002Project;
-
 public class Ticket {
 	private String movieTitle;
 	private boolean threeD;
