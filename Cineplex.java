@@ -1,5 +1,3 @@
-package deonAssignment;
-
 import java.io.IOException;
 
 public class Cineplex 
