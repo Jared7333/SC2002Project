@@ -1,5 +1,6 @@
+package deonAssignment;
 
-public class Cinema {
+public class Cinema extends Cineplex{
 	private int cinemaId;
 	private int status; // 1 means vacant, 0 means taken
 	private int seatCount = 50;
@@ -67,8 +68,8 @@ public class Cinema {
 		}
 
 		// Printing layout
-		System.out.println("             Screen             ");
-		System.out.println("--------------------------------");
+		System.out.println("                Screen                ");
+		System.out.println("--------------------------------------");
 		System.out.print("|");
 		for (int i = 0; i < size; i++) {
 
@@ -83,18 +84,24 @@ public class Cinema {
 
 			}
 
-			if ((i + 1) % 10 != 0 && (i + 1) % 5 == 0) {
-				System.out.print(" ");
+			if ((i+1)%6==0) {
+				System.out.print("   ");
 
-			} else {
+			}else if(size-14<i+1 && i%2==0) {
+				System.out.print(" ");
+			}else {
 				System.out.print("|");
 			}
 
-			if ((i + 1) % 10 == 0 && i + 1 != 50) {
+			if((i+1)%12==0) {
 				System.out.println();
 				System.out.print("|");
 			}
-
+			
+			/*if ((i + 1) % 10 == 0 && i + 1 != 50) {
+				System.out.println();
+				System.out.print("|");
+			}*/
 		}
 		System.out.print("\n");
 	}
