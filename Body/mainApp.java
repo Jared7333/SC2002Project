@@ -1,4 +1,3 @@
-package Body;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,151 +7,8 @@ import java.util.Scanner;
 public class mainApp {
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-		String name = "Spider-Man: No Way Home";
-		int movieId = 1;
-		boolean threeD = false;
-		boolean blockbuster = false;
-		String status = "Now Showing";
-		String synopsis = "After Quentin Beck frames Peter Parker for his murder and reveals Parker's identity as Spider-Man,[N 1] Parker, his girlfriend Michelle \"MJ\" Jones-Watson, best friend Ned Leeds, and aunt May are interrogated by the Department of Damage Control. Lawyer Matt Murdock gets Parker's charges dropped, but the group grapples with negative publicity. After Parker, MJ, and Ned's MIT applications are rejected, Parker goes to the New York Sanctum to ask Stephen Strange for help. Strange casts a spell that would make everyone forget Parker is Spider-Man, but it is corrupted when Parker repeatedly requests alterations to let his loved ones retain their memories. Strange contains the spell to stop it and makes Parker leave.";
-		String director = "Jon Watts";
-
-		ArrayList<String> casts = new ArrayList<String>();
-		casts.add("Tom Holland");
-		casts.add("Zendaya");
-		casts.add("Benedict Cumberbatch");
-		casts.add("Jacob Batalon");
-		casts.add("Jon Favreau");
-		casts.add("Jamie Foxx");
-		casts.add("Andrew Garfield");
-		casts.add("Tobey Maguire");
-
-		String ageRating = "Rated PG";
-
-		ArrayList<Integer> pastReview = new ArrayList<Integer>();
-		pastReview.add(1);
-		pastReview.add(2);
-
-		int ticketSales = 500;
-
-		ArrayList<Integer> showTimes = new ArrayList<Integer>();
-		showTimes.add(900);
-		showTimes.add(1000);
-		showTimes.add(1030);
-		showTimes.add(1400);
-		showTimes.add(1530);
-		showTimes.add(1800);
-		showTimes.add(2100);
-		showTimes.add(2330);
-
-		int cinema = 1;
-
-		Movie m = new Movie(name, movieId, threeD, blockbuster, status, synopsis, director, casts, ageRating,
-				pastReview, ticketSales, showTimes, cinema);
-
-		ArrayList<Movie> movieList = new ArrayList<Movie>();
-
-		movieList.add(m);
-
-		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-//		name = "Avatar: The Way of Water";
-//		movieId = 2;
-//		threeD = false;
-//		blockbuster = false;
-//		status = "Now Showing";
-//		synopsis = "Set more than a decade after the events of the first film, Avatar: The Way of Water begins to tell the story of the Sully family, the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.";
-//		director = "James Cameron";
-//
-//		casts = new ArrayList<String>();
-//		casts.add("Sam Worthington");
-//		casts.add("Zoe Saldaña");
-//		casts.add("Sigourney Weaver");
-//		casts.add("Stephen Lang");
-//		casts.add("Kate Winslet");
-//
-//		ageRating = "Rated PG";
-//
-//		pastReview = new ArrayList<Integer>();
-//		pastReview.add(1);
-//		pastReview.add(2);
-//
-//		ticketSales = 500;
-//
-//		showTimes = new ArrayList<Integer>();
-//		showTimes.add(900);
-//		showTimes.add(1130);
-//		showTimes.add(1230);
-//		showTimes.add(1400);
-//		showTimes.add(1530);
-//		showTimes.add(1835);
-//		showTimes.add(2130);
-//		showTimes.add(2330);
-//
-//		cinema = 2;
-//
-//		m = new Movie(name, movieId, threeD, blockbuster, status, synopsis, director, casts, ageRating, pastReview,
-//				ticketSales, showTimes, cinema);
-//
-//		movieList.add(m);
-
-		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-		name = "The King's Man";
-		movieId = 3;
-		threeD = false;
-		blockbuster = false;
-		status = "Now Showing";
-		synopsis = "In 1902, aristocrat Orlando, Duke of Oxford, his wife Emily, and their young son Conrad visit a concentration camp in South Africa while working for the British Red Cross. Emily is mortally wounded during a Boer sniper attack on the camp. Before passing, she makes Orlando promise never to let their son see war again.";
-		director = "Matthew Vaughn";
-
-		casts = new ArrayList<String>();
-		casts.add("Ralph Fiennes");
-		casts.add("Gemma Arterton");
-		casts.add("Rhys Ifans");
-		casts.add("Matthew Goode");
-		casts.add("Tom Hollander");
-		casts.add("Harris Dickinson");
-		casts.add("Daniel Brühl");
-		casts.add("Djimon Hounsou");
-		casts.add("Charles Dance");
-
-		ageRating = "Rated NC16";
-
-		pastReview = new ArrayList<Integer>();
-		pastReview.add(1);
-		pastReview.add(2);
-
-		ticketSales = 500;
-
-		showTimes = new ArrayList<Integer>();
-		showTimes.add(900);
-		showTimes.add(1000);
-		showTimes.add(1230);
-		showTimes.add(1300);
-		showTimes.add(1600);
-		showTimes.add(1835);
-		showTimes.add(2130);
-		showTimes.add(2300);
-
-		cinema = 3;
-
-		m = new Movie(name, movieId, threeD, blockbuster, status, synopsis, director, casts, ageRating, pastReview,
-				ticketSales, showTimes, cinema);
-
-		movieList.add(m);
-		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
 		// on start
-		ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
-		ArrayList<Screening> screeningMovieList = new ArrayList<Screening>();
 		Customer newCustomer = new Customer();
-
-//		int arrayCount = 0, totalCinemas = 3, cinemaId = 0;
-		int arrayMovieCount = 0, totalMovies = 3;
-
-		int arrayShowtimes = 0, totalShowtimes = 2360, chosenShowtime = 0;
-
-		int movieID = 0;
 
 		String movieName = null;
 
@@ -161,10 +17,10 @@ public class mainApp {
 		Scanner sc = new Scanner(System.in);
 		int time = 2000;
 
-//		ArrayList<Movie> movieList;
+		ArrayList<Movie> movieList;
 		ArrayList<Admin> adminList;
 
-		String filenameMovie = "movie.txt";
+		String filenameMovie = "newMovie.txt";
 		String filenameAdmin = "admin.txt";
 
 		// checks if file exits and if not create
@@ -174,7 +30,7 @@ public class mainApp {
 		f2.createNewFile();
 
 		serialise s = new serialise();
-		s.exportMovie(filenameMovie, movieList);
+//		s.exportMovie(filenameMovie, movieList);
 //		s.exportAdmin(filenameAdmin, adminList);
 
 		movieList = s.importMovie(filenameMovie);
@@ -218,7 +74,19 @@ public class mainApp {
 
 		if (accType.equals("1") || accType.equals("customer")) {
 			loop1 = true;
-			while(loop1) {
+			Admin forCustomerUse = null;
+			forCustomerUse = new Admin(accType, accType, accType);
+			forCustomerUse.uploadMovie(movieList);
+			ArrayList<ArrayList<Screening>> woodlandsScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
+			ArrayList<ArrayList<Screening>> punggolScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
+			ArrayList<ArrayList<Screening>> changiScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
+			ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = new ArrayList<ArrayList<ArrayList<Screening>>>();
+			cineplexScreeningList.add(woodlandsScreeningList);
+			cineplexScreeningList.add(punggolScreeningList);
+			cineplexScreeningList.add(changiScreeningList);
+
+			while (loop1) {
+				int chosenCineplex;
 				System.out.println("""
 						Welcome To Movie.com
 						Please Select Action:
@@ -232,9 +100,11 @@ public class mainApp {
 					System.out.println("Choose your Cineplex");
 					int cineplex = sc.nextInt();
 					sc.nextLine();
+					chosenCineplex = cineplex - 1;
+
 					loop = true;
 					while (loop) {
-						System.out.println("Welcome to " + Cineplex.getCineplexName()[cineplex-1] + " movie.");
+						System.out.println("Welcome to " + Cineplex.getCineplexName()[cineplex - 1] + " movie.");
 						System.out.println("""
 								Please Select Action:
 								(1)Browse Movie
@@ -242,73 +112,60 @@ public class mainApp {
 								(0)Exit""");
 						String choice = sc.nextLine();
 						AssignScreening testAssignScreening = new AssignScreening();
-		
+
 						switch (choice) {
 						case "1":
-							testAssignScreening.browseMovies();
-		
+							testAssignScreening.browseMovies(movieList);
+
 							break;
 						case "2":
-		
+
 							// Assign Movies and show times to each individual screenings(or Cinema Layouts)
-							movieName = testAssignScreening.chooseMovie();
-							movieID = testAssignScreening.getMovieId(movieName);
-							chosenShowtime = testAssignScreening.chooseShowtime(movieID);
+							movieName = testAssignScreening.chooseMovie(movieList);
+							int movieID = testAssignScreening.getMovieId(movieName, movieList);
+							int chosenShowtime = testAssignScreening.chooseShowtime(movieID, movieList);
 							// End of Assign Movies and show times to each individual screenings(or Cinema
 							// Layouts)
-		
-							// Initialize all the Screenings available
-							if (arrayMovieCount < totalMovies || arrayShowtimes < totalShowtimes) {
-		
-								for (int i = arrayMovieCount; i <= totalMovies; i++) {
-									for (int j = 0; j <= totalShowtimes; j++) {
-										Screening newScreening = new Screening(movieID, chosenShowtime);
-										screeningMovieList.add(newScreening);
-									}
-									screeningList.add(new ArrayList<Screening>(screeningMovieList));
-									screeningMovieList.removeAll(screeningMovieList);
-		
-								}
-		
-								arrayMovieCount = totalMovies;
-								arrayShowtimes = totalShowtimes;
-							}
-							// End of Initialize all the Screenings available
-		
-							screeningList.get(movieID).get(chosenShowtime).setMovieTitle(movieName);
-		
-							screeningList.get(movieID).get(chosenShowtime).setDayOfWeek("Wednesday");
-		
-							screeningList.get(movieID).get(chosenShowtime).setTime(chosenShowtime);
-		
+
+							cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime)
+									.setMovieTitle(movieName);
+
+							cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime)
+									.setDayOfWeek("Wednesday");
+
+							cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime)
+									.setTime(chosenShowtime);
+
 							System.out.println("Choose your Cinema Class");
 							String cinemaClass = sc.nextLine();
-		
-							screeningList.get(movieID).get(chosenShowtime).setCinemaClass(cinemaClass);
-		
-							screeningList.get(movieID).get(chosenShowtime).cinemaLayout(0);
-		
+
+							cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime)
+									.setCinemaClass(cinemaClass);
+
+							cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime).cinemaLayout(0);
+
 							System.out.println("Choose your seat");
 							seatId = sc.nextInt();
-		
-							screeningList.get(movieID).get(chosenShowtime).setSeatId(seatId);
-		
+
+							cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime)
+									.setSeatId(seatId);
+
 							seatId--;
-		
+
 							System.out.println("type in customer ID, name, phoneNo, email and age");
 							int iD = sc.nextInt();
 							newTransaction.buyTicket(iD, movieName);
 							sc.nextLine();
-		
-							screeningList.get(movieID).get(chosenShowtime).tickets[seatId]
+
+							cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime).tickets[seatId]
 									.setageOfCust(newTransaction.getAge(iD));
-		
-							System.out.println("Price: $"
-									+ screeningList.get(movieID).get(chosenShowtime).tickets[seatId].calculateAndGetPrice()); // print
+
+							System.out.println("Price: $" + cineplexScreeningList.get(chosenCineplex).get(movieID)
+									.get(chosenShowtime).tickets[seatId].calculateAndGetPrice()); // print
 							// out
-		
+
 							System.out.println();
-		
+
 							break;
 						case "0":
 							loop = false;
@@ -366,23 +223,24 @@ public class mainApp {
 				String choice = sc.nextLine();
 				switch (choice) {
 				case "1": // Upload new movies via csv to simulate getting information from webscrapping
-					inUse.updateMovie(movieList);
+					inUse.uploadMovie(movieList);
 					break;
-				case "2": //Printing of movie information in 2 ways
-                    System.out.println("(1)Summarised\n(2)Detailed\n(3)Sorted by Ticket Sales\n(4)Sorted by Rating");
-                    int printChoice = sc.nextInt(); sc.nextLine();
-                    if(printChoice == 1){
-                        inUse.printMovies(movieList);
-                    } else if (printChoice == 2) {
-                        inUse.printMovieDetailed(movieList);
-                    } else if (printChoice == 3) {
-                        inUse.printMovieSales(movieList);
-                    } else if (printChoice == 4) {
-                        inUse.printMovieRating(movieList);
-                    } else {
-                        System.out.println("Invalid Selection");
-                    }
-                    break;
+				case "2": // Printing of movie information in 2 ways
+					System.out.println("(1)Summarised\n(2)Detailed\n(3)Sorted by Ticket Sales\n(4)Sorted by Rating");
+					int printChoice = sc.nextInt();
+					sc.nextLine();
+					if (printChoice == 1) {
+						inUse.printMovies(movieList);
+					} else if (printChoice == 2) {
+						inUse.printMovieDetailed(movieList);
+					} else if (printChoice == 3) {
+						inUse.printMovieSales(movieList);
+					} else if (printChoice == 4) {
+						inUse.printMovieRating(movieList);
+					} else {
+						System.out.println("Invalid Selection");
+					}
+					break;
 				case "3": // Update movie information
 					inUse.updateMovie(movieList);
 					break;
