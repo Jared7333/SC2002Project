@@ -16,7 +16,7 @@ public class Screening extends Cinema {
 	// 3 cineplex total
 	// each cineplex 3 or more cinema
 //	Cinema newCinema = new Cinema(0, 50);
-	Ticket[] tickets = new Ticket[50];
+	public Ticket[] tickets = new Ticket[50];
 
 	public Screening(int cinemaId, int time) {
 		super(cinemaId, 50);
