@@ -39,10 +39,7 @@ public class MainMenuUI {
 		if (count == adminList.size()) {
 			adminList.add(mainAdmin);
 		}
-
 		// End of admin stuffs Copied from mainAPP
-
-		int uploadMovieCount = 0; // REMOVE THIS WHEN SUBMITTING
 
 		Scanner sc = new Scanner(System.in);
 
@@ -63,18 +60,6 @@ public class MainMenuUI {
 
 			if (accType.equals("1") || accType.equals("customer")) {
 
-				// PLEASE REMOVE THIS WHEN WE SUBMIT, we have to always upload movie from ADMIN
-				// first
-				// but for convenience sake, i upload in customer so wont be so mafan
-				if (uploadMovieCount == 0) {
-					System.out.println("Before entering Customer, PLEASE UPLOAD MOVIE FROM ADMIN SIDE");
-					inUse = login.admin(adminList, inUse);
-					AdminUI admin = new AdminUI();
-					admin.main(adminList, inUse, mainAdmin, movieList);
-				}
-				uploadMovieCount++;
-				// Remember REMOVE... ^^
-
 				int CustomerID = login.customer();
 				if (CustomerID > 0 && CustomerID < 101) {
 
@@ -85,7 +70,6 @@ public class MainMenuUI {
 			} else if (accType.equals("2") || accType.equals("admin")) {
 
 				inUse = login.admin(adminList, inUse);
-				uploadMovieCount++;
 
 				AdminUI admin = new AdminUI();
 				admin.main(adminList, inUse, mainAdmin, movieList);
