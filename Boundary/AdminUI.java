@@ -9,7 +9,7 @@ import Body.Movie;
 
 public class AdminUI {
 	// login
-	public static void main(ArrayList<Admin> adminList, Admin inUse, Admin mainAdmin, ArrayList<Movie> movieList)
+	public void main(ArrayList<Admin> adminList, Admin inUse, Admin mainAdmin, ArrayList<Movie> movieList)
 			throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 
