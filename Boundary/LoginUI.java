@@ -1,5 +1,9 @@
+package Boundary;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Body.Admin;
 
 public class LoginUI {
 	Scanner sc = new Scanner(System.in);

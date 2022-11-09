@@ -1,9 +1,14 @@
+package Boundary;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 //import Body.*;
 import java.util.Scanner;
+
+import Body.Admin;
+import Body.Movie;
+import Body.serialise;
 
 public class MainMenuUI {
 	public static void main(String args[]) throws IOException, ClassNotFoundException {

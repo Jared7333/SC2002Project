@@ -1,6 +1,11 @@
+package Boundary;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Body.Admin;
+import Body.Movie;
 
 public class AdminUI {
 	// login

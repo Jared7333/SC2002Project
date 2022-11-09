@@ -1,8 +1,17 @@
+package Boundary;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Body.AssignScreening;
+import Body.Cineplex;
+import Body.Movie;
+import Body.Screening;
+import Body.TransactionID;
+import Body.Transactions;
+import Body.listOfMoviesForCustomers;
 
 public class CustomerUI {
 	int sayNoToReinitilisationAgain = 0;
