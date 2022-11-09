@@ -11,7 +11,7 @@ import Body.Movie;
 import Body.serialise;
 
 public class MainMenuUI {
-	public static void main(String args[]) throws IOException, ClassNotFoundException {
+	public void main() throws IOException, ClassNotFoundException {
 
 		// Copied admin stuffs from mainAPP
 		ArrayList<Movie> movieList;
