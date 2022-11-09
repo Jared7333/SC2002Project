@@ -1,6 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LoginUI {
+	Scanner sc = new Scanner(System.in);
+
 	public static int customer() {// both customer and admin should login via here,
 		System.out.println("Programmer Note: Choose ID: 1 ~ 100");
 		System.out.println("Programmer Note: Password: customerPASSWORD");
@@ -37,12 +40,33 @@ public class LoginUI {
 		return 0;
 	}
 
-	public void admin() {// both customer and admin should login via here,
+	public Admin admin(ArrayList<Admin> adminList, Admin inUse) {// both customer and admin should login via here,
 		System.out.println("Login for Admin");
 		// insert login admin here
 
+		// Login logic
+		boolean login = false;
+		System.out.println("mainADMIN");
+		System.out.println("adminPASSWORD");
+		while (!login) {
+			System.out.println("Enter Admin Username:");
+			String username = sc.nextLine();
+			for (Admin a : adminList) {
+				if (a.getLoginID() != null && a.getLoginID().matches(username)) {
+					System.out.println("Enter Admin Password:");
+					String password = sc.nextLine();
+					if (a.getPassword().matches(password)) {
+						login = true;
+						inUse = a;
+					} else {
+						System.out.println("Invalid Password");
+					}
+				}
+			}
+		}
+
 		// after successful verification return
-		return;
+		return inUse;
 	}
 
 }

@@ -5,28 +5,28 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CustomerUI {
+	int sayNoToReinitilisationAgain = 0;
 	Transactions newTransaction = new TransactionID();
+	ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = null;
 
-	public void main(int CustomerID) throws IOException, ClassNotFoundException {
+	public void main(int CustomerID, ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 
 		String movieName = null;
 		int seatId;
 		newTransaction.setIDForFirstTimeUser(CustomerID);
-		ArrayList<Movie> movieList;
 		String filenameMovie = "newMovie.txt";
 		File f = new File(filenameMovie);
-		f.createNewFile();
-		serialise s = new serialise();
-		movieList = s.importMovie(filenameMovie);
+
 		System.out.println("Welcome Customer!");
 
 		boolean loop = false;
 		boolean loop1 = true;
-		Admin forCustomerUse = new Admin(filenameMovie, filenameMovie, filenameMovie); // temporary arguments for now
-		forCustomerUse.uploadMovie(movieList);
-		ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = AssignScreening.allScreenings(1000, 1,
-				movieList);
+
+		if (sayNoToReinitilisationAgain == 0) {
+			cineplexScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
+			sayNoToReinitilisationAgain++;
+		}
 
 		while (loop1) {
 			int chosenCineplex;
