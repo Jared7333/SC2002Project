@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class LoginUI {
-	public static boolean customer() {// both customer and admin should login via here,
+	public static int customer() {// both customer and admin should login via here,
 		System.out.println("Programmer Note: Choose ID: 1 ~ 100");
 		System.out.println("Programmer Note: Password: customerPASSWORD");
 		System.out.println("Login for Customer");
@@ -17,7 +17,7 @@ public class LoginUI {
 
 			if ((UserID < 101 && UserID > 0) && Password.equals("customerPASSWORD")) {
 				System.out.println("Login successful");
-				return true;
+				return UserID;
 
 			} else {
 				System.out.println("Invalid UserID or Password");
@@ -34,7 +34,7 @@ public class LoginUI {
 		}
 
 		// after successful verification return
-		return false;
+		return 0;
 	}
 
 	public void admin() {// both customer and admin should login via here,

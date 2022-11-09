@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CustomerUI {
-	public void main() throws IOException, ClassNotFoundException {
+	Transactions newTransaction = new TransactionID();
+
+	public void main(int CustomerID) throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 
 		String movieName = null;
 		int seatId;
-		Transactions newTransaction = new TransactionID();
+		newTransaction.setIDForFirstTimeUser(CustomerID);
 		ArrayList<Movie> movieList;
 		String filenameMovie = "newMovie.txt";
 		File f = new File(filenameMovie);
@@ -21,8 +23,8 @@ public class CustomerUI {
 
 		boolean loop = false;
 		boolean loop1 = true;
-//		Admin forCustomerUse = new Admin();
-//		forCustomerUse.uploadMovie(movieList);
+		Admin forCustomerUse = new Admin(filenameMovie, filenameMovie, filenameMovie); // temporary arguments for now
+		forCustomerUse.uploadMovie(movieList);
 		ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = AssignScreening.allScreenings(1000, 1,
 				movieList);
 
@@ -92,13 +94,11 @@ public class CustomerUI {
 
 						seatId--;
 
-						System.out.println("type in customer ID, name, phoneNo, email and age");
-						int iD = sc.nextInt();
-						newTransaction.buyTicket(iD, movieName, chosenCineplex);
+						newTransaction.buyTicket(CustomerID, movieName, chosenCineplex);
 						sc.nextLine();
 
 						cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime).tickets[seatId]
-								.setageOfCust(newTransaction.getAge(iD));
+								.setageOfCust(newTransaction.getAge(CustomerID));
 
 						System.out.println("Price: $" + cineplexScreeningList.get(chosenCineplex).get(movieID)
 								.get(chosenShowtime).tickets[seatId].calculateAndGetPrice()); // print
@@ -114,10 +114,7 @@ public class CustomerUI {
 				}
 				break;
 			case "2":
-				System.out.println("What is your ID");
-				int customerID = sc.nextInt();
-				sc.nextLine();
-				newTransaction.customerBookingHistory(customerID);
+				newTransaction.customerBookingHistory(CustomerID);
 				System.out.println();
 				break;
 			case "0":
