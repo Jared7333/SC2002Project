@@ -22,24 +22,25 @@ abstract public class Transactions {
 	public void buyTicket(int iD, String movieTitle, int chosenCineplex) {
 		Scanner sc = new Scanner(System.in);
 
-		if (arrayCount < iD) { // create new element each time there is new iD
-
-			for (int i = arrayCount; i <= iD; i++) {
-				Customer c = new Customer();
-				customerList.add(c);
-			}
-		}
+//		if (arrayCount < iD) { // create new element each time there is new iD
+//
+//			for (int i = arrayCount; i <= iD; i++) {
+//				Customer c = new Customer();
+//				customerList.add(c);
+//			}
+//		}
 
 		if (customerList.get(iD).customerBoughtBefore() == true) { // check if customer has bought ticket before, if
 																	// yes, skip the personal details
-			System.out.println("Customer already existed");
+			System.out.println("Obtaining details...");
 		} else {
+			System.out.println("For First booking, Please Enter your Name, PhoneNo, Email and Age");
 			String name = sc.next();
 			int phone = sc.nextInt();
 			String email = sc.next();
 			int age = sc.nextInt();
 
-			customerList.get(iD).setID(iD);
+//			customerList.get(iD).setID(iD);
 			customerList.get(iD).setName(name);
 			customerList.get(iD).setPhoneNo(phone);
 			customerList.get(iD).setEmail(email);
@@ -62,5 +63,16 @@ abstract public class Transactions {
 	public int getAge(int iD) {
 		return customerList.get(iD).getAge();
 	};
+
+	public void setIDForFirstTimeUser(int iD) {
+		if (arrayCount < iD) { // create new element each time there is new iD
+
+			for (int i = arrayCount; i <= iD; i++) {
+				Customer c = new Customer();
+				customerList.add(c);
+			}
+		}
+		customerList.get(iD).setID(iD);
+	}
 
 }
