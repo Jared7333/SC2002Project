@@ -80,6 +80,7 @@ public class MainMenuUI {
 			} else if (accType.equals("2") || accType.equals("admin")) {
 
 				inUse = login.admin(adminList, inUse);
+				uploadMovieCount++;
 
 				AdminUI admin = new AdminUI();
 				admin.main(adminList, inUse, mainAdmin, movieList);
