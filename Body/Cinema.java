@@ -1,12 +1,15 @@
-public class Cinema extends Cineplex{
+import java.util.Scanner;
+
+public class Cinema extends Cineplex {
 	private int cinemaId;
 	private int status; // 1 means vacant, 0 means taken
 	private static int seatCount = 50;
 	private int layout[] = new int[100];
+	Scanner sc = new Scanner(System.in);
 
 	private CinemaSeats[] seat = new CinemaSeats[seatCount]; // if put static here will have the problem where selecting
-														// selecting seats in one row, changes the value of other
-														// elements in the same row
+	// selecting seats in one row, changes the value of other
+	// elements in the same row
 //	private static Ticket[] tickets = new Ticket[50];
 	// private int availSeats;
 	// private int unavailSeats;
@@ -82,102 +85,106 @@ public class Cinema extends Cineplex{
 
 			}
 
-			if ((i+1)%6==0) {
+			if ((i + 1) % 6 == 0) {
 				System.out.print("   ");
 
-			}else if(size-14<i+1 && i%2==0) {
+			} else if (size - 14 < i + 1 && i % 2 == 0) {
 				System.out.print(" ");
-			}else {
+			} else {
 				System.out.print("|");
 			}
 
-			if((i+1)%12==0) {
+			if ((i + 1) % 12 == 0) {
 				System.out.println();
 				System.out.print("|");
 			}
-			
-			/*if ((i + 1) % 10 == 0 && i + 1 != 50) {
-				System.out.println();
-				System.out.print("|");
-			}*/
+
+			/*
+			 * if ((i + 1) % 10 == 0 && i + 1 != 50) { System.out.println();
+			 * System.out.print("|"); }
+			 */
 		}
 		System.out.print("\n");
 	}
 
-	public void assignSeat(int seatId) 
-	{
-		if (seat[seatId].isOccupied() == true) 
-		{
-			System.out.println("Seat already assigned to a customer.");
-			return;
-		}
-		else if(seatId>1 && seatId<48 )
-		{
-			if(seat[seatId-1].isOccupied()==false && seat[seatId-2].isOccupied()==true && (seatId-2)%12==0 && seatId<(Cinema.getSeatCount()-14) ||
-			   seat[seatId+1].isOccupied()==false && seat[seatId+2].isOccupied()==true && (seatId+2)%12==1 && seatId<(Cinema.getSeatCount()-14) ||
-			   seat[seatId-1].isOccupied()==false && seat[seatId-2].isOccupied()==true && seatId<(Cinema.getSeatCount()-14) ||
-			   seat[seatId+1].isOccupied()==false && seat[seatId+2].isOccupied()==true && seatId<(Cinema.getSeatCount()-14) ||
-			   seat[seatId+1].isOccupied()==false && (seatId+3)%12==1 && seatId<(Cinema.getSeatCount()-14) ||
-			   seat[seatId-1].isOccupied()==false && (seatId-1)%12==0 && seatId<(Cinema.getSeatCount()-14) ||
-			   seat[seatId+1].isOccupied()==false && (seatId+2)%6==0 && (seatId+3)%2==1 && seatId<(Cinema.getSeatCount()-14) ||
-			   seat[seatId-1].isOccupied()==false && (seatId-1)%6==0 && (seatId)%2==1 && seatId<(Cinema.getSeatCount()-14)) 
-			{
-				System.out.println("Invalid seat - do not leave a single seat empty");
-				return;
-			}
-			
-			else if(seatId+1>(Cinema.getSeatCount()-14)) 
-			{
-				if((seatId+1)%2==0) 
-				{
-					seat[seatId].assign(seatId);
-					seat[seatId-1].assign(seatId);
-					System.out.println("Couple seats assigned!");
+	public void assignSeat(int seatId) {
+		while (true) {
+			if (seat[seatId].isOccupied() == true) {
+				System.out.println("Seat already assigned to a customer.");
+				System.out.println("Please choose another seat.");
+				cinemaLayout(0);
+				seatId = sc.nextInt();
+				seatId--;
+				continue;
+
+			} else if (seatId > 1 && seatId < 48) {
+				if (seat[seatId - 1].isOccupied() == false && seat[seatId - 2].isOccupied() == true
+						&& (seatId - 2) % 12 == 0 && seatId < (Cinema.getSeatCount() - 14)
+						|| seat[seatId + 1].isOccupied() == false && seat[seatId + 2].isOccupied() == true
+								&& (seatId + 2) % 12 == 1 && seatId < (Cinema.getSeatCount() - 14)
+						|| seat[seatId - 1].isOccupied() == false && seat[seatId - 2].isOccupied() == true
+								&& seatId < (Cinema.getSeatCount() - 14)
+						|| seat[seatId + 1].isOccupied() == false && seat[seatId + 2].isOccupied() == true
+								&& seatId < (Cinema.getSeatCount() - 14)
+						|| seat[seatId + 1].isOccupied() == false && (seatId + 3) % 12 == 1
+								&& seatId < (Cinema.getSeatCount() - 14)
+						|| seat[seatId - 1].isOccupied() == false && (seatId - 1) % 12 == 0
+								&& seatId < (Cinema.getSeatCount() - 14)
+						|| seat[seatId + 1].isOccupied() == false && (seatId + 2) % 6 == 0 && (seatId + 3) % 2 == 1
+								&& seatId < (Cinema.getSeatCount() - 14)
+						|| seat[seatId - 1].isOccupied() == false && (seatId - 1) % 6 == 0 && (seatId) % 2 == 1
+								&& seatId < (Cinema.getSeatCount() - 14)) {
+					System.out.println("Invalid seat - do not leave a single seat empty");
+					System.out.println("Please choose another seat.");
+					cinemaLayout(0);
+					seatId = sc.nextInt();
+					seatId--;
+					continue;
 				}
-				else 
-				{
-					seat[seatId].assign(seatId);
-					seat[seatId+1].assign(seatId);
-					System.out.println("Couple seats assigned!");
-				}
-			}
-			else
-			{
-				seat[seatId].assign(seatId);
-				System.out.println("Seat Assigned!");	}
-		}
-		else if(seatId!=0)
-		{
-			if(seat[seatId-1].isOccupied()==false && (seatId-1)%12==0 && seatId<(Cinema.getSeatCount()-14)) 
-					{
-						System.out.println("Invalid seat - do not leave a single seat empty");
-						return;
+
+				else if (seatId + 1 > (Cinema.getSeatCount() - 14)) {
+					if ((seatId + 1) % 2 == 0) {
+						seat[seatId].assign(seatId);
+						seat[seatId - 1].assign(seatId);
+						System.out.println("Couple seats assigned!");
+					} else {
+						seat[seatId].assign(seatId);
+						seat[seatId + 1].assign(seatId);
+						System.out.println("Couple seats assigned!");
 					}
-			else if(seatId+1>(Cinema.getSeatCount()-14)) 
-			{
-				if((seatId+1)%2==0) 
-				{
+				} else {
 					seat[seatId].assign(seatId);
-					seat[seatId-1].assign(seatId);
-					System.out.println("Couple seats assigned!");
+					System.out.println("Seat Assigned!");
 				}
-				else 
-				{
+			} else if (seatId != 0) {
+				if (seat[seatId - 1].isOccupied() == false && (seatId - 1) % 12 == 0
+						&& seatId < (Cinema.getSeatCount() - 14)) {
+					System.out.println("Invalid seat - do not leave a single seat empty");
+					System.out.println("Please choose another seat.");
+					cinemaLayout(0);
+					seatId = sc.nextInt();
+					seatId--;
+					continue;
+				} else if (seatId + 1 > (Cinema.getSeatCount() - 14)) {
+					if ((seatId + 1) % 2 == 0) {
+						seat[seatId].assign(seatId);
+						seat[seatId - 1].assign(seatId);
+						System.out.println("Couple seats assigned!");
+					} else {
+						seat[seatId].assign(seatId);
+						seat[seatId + 1].assign(seatId);
+						System.out.println("Couple seats assigned!");
+					}
+				} else {
 					seat[seatId].assign(seatId);
-					seat[seatId+1].assign(seatId);
-					System.out.println("Couple seats assigned!");
+					System.out.println("Seat Assigned!");
 				}
-			}
-			else
-			{
+			} else {
 				seat[seatId].assign(seatId);
 				System.out.println("Seat Assigned!");
+
 			}
-		}
-		else
-		{
-			seat[seatId].assign(seatId);
-			System.out.println("Seat Assigned!");
+			break;
 		}
 	}
 }
