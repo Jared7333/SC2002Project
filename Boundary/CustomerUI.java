@@ -1,23 +1,13 @@
-package Boundary;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Body.Admin;
-import Body.AssignScreening;
-import Body.Cineplex;
-import Body.Movie;
-import Body.Screening;
-import Body.TransactionID;
-import Body.Transactions;
-import Body.serialise;
-
 public class CustomerUI {
-	public void main() throws IOException, ClassNotFoundException{
-		Scanner sc= new Scanner(System.in);
-		
+	public void main() throws IOException, ClassNotFoundException {
+		Scanner sc = new Scanner(System.in);
+
 		String movieName = null;
 		int seatId;
 		Transactions newTransaction = new TransactionID();
@@ -28,11 +18,11 @@ public class CustomerUI {
 		serialise s = new serialise();
 		movieList = s.importMovie(filenameMovie);
 		System.out.println("Welcome Customer!");
-		
+
 		boolean loop = false;
 		boolean loop1 = true;
-		Admin forCustomerUse = new Admin();
-		forCustomerUse.uploadMovie(movieList);
+//		Admin forCustomerUse = new Admin();
+//		forCustomerUse.uploadMovie(movieList);
 		ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = AssignScreening.allScreenings(1000, 1,
 				movieList);
 
@@ -66,7 +56,7 @@ public class CustomerUI {
 
 					switch (choice) {
 					case "1":
-						testAssignScreening.browseMovies(movieList);
+						listOfMoviesForCustomers.browseMovies(movieList);
 
 						break;
 					case "2":
@@ -98,8 +88,7 @@ public class CustomerUI {
 						System.out.println("Choose your seat");
 						seatId = sc.nextInt();
 
-						cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime)
-								.setSeatId(seatId);
+						cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime).setSeatId(seatId);
 
 						seatId--;
 
