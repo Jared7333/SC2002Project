@@ -26,6 +26,10 @@ public class AssignScreening {
 			System.out.print(i + 1 + ": ");
 			System.out.println(movieList.get(i).getName());
 		}
+		if (movieList.size() == 0) {
+			System.out.println("There are no movies currently showing.");
+			return "Movie not Available";
+		}
 		int selectedMovie = sc.nextInt();
 
 		for (int i = 0; i < movieList.size(); i++) {
