@@ -1,3 +1,5 @@
+package Body;
+
 import java.util.Scanner;
 
 public class Cinema extends Cineplex {
