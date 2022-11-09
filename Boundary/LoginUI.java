@@ -8,7 +8,7 @@ import Body.Admin;
 public class LoginUI {
 	Scanner sc = new Scanner(System.in);
 
-	public static int customer() {// both customer and admin should login via here,
+	public int customer() {// both customer and admin should login via here,
 		System.out.println("Programmer Note: Choose ID: 1 ~ 100");
 		System.out.println("Programmer Note: Password: customerPASSWORD");
 		System.out.println("Login for Customer");
