@@ -2,7 +2,7 @@ package Body;
 
 public class TransactionID extends Transactions { // Implement a design pattern known as template method
 
-	public String generateTID(int iD, String movieTitle) { // generate TID, TID (3
+	public static String generateTID(int iD, String movieTitle) { // generate TID, TID (3
 		// letter code for Movie
 		// + date + hour +
 		// minute)

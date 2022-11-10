@@ -21,6 +21,8 @@ abstract public class Transactions {
 	}
 
 	public void buyTicket(int iD, String movieTitle, int chosenCineplex) {
+		String Transact;
+
 		Scanner sc = new Scanner(System.in);
 
 //		if (arrayCount < iD) { // create new element each time there is new iD
@@ -36,6 +38,7 @@ abstract public class Transactions {
 			System.out.println("Obtaining details...");
 		} else {
 			System.out.println("For First booking, Please Enter your Name, PhoneNo, Email and Age");
+
 			String name = sc.next();
 			int phone = sc.nextInt();
 			String email = sc.next();
@@ -55,8 +58,7 @@ abstract public class Transactions {
 		System.out.println("Customer's Email: " + customerList.get(iD).getEmail());
 		System.out.println("Customer's Age: " + customerList.get(iD).getAge());
 		customerList.get(iD).pastMoviesTitles.add(movieTitle); // update customer's watch history
-		TransactionID newTID = new TransactionID();
-		customerList.get(iD).pastTID.add(newTID.generateTID(iD, movieTitle)); // update Customer's TID
+		customerList.get(iD).pastTID.add(Transact = TransactionID.generateTID(iD, movieTitle)); // update Customer's TID
 		customerList.get(iD).pastCineplex.add(chosenCineplex);
 
 	}
