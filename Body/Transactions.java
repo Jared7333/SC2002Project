@@ -1,6 +1,7 @@
 package Body;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 abstract public class Transactions {
@@ -19,6 +20,8 @@ abstract public class Transactions {
 		String Transact;
 
 		Scanner sc = new Scanner(System.in);
+		int phone;
+		int age;
 
 //		if (arrayCount < iD) { // create new element each time there is new iD
 //
@@ -33,11 +36,33 @@ abstract public class Transactions {
 			System.out.println("Obtaining details...");
 		} else {
 			System.out.println("For First booking, Please Enter your Name, PhoneNo, Email and Age");
+			System.out.println("Name: ");
 
 			String name = sc.next();
-			int phone = sc.nextInt();
+			while (true) {
+				try {
+					System.out.println("Phone No: ");
+					phone = sc.nextInt();
+					break;
+				} catch (InputMismatchException e) {
+					System.out.println("Please enter a valid number");
+					sc.nextLine();
+					continue;
+				}
+			}
+			System.out.println("Email: ");
 			String email = sc.next();
-			int age = sc.nextInt();
+			while (true) {
+				try {
+					System.out.println("Age: ");
+					age = sc.nextInt();
+					break;
+				} catch (InputMismatchException e) {
+					System.out.println("Please enter a valid age");
+					sc.nextLine();
+					continue;
+				}
+			}
 
 //			customerList.get(iD).setID(iD);
 			customerList.get(iD).setName(name);
