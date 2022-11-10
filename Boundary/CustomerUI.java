@@ -22,6 +22,7 @@ public class CustomerUI {
 		Scanner sc = new Scanner(System.in);
 
 		String movieName = null;
+		int movieID = 0;
 		int seatId;
 		newTransaction.setIDForFirstTimeUser(CustomerID);
 		String filenameMovie = "newMovie.txt";
@@ -61,6 +62,7 @@ public class CustomerUI {
 							Please Select Action:
 							(1)Browse Movie
 							(2)Book Movie
+							(3)Rate Movie
 							(0)Exit""");
 					String choice = sc.nextLine();
 					AssignScreening testAssignScreening = new AssignScreening();
@@ -77,7 +79,7 @@ public class CustomerUI {
 						if (movieName.equals("Movie not Available")) {
 							continue;
 						}
-						int movieID = testAssignScreening.getMovieId(movieName, movieList);
+						movieID = testAssignScreening.getMovieId(movieName, movieList);
 						int chosenShowtime = testAssignScreening.chooseShowtime(movieID, movieList);
 						// End of Assign Movies and show times to each individual screenings(or Cinema
 						// Layouts)
@@ -117,6 +119,13 @@ public class CustomerUI {
 						// out
 
 						System.out.println();
+
+						break;
+
+					case "3":
+						movieName = testAssignScreening.chooseMovie(movieList);
+						movieID = testAssignScreening.getMovieId(movieName, movieList);
+						Transactions.rateMovie(movieName, CustomerID, movieID, movieList);
 
 						break;
 					case "0":
