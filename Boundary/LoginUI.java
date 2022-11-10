@@ -1,6 +1,7 @@
 package Boundary;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Body.Admin;
@@ -14,9 +15,17 @@ public class LoginUI {
 		System.out.println("Login for Customer");
 		// insert login for customer here here
 		Scanner sc = new Scanner(System.in);
+		int UserID;
 		while (true) {
 			System.out.println("Enter your User ID");
-			int UserID = sc.nextInt();
+
+			try {
+				UserID = sc.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Please enter valid User ID");
+				sc.nextLine();
+				continue;
+			}
 			sc.nextLine();
 
 			System.out.println("Enter your Password");
