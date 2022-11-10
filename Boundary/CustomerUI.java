@@ -124,8 +124,10 @@ public class CustomerUI {
 
 					case "3":
 						movieName = testAssignScreening.chooseMovie(movieList);
+						if (movieName.equals("Movie not Available")) {
+							continue;
+						}
 						movieID = testAssignScreening.getMovieId(movieName, movieList);
-						if (movieName == "Movie not Available") break;
 						Transactions.rateMovie(movieName, CustomerID, movieID, movieList);
 
 						break;
