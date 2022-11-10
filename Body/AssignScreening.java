@@ -20,21 +20,40 @@ public class AssignScreening {
 //		newMovieList = s.importMovie(filenameMovie);
 
 		String movieName = null;
-
-		System.out.println("Select Movies: ");
-		for (int i = 0; i < movieList.size(); i++) {
-			System.out.print(i + 1 + ": ");
-			System.out.println(movieList.get(i).getName());
-		}
+		int selectedMovie = 0;
 		if (movieList.size() == 0) {
 			System.out.println("There are no movies currently showing.");
 			return "Movie not Available";
 		}
-		int selectedMovie = sc.nextInt();
+		while (true) {
+			System.out.println("Select Movies: ");
+			for (int i = 0; i < movieList.size(); i++) {
+				if (movieList.get(i).getStatus().equals("Coming Soon")) {
+					continue;
+				} else {
+					System.out.print(i + 1 + ": ");
+					System.out.println(movieList.get(i).getName());
+				}
+			}
+			selectedMovie = sc.nextInt();
+			try { // Error exception if User typed a non-existent movieID
+				movieList.get(selectedMovie - 1).getStatus();
+			} catch (IndexOutOfBoundsException e) {
+				System.out.println("Please select a valid Movie");
+				continue;
+			}
 
-		for (int i = 0; i < movieList.size(); i++) {
-			if (selectedMovie == movieList.get(i).getMovieId()) {
-				movieName = movieList.get(i).getName();
+			if (movieList.get(selectedMovie - 1).getStatus().equals("Coming Soon")) { // If user typed a movieID of
+																						// Status: Coming Soon,
+				System.out.println("Please select a valid Movie");
+				continue;
+			} else {
+				for (int i = 0; i < movieList.size(); i++) {
+					if (selectedMovie == movieList.get(i).getMovieId()) {
+						movieName = movieList.get(i).getName();
+					}
+				}
+				break;
 			}
 		}
 
@@ -62,7 +81,7 @@ public class AssignScreening {
 		int count = 1;
 
 //		newMovieList = s.importMovie(filenameMovie);
-
+		System.out.println("Select Showtime: ");
 		for (Integer element : movieList.get(selectedMovie).getShowtimes()) {
 			System.out.print(k + ": " + element + " ");
 			k++;
