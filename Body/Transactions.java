@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 abstract public class Transactions {
-	ArrayList<Customer> customerList = new ArrayList();
+	static ArrayList<Customer> customerList = new ArrayList();
 	private int arrayCount = 0;
 
 	public Transactions() {
@@ -74,6 +74,13 @@ abstract public class Transactions {
 			}
 		}
 		customerList.get(iD).setID(iD);
+	}
+
+	public static void rateMovie(String movieTitle, int iD, int movieID, ArrayList<Movie> movieList) {
+		String ratingAndReview = customerList.get(iD).rankMovies(movieTitle);
+		String ratingInString = ratingAndReview.substring(0, 1);
+		int rating = Integer.parseInt(ratingInString);
+		movieList.get(movieID).calOverallRating(rating);
 	}
 
 }

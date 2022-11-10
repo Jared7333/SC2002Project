@@ -106,12 +106,12 @@ public class Customer {
 	public String rankMovies(String movieTitle) { // get customer to give rating and review of the movie they just
 													// watched
 		Scanner sc = new Scanner(System.in);
-		float rating;
+		int rating;
 		String review, ratingAndReview;
 		while (true) {
-			System.out.println("How would you rate " + movieTitle + "? (Please give rating from 0.0 to 5.0)");
-			rating = sc.nextFloat();
-			if (rating < 0 || rating > 5) {
+			System.out.println("How would you rate " + movieTitle + "? (Please give rating from 1 to 10)");
+			rating = sc.nextInt();
+			if (rating < 0 || rating > 10) {
 				System.out.println("Invalid rating, please rate again.");
 				continue;
 			} else {
