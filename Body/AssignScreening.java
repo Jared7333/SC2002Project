@@ -107,21 +107,41 @@ public class AssignScreening {
 		int k = 1;
 		int count = 1;
 		int countShowTimes = 0;
+		int selectedShowtime = 0;
 
 //		newMovieList = s.importMovie(filenameMovie);
 		System.out.println("Select Showtime: ");
 		for (Integer element : movieList.get(selectedMovie).getShowtimes()) {
-			System.out.print(k + ": " + element + " ");
+			if (element == 0) {
+				System.out.print(k + ": 000" + element + " ");
+			} else if (element < 1000) {
+				System.out.print(k + ": 0" + element + " ");
+			} else {
+				System.out.print(k + ": " + element + " ");
+			}
 			k++;
 		}
 		k = 0;
 		System.out.println();
-		int selectedShowtime = sc.nextInt();
+		while (true) {
+			selectedShowtime = sc.nextInt();
+			if (selectedShowtime < 0) {
+				System.out.println("Please choose a valid show time.");
+				sc.nextLine();
+				continue;
+			} else if ((selectedShowtime + 1) > movieList.get(selectedMovie).getShowtimes().size()) {
+				System.out.println("Please choose a valid show time.");
+				sc.nextLine();
+				continue;
+			} else {
+				break;
+			}
+		}
 
 		while (true) {
 			for (Integer element : movieList.get(selectedMovie).getShowtimes()) {
 				if (count == selectedShowtime) {
-					for (int i = 0; i < 2201; i += 200) {
+					for (int i = 0; i < 2360; i += 100) {
 						if (element.equals(i)) {
 							return countShowTimes;
 						}
