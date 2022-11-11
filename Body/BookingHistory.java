@@ -31,9 +31,9 @@ public class BookingHistory {
 			System.out.print(temp.substring(13, 15));
 			System.out.print(" at ");
 			if (pastCineplex.get(i) == 0) {
-				System.out.print("Woodlands Cineplex");
+				System.out.println("Woodlands Cineplex");
 			} else if (pastCineplex.get(i) == 1) {
-				System.out.print("Punggol Cineplex");
+				System.out.println("Punggol Cineplex");
 
 			} else if (pastCineplex.get(i) == 2) {
 				System.out.println("Changi Cineplex");
