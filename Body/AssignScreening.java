@@ -18,8 +18,14 @@ public class AssignScreening {
 
 	public int chooseDayID() {
 		while (true) {
-			System.out.println("Select which day do you want to watch: ");
-			System.out.println("1: Monday, 2: Tuesday, 3: Wednesday, 4: Thursday, 5: Friday, 6: Saturday, 7: Sunday");
+			System.out.println("Select which date do you want to watch: ");
+			System.out.println("(1) 31st December(Monday)"
+					+ "\n(2) 1st January(Tuesday)"
+					+ "\n(3) 2nd January(Wednesday) "
+					+ "\n(4) 3rd January(Thursday)"
+					+ "\n(5) 4th January(Friday)"
+					+ "\n(6) 5th January(Saturday)"
+					+ "\n(7) 6th January(Sunday)");
 			int pickDay = sc.nextInt();
 			return (pickDay - 1);
 
@@ -160,20 +166,24 @@ public class AssignScreening {
 
 	public static ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> allScreenings(int chosenShowtime, int movieID,
 			ArrayList<Movie> movieList) {
+//		ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
+//		ArrayList<Screening> screeningMovieList = new ArrayList<Screening>();
 		ArrayList<Screening> screeningMovieList = null;
 		ArrayList<ArrayList<Screening>> screeningList = null;
 		ArrayList<ArrayList<ArrayList<Screening>>> dayScreeningList = null;
 		ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> cineplexDayScreeningList = new ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>>();
 
-		int totalMovies = movieList.size();
+		int totalMovies = 4;
 		int countForDays = 0;
 		int countForCineplex = 0;
-		int totalShowtimes = 24;
 
+		int totalShowtimes = 24;
 		while (countForCineplex < 3) {
 			dayScreeningList = new ArrayList<ArrayList<ArrayList<Screening>>>();
 
 			while (countForDays < 7) {
+//				ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
+
 				screeningList = new ArrayList<ArrayList<Screening>>();
 
 				for (int i = arrayMovieCount; i <= totalMovies; i++) {
@@ -190,6 +200,9 @@ public class AssignScreening {
 				dayScreeningList.add(new ArrayList<ArrayList<Screening>>(screeningList));
 				screeningList.removeAll(screeningMovieList);
 				countForDays++;
+
+//			arrayMovieCount = totalMovies;
+//			arrayShowtimes = totalShowtimes;
 			}
 			countForDays = 0;
 			cineplexDayScreeningList.add(new ArrayList<ArrayList<ArrayList<Screening>>>(dayScreeningList));
