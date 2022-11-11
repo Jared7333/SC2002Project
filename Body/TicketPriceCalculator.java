@@ -11,6 +11,7 @@ public class TicketPriceCalculator {
 		boolean student = ticket.isStudent();
 		boolean card = ticket.isPreferredCreditAndLoyaltyCards();
 		boolean publicHolidayOrEve = ticket.ispublicHolidayOrEve();
+		int seatId = ticket.getseatId();
 
 		double price = 0;
 		boolean weekend = false;
@@ -48,6 +49,9 @@ public class TicketPriceCalculator {
 		
 		if (blockbuster)
 			price = price + 1;
+		
+		if(seatId + 1 > (Cinema.getSeatCount() - 14)) //couple seat
+			price = price*2;
 
 		//ticket.setPrice(price);
 		return price;
