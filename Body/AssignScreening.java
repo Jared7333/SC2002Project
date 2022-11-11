@@ -136,7 +136,6 @@ public class AssignScreening {
 //		ArrayList<Screening> screeningMovieList = new ArrayList<Screening>();
 		ArrayList<Screening> screeningMovieList = null;
 		ArrayList<ArrayList<Screening>> screeningList = null;
-
 		ArrayList<ArrayList<ArrayList<Screening>>> dayScreeningList = null;
 		ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> cineplexDayScreeningList = new ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>>();
 
@@ -156,7 +155,7 @@ public class AssignScreening {
 				for (int i = arrayMovieCount; i <= totalMovies; i++) {
 					screeningMovieList = new ArrayList<Screening>();
 
-					for (int j = 0; j <= totalShowtimes; j++) {
+					for (int j = 0; j <= totalShowtimes; j += 5) {
 						Screening newScreening = new Screening(movieID, chosenShowtime);
 						screeningMovieList.add(newScreening);
 					}
