@@ -307,12 +307,13 @@ public class movieMethods {
 	                            System.out.println("Enter New Showtime:\n(-1) Exit");
 	                            int newTime = sc.nextInt();
 	                            sc.nextLine();
+	                            //newTime = newTime%2400;
 	                            if(newTime<=-1)
 	                            	break;
 	                            for(int i =0;i<takenTimes.size();i++) { //check if the entered time slot has any clash
 	                            	if((newTime>takenTimes.get(i) && newTime<takenTimes.get(i)+300) || (newTime<takenTimes.get(i) && newTime>takenTimes.get(i)-300) || newTime==takenTimes.get(i)) { //when the chosen time slot is within the 3 hours window of another time slot
 	                            		invalidTimeSlot=true; // a clash is found
-	                            	} //currently does not check in between for 2300 and 0200
+	                            	}
 	                            }
 	                            if(invalidTimeSlot) { //there is a clash
 	                            	System.out.println("New Showtime cannot be added to this time slot");
@@ -334,14 +335,21 @@ public class movieMethods {
                                 for (int i = 0; i < currentTimes.size(); i++) {
                                     System.out.printf("(%d) %s\n", i + 1, currentTimes.get(i));
                                 }
+                                System.out.printf("(0) Exit\n");
                                 System.out.println("Enter Index of Showtime to Remove:");
                                 removeTime = sc.nextInt();
                                 sc.nextLine();
+                                if(removeTime==0) {
+                                	removeTime--;
+                                	break;
+                                }
                                 removeTime--;
                             }
-                            currentTimes.remove(removeTime);
-                            Collections.sort(currentTimes);
-                            movieList.get(rowID).setShowTimes(currentTimes);
+                            if(removeTime>-1) {
+	                            currentTimes.remove(removeTime);
+	                            Collections.sort(currentTimes);
+	                            movieList.get(rowID).setShowTimes(currentTimes);
+                            }
                         }
                         case "0", "exit" -> {
                             movieList.get(rowID).setShowTimes(currentTimes);
