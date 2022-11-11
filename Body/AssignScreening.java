@@ -16,6 +16,33 @@ public class AssignScreening {
 
 	Scanner sc = new Scanner(System.in);
 
+	public int chooseDayID() {
+		while (true) {
+			System.out.println("Select which day do you want to watch: ");
+			System.out.println("1: Monday, 2: Tuesday, 3: Wednesday, 4: Thursday, 5: Friday, 6: Saturday, 7: Sunday");
+			int pickDay = sc.nextInt();
+			return (pickDay - 1);
+
+		}
+	}
+
+	public String getChosenDay(int ChosenDay) {
+		if (ChosenDay == 0) {
+			return "Monday";
+		} else if (ChosenDay == 1) {
+			return "Tuesday";
+		} else if (ChosenDay == 2) {
+			return "Wednesday";
+		} else if (ChosenDay == 3) {
+			return "Thursday";
+		} else if (ChosenDay == 4) {
+			return "Friday";
+		} else if (ChosenDay == 5) {
+			return "Saturday";
+		}
+		return "Sunday";
+	}
+
 	public String chooseMovie(ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
 //		newMovieList = s.importMovie(filenameMovie);
 
@@ -103,39 +130,56 @@ public class AssignScreening {
 
 	}
 
-	public static ArrayList<ArrayList<ArrayList<Screening>>> allScreenings(int chosenShowtime, int movieID,
+	public static ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> allScreenings(int chosenShowtime, int movieID,
 			ArrayList<Movie> movieList) {
 //		ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
 //		ArrayList<Screening> screeningMovieList = new ArrayList<Screening>();
-		ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = new ArrayList<ArrayList<ArrayList<Screening>>>();
+		ArrayList<Screening> screeningMovieList = null;
+		ArrayList<ArrayList<Screening>> screeningList = null;
+
+		ArrayList<ArrayList<ArrayList<Screening>>> dayScreeningList = null;
+		ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> cineplexDayScreeningList = new ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>>();
 
 		int totalMovies = 4;
-		int count = 0;
+		int countForDays = 0;
+		int countForCineplex = 0;
 
 		int totalShowtimes = 2360;
+		while (countForCineplex < 3) {
+			dayScreeningList = new ArrayList<ArrayList<ArrayList<Screening>>>();
 
-		while (count < 3) {
-			ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
-			ArrayList<Screening> screeningMovieList = new ArrayList<Screening>();
+			while (countForDays < 7) {
+//				ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
 
-			for (int i = arrayMovieCount; i <= totalMovies; i++) {
-				for (int j = 0; j <= totalShowtimes; j++) {
-					Screening newScreening = new Screening(movieID, chosenShowtime);
-					screeningMovieList.add(newScreening);
+				screeningList = new ArrayList<ArrayList<Screening>>();
+
+				for (int i = arrayMovieCount; i <= totalMovies; i++) {
+					screeningMovieList = new ArrayList<Screening>();
+
+					for (int j = 0; j <= totalShowtimes; j++) {
+						Screening newScreening = new Screening(movieID, chosenShowtime);
+						screeningMovieList.add(newScreening);
+					}
+					screeningList.add(new ArrayList<Screening>(screeningMovieList));
+					screeningMovieList.removeAll(screeningMovieList);
+
 				}
-				screeningList.add(new ArrayList<Screening>(screeningMovieList));
-				screeningMovieList.removeAll(screeningMovieList);
-
-			}
-			cineplexScreeningList.add(new ArrayList<ArrayList<Screening>>(screeningList));
-			screeningList.removeAll(screeningMovieList);
-			count++;
+				dayScreeningList.add(new ArrayList<ArrayList<Screening>>(screeningList));
+				screeningList.removeAll(screeningMovieList);
+				System.out.println("hey");
+				countForDays++;
 
 //			arrayMovieCount = totalMovies;
 //			arrayShowtimes = totalShowtimes;
+			}
+			countForDays = 0;
+			cineplexDayScreeningList.add(new ArrayList<ArrayList<ArrayList<Screening>>>(dayScreeningList));
+			System.out.println("hi");
+			dayScreeningList.removeAll(screeningList);
+			countForCineplex++;
 		}
 
-		return cineplexScreeningList;
+		return cineplexDayScreeningList;
 	}
 
 }
