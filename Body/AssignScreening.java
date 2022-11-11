@@ -19,13 +19,9 @@ public class AssignScreening {
 	public int chooseDayID() {
 		while (true) {
 			System.out.println("Select which date do you want to watch: ");
-			System.out.println("(1) 31st December(Monday)"
-					+ "\n(2) 1st January(Tuesday)"
-					+ "\n(3) 2nd January(Wednesday) "
-					+ "\n(4) 3rd January(Thursday)"
-					+ "\n(5) 4th January(Friday)"
-					+ "\n(6) 5th January(Saturday)"
-					+ "\n(7) 6th January(Sunday)");
+			System.out.println("(1) 31st December(Monday)" + "\n(2) 1st January(Tuesday)"
+					+ "\n(3) 2nd January(Wednesday) " + "\n(4) 3rd January(Thursday)" + "\n(5) 4th January(Friday)"
+					+ "\n(6) 5th January(Saturday)" + "\n(7) 6th January(Sunday)");
 			int pickDay = sc.nextInt();
 			return (pickDay - 1);
 
@@ -64,8 +60,10 @@ public class AssignScreening {
 				if (movieList.get(i).getStatus().equals("Coming Soon")) {
 					continue;
 				} else {
-					System.out.print(i + 1 + ": ");
-					System.out.println(movieList.get(i).getName());
+					if (movieList.get(i).getMovieId() < 101) {
+						System.out.print(i + 1 + ": ");
+						System.out.println(movieList.get(i).getName());
+					}
 				}
 			}
 			selectedMovie = sc.nextInt();
@@ -94,13 +92,22 @@ public class AssignScreening {
 
 	}
 
-	public int getMovieId(String movieName, ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
+	public int getMovieId(String movieName, ArrayList<Movie> movieList, String cinemaClass)
+			throws IOException, ClassNotFoundException {
 //		newMovieList = s.importMovie(filenameMovie);
 		int movieID = 0;
 		for (int i = 0; i < movieList.size(); i++) {
 			if (movieList.get(i).getName().equals(movieName)) {
 
 				movieID = movieList.get(i).getMovieId();
+			}
+		}
+		if (cinemaClass.equals("Platinum")) {
+			for (int i = 0; i < movieList.size(); i++) {
+				if ((movieID + 100) == movieList.get(i).getMovieId()) {
+					return i;
+				}
+
 			}
 		}
 
@@ -164,6 +171,20 @@ public class AssignScreening {
 
 	}
 
+	public String chooseClass() {
+		String cinemaClass;
+		System.out.println("Choose your Cinema Class");
+		System.out.println("(1) Normal, (2) Platinum");
+		int CinemaClassID = sc.nextInt();
+
+		if (CinemaClassID == 2) {
+			return "Platinum";
+		} else {
+			return "Normal";
+		}
+
+	}
+
 	public static ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> allScreenings(int chosenShowtime, int movieID,
 			ArrayList<Movie> movieList) {
 //		ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
@@ -173,7 +194,7 @@ public class AssignScreening {
 		ArrayList<ArrayList<ArrayList<Screening>>> dayScreeningList = null;
 		ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> cineplexDayScreeningList = new ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>>();
 
-		int totalMovies = 4;
+		int totalMovies = movieList.size();
 		int countForDays = 0;
 		int countForCineplex = 0;
 
