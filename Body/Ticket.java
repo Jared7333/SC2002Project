@@ -6,6 +6,8 @@ public class Ticket {
 	private boolean blockbuster;
 	private String cinemaClass;
 	private int ageOfCust;
+	private boolean student;
+	private boolean preferredCreditAndLoyaltyCards;
 	private String dayOfWeek;
 	private boolean publicHolidayOrEve;
 	private int time;
@@ -15,13 +17,15 @@ public class Ticket {
 	public Ticket() {
 	}
 
-	public Ticket(String movieTitle, boolean threeD, boolean blockbuster, String cinemaClass, int ageOfCust,
+	public Ticket(String movieTitle, boolean threeD, boolean blockbuster, String cinemaClass, int ageOfCust, boolean student, boolean preferredCreditAndLoyaltyCards,
 			String dayOfWeek, boolean publicHolidayOrEve, int time, int seatId) {
 		this.movieTitle = movieTitle;
 		this.threeD = threeD;
 		this.blockbuster = blockbuster;
 		this.cinemaClass = cinemaClass;
 		this.ageOfCust = ageOfCust;
+		this.setStudent(student);
+		this.setPreferredCreditAndLoyaltyCards(preferredCreditAndLoyaltyCards);
 		this.dayOfWeek = dayOfWeek;
 		this.publicHolidayOrEve = publicHolidayOrEve;
 		this.time = time;
@@ -57,7 +61,7 @@ public class Ticket {
 		return cinemaClass;
 	}
 
-	public void setcinemaClass(String cinemaClass) {
+	public void setcinemaClass(String cinemaClass) { //Platinum, Normal
 		this.cinemaClass = cinemaClass;
 	}
 
@@ -65,8 +69,24 @@ public class Ticket {
 		return ageOfCust;
 	}
 
-	public void setageOfCust(int ageOfCust) { // SeniorCitizen, Adult, Child?
+	public void setageOfCust(int ageOfCust) { // SeniorCitizen, Adult
 		this.ageOfCust = ageOfCust;
+	}
+	
+	public boolean isStudent() {
+		return student;
+	}
+
+	public void setStudent(boolean student) {
+		this.student = student;
+	}
+
+	public boolean isPreferredCreditAndLoyaltyCards() {
+		return preferredCreditAndLoyaltyCards;
+	}
+
+	public void setPreferredCreditAndLoyaltyCards(boolean preferredCreditAndLoyaltyCards) {
+		this.preferredCreditAndLoyaltyCards = preferredCreditAndLoyaltyCards;
 	}
 
 	public String getdayOfWeek() {
@@ -117,5 +137,7 @@ public class Ticket {
 				+ "\nAge: " + ageOfCust + "\nDay: " + dayOfWeek + "\nPublic Holiday or Eve: " + publicHolidayOrEve
 				+ "\nTime: " + time + "\nSeat ID: " + seatId + "\nPrice: $" + price;
 	}
+
+
 
 }
