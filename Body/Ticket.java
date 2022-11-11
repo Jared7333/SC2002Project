@@ -24,8 +24,8 @@ public class Ticket {
 		this.blockbuster = blockbuster;
 		this.cinemaClass = cinemaClass;
 		this.ageOfCust = ageOfCust;
-		this.setStudent(student);
-		this.setPreferredCreditAndLoyaltyCards(preferredCreditAndLoyaltyCards);
+		this.student=student;
+		this.preferredCreditAndLoyaltyCards=preferredCreditAndLoyaltyCards;
 		this.dayOfWeek = dayOfWeek;
 		this.publicHolidayOrEve = publicHolidayOrEve;
 		this.time = time;
@@ -133,9 +133,18 @@ public class Ticket {
 //	}
 
 	public String toString() {
-		return "Title: " + movieTitle + "\n3D: " + threeD + "\nBlockbuster: " + blockbuster + "\nClass: " + cinemaClass
-				+ "\nAge: " + ageOfCust + "\nDay: " + dayOfWeek + "\nPublic Holiday or Eve: " + publicHolidayOrEve
-				+ "\nTime: " + time + "\nSeat ID: " + seatId + "\nPrice: $" + price;
+		return "Title: " + movieTitle + 
+				"\n3D: " + threeD + 
+				"\nBlockbuster: " + blockbuster + 
+				"\nClass: " + cinemaClass + 
+				"\nAge: " + ageOfCust + 
+				"\nStudent: " + student +
+				"\nCard: " + preferredCreditAndLoyaltyCards +
+				"\nDay: " + dayOfWeek + 
+				"\nPublic Holiday or Eve: " + publicHolidayOrEve + 
+				"\nTime: " + time + 
+				"\nSeat ID: " + seatId + 
+				"\nPrice: $" + price;
 	}
 
 
