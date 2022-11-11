@@ -280,24 +280,31 @@ public class movieMethods {
                 movieList.get(rowID).setAgerating(newAgeRating);
                 break;
             case "9": //showtimes
+ 
             	ArrayList<Integer> currentTimes;
             	currentTimes = movieList.get(rowID).getShowtimes();
             	
             	int cinId = movieList.get(rowID).getCinemaNo(); //get cinemaId of the chosen movie
             	
+            	
                 ArrayList<Integer> takenTimes = new ArrayList<>(); //used to store all time slot of a cinemaNo
                 ArrayList<Integer> spareList = new ArrayList<>(); //a temporary list used to aid adding all time slot to takenTimes
+                ArrayList<String> moviesWithinSameCinema = new ArrayList<String>(); //store movies within the same cinema 
                 loop = true;
                 while(loop){
                 	takenTimes.clear();
+                	moviesWithinSameCinema.clear();
                     for(int i =0 ; i<movieList.size();i++) {
                     	if(movieList.get(i).getCinemaNo()==cinId) { //add all time slots of a cinemaNo into takenTimes
     	                	spareList = movieList.get(i).getShowtimes();
     	                	takenTimes.addAll(spareList); 	
+                           	if(movieList.get(i).getShowtimes().size()>0) { //add movie to list only if there is at least 1 time slot
+                           		moviesWithinSameCinema.add(movieList.get(i).getName());
+                        	}
                     	}
                     }
                     Collections.sort(takenTimes);
-                    System.out.printf("Current Showtimes in the same Cinema:%s\n(1) Add\n(2) Remove\n(0) Exit\n", takenTimes);
+                    System.out.printf("Current Showtimes in the same Cinema %s:%s\n(1) Add\n(2) Remove\n(0) Exit\n", moviesWithinSameCinema, takenTimes);
                     String choice = sc.nextLine();
                     choice.toLowerCase();
                     switch (choice) {
@@ -329,27 +336,32 @@ public class movieMethods {
                         	}                           
                         }
                         case "2", "remove" -> {
-                            int removeTime = -1;
-                            while (removeTime < 0 || removeTime > currentTimes.size() - 1) {
-                            	System.out.printf("%s Showtimes:\n", movieList.get(rowID).getName()); //display movie name
-                                for (int i = 0; i < currentTimes.size(); i++) {
-                                    System.out.printf("(%d) %s\n", i + 1, currentTimes.get(i));
-                                }
-                                System.out.printf("(0) Exit\n");
-                                System.out.println("Enter Index of Showtime to Remove:");
-                                removeTime = sc.nextInt();
-                                sc.nextLine();
-                                if(removeTime==0) {
-                                	removeTime--;
-                                	break;
-                                }
-                                removeTime--;
-                            }
-                            if(removeTime>-1) {
-	                            currentTimes.remove(removeTime);
-	                            Collections.sort(currentTimes);
-	                            movieList.get(rowID).setShowTimes(currentTimes);
-                            }
+                           	if(movieList.get(rowID).getShowtimes().size()==0) { //if current movie has time slot to remove then do not go into remove process
+                        		System.out.printf("There is no time slot for %s\n",movieList.get(rowID).getName());
+                        	}
+                           	else { // if current movie has at least 1 time slot to remove
+	                            int removeTime = -1;
+	                            while (removeTime < 0 || removeTime > currentTimes.size() - 1) {
+	                            	System.out.printf("%s Showtimes:\n", movieList.get(rowID).getName()); //display movie name
+	                                for (int i = 0; i < currentTimes.size(); i++) {
+	                                    System.out.printf("(%d) %s\n", i + 1, currentTimes.get(i));
+	                                }
+	                                System.out.printf("(0) Exit\n");
+	                                System.out.println("Enter Index of Showtime to Remove:");
+	                                removeTime = sc.nextInt();
+	                                sc.nextLine();
+	                                if(removeTime==0) {
+	                                	removeTime--;
+	                                	break;
+	                                }
+	                                removeTime--;
+	                            }
+	                            if(removeTime>-1) {
+		                            currentTimes.remove(removeTime);
+		                            Collections.sort(currentTimes);
+		                            movieList.get(rowID).setShowTimes(currentTimes);
+	                            }
+                           	}
                         }
                         case "0", "exit" -> {
                             movieList.get(rowID).setShowTimes(currentTimes);
