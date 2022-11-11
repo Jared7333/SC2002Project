@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class movieMethods {
     public static void create(ArrayList<Movie> movieList) throws FileNotFoundException {
         //reads csv and import movies
-        String path = System.getProperty("user.dir") + "\\src\\" + "newMovies.txt";
+        String path = System.getProperty("user.dir") + "\\src\\Body\\" + "newMovies.txt";
         Scanner file = new Scanner(new File(path));
         while (file.hasNextLine()) {
             String str = file.nextLine();
@@ -130,7 +130,12 @@ public class movieMethods {
         printSummarised(movieList);
         int rowID = 0;
         boolean loop = true;
+        if(movieList.size()==0) {
+        	System.out.println("No movies in list");
+        	return;
+        }
         while(loop){
+
             System.out.println("Enter Row ID to Update: ");
             rowID = sc.nextInt(); sc.nextLine();
             if(rowID <= 0 || rowID > movieList.size()){
@@ -279,15 +284,29 @@ public class movieMethods {
                 currentTimes = movieList.get(rowID).getShowtimes();
                 loop = true;
                 while(loop){
-                    System.out.printf("Current Cast:%s\n(1)Add\n(2)Remove\n(0)Exit\n", currentTimes);
+                    System.out.printf("Current Showtimes:%s\n(1)Add\n(2)Remove\n(0)Exit\n", currentTimes);
                     String choice = sc.nextLine();
                     choice.toLowerCase();
                     switch (choice) {
                         case "1", "add" -> {
-                            System.out.println("Enter New Showtime:");
-                            int newTime = sc.nextInt();
-                            sc.nextLine();
-                            currentTimes.add(newTime);
+                        	while(true) {
+	                        	boolean invalidTimeSlot=false;
+	                            System.out.println("Enter New Showtime:");
+	                            int newTime = sc.nextInt();
+	                            sc.nextLine();
+	                            
+	                            for(int i =0;i<currentTimes.size();i++) {
+	                            	if(newTime>=currentTimes.get(i) && newTime<=currentTimes.get(i)+300) {
+	                            		invalidTimeSlot=true;
+	                            	}
+	                            }
+	                            if(invalidTimeSlot)
+	                            	System.out.println("New Showtime cannot be added to this time slot");
+	                            else {
+	                            	currentTimes.add(newTime);
+	                            	break;
+	                            }
+                        	}                           
                         }
                         case "2", "remove" -> {
                             int removeTime = -1;
