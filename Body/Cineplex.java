@@ -26,7 +26,7 @@ public class Cineplex
 		System.out.println("Available cineplexes: ");
 
 		for (int i = 0; i < getCineplexName().length; i++) {
-			System.out.println((i+1)+")"+getCineplexName()[i]);
+			System.out.println("("+(i+1)+") "+getCineplexName()[i]);
 		}
 		System.out.println();
 	}
