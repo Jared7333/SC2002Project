@@ -305,6 +305,8 @@ public class movieMethods {
                     }
                     Collections.sort(takenTimes);
                     System.out.printf("Current Showtimes in the same Cinema %s:%s\n(1) Add\n(2) Remove\n(0) Exit\n", moviesWithinSameCinema, takenTimes);
+                    if(movieList.get(rowID).getShowtimes().size()<=0) //alert user that movie has no time slot
+                    	System.out.printf("Note: %s currently has no time slot\n", movieList.get(rowID).getName());
                     String choice = sc.nextLine();
                     choice.toLowerCase();
                     switch (choice) {
@@ -337,7 +339,7 @@ public class movieMethods {
                         }
                         case "2", "remove" -> {
                            	if(movieList.get(rowID).getShowtimes().size()==0) { //if current movie has time slot to remove then do not go into remove process
-                        		System.out.printf("There is no time slot for %s\n",movieList.get(rowID).getName());
+                        		System.out.printf("There is no time slot for %s to remove\n\n",movieList.get(rowID).getName());
                         	}
                            	else { // if current movie has at least 1 time slot to remove
 	                            int removeTime = -1;
