@@ -42,15 +42,16 @@ public class CustomerUI {
 			cineplexDayScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
 			sayNoToReinitilisationAgain++;
 		}
-
+		
+		System.out.println("send help");
 		while (loop1) {
 			int chosenCineplex;
 			System.out.println("""
 					Welcome To Movie.com
 					Please Select Action:
-					(1)Choose Cineplex
-					(2)Check Past Booking
-					(0)Logout""");
+					(1) Choose Cineplex
+					(2) Check Past Booking
+					(0) Logout""");
 			String choice1 = sc.nextLine();
 			switch (choice1) {
 			case "1":
@@ -65,10 +66,10 @@ public class CustomerUI {
 					System.out.println("Welcome to " + Cineplex.getCineplexName()[cineplex - 1] + " movie.");
 					System.out.println("""
 							Please Select Action:
-							(1)Browse Movie
-							(2)Book Movie
-							(3)Rate Movie
-							(0)Exit""");
+							(1) Browse Movie
+							(2) Book Movie
+							(3) Rate Movie
+							(0) Exit""");
 					String choice = sc.nextLine();
 					AssignScreening testAssignScreening = new AssignScreening();
 
@@ -98,7 +99,7 @@ public class CustomerUI {
 								.setDayOfWeek(chosenDay);
 
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime)
-								.setTime(chosenShowtime);
+								.setTime(chosenShowtime*100);
 
 						System.out.println("Choose your Cinema Class");
 						String cinemaClass = sc.nextLine();
@@ -113,20 +114,49 @@ public class CustomerUI {
 
 						System.out.println("Choose your seat");
 						seatId = sc.nextInt();
-
+						sc.nextLine();
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime)
 								.setSeatId(seatId);
 
 						seatId--;
+						
+						System.out.println("Are you a Student?"+
+											"\n(1) Yes"+
+											"\n(2) No");
+						choice = sc.nextLine();
+						switch(choice) {
+						case "1": 
+							cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime).tickets[seatId].setStudent(true);
+							break;
+						case "2":
+							cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime).tickets[seatId].setStudent(false);
+							break;
+						}
+						
+						System.out.println("Do you have a preferred credit or loyalty card?"+
+								"\n(1) Yes"+
+								"\n(2) No");
+						choice = sc.nextLine();
+						switch(choice) {
+						case "1": 
+							cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime).tickets[seatId].setPreferredCreditAndLoyaltyCards(true);
+							break;
+						case "2":
+							cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime).tickets[seatId].setPreferredCreditAndLoyaltyCards(false);
+							break;
+						}
 
 						newTransaction.buyTicket(CustomerID, movieName, chosenCineplex);
-						sc.nextLine();
+						//sc.nextLine();
 
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
 								.get(chosenShowtime).tickets[seatId].setageOfCust(newTransaction.getAge(CustomerID));
-
+						
+						
 						System.out.println("Price: $" + cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID)
 								.get(movieID).get(chosenShowtime).tickets[seatId].calculateAndGetPrice()); // print
+						
+						
 						// out
 
 						System.out.println();
