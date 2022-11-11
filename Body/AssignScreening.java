@@ -125,11 +125,13 @@ public class AssignScreening {
 		System.out.println();
 		while (true) {
 			selectedShowtime = sc.nextInt();
-			if (selectedShowtime < 0) {
+			if (selectedShowtime < 1) {
 				System.out.println("Please choose a valid show time.");
 				sc.nextLine();
 				continue;
-			} else if ((selectedShowtime + 1) > movieList.get(selectedMovie).getShowtimes().size()) {
+			} else if ((selectedShowtime) > movieList.get(selectedMovie).getShowtimes().size()) {
+				System.out.println(selectedShowtime);
+				System.out.println(movieList.get(selectedMovie).getShowtimes().size());
 				System.out.println("Please choose a valid show time.");
 				sc.nextLine();
 				continue;
