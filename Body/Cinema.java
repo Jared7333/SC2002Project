@@ -2,62 +2,116 @@ package Body;
 
 import java.util.Scanner;
 
+/**
+ * Contains information of a cinema. Including cinema ID, 
+ * number of seats, status. Able to print out the layout 
+ * of the cinema.
+ */
 public class Cinema extends Cineplex {
+	/**
+	 * Cinema ID.
+	 */
 	private int cinemaId;
+	/**
+	 * Status of cinema.
+	 */
 	private int status; // 1 means vacant, 0 means taken
+	/**
+	 * Number of seats in the cinema.
+	 */
 	private static int seatCount = 50;
+	/**
+	 * An array of seats.
+	 */
 	private int layout[] = new int[100];
 	Scanner sc = new Scanner(System.in);
-
+	/**
+	 * Create cinema seats based on the
+	 * number of seats in the cinema.
+	 */
 	private CinemaSeats[] seat = new CinemaSeats[seatCount]; // if put static here will have the problem where selecting
 	// selecting seats in one row, changes the value of other
 	// elements in the same row
-//	private static Ticket[] tickets = new Ticket[50];
-	// private int availSeats;
-	// private int unavailSeats;
-	// private String cinemaLocation;
-	private static String cinemaClass;
+	// private static Ticket[] tickets = new Ticket[50];
 
+	/**
+	 * Cinema's class.
+	 */
+	private static String cinemaClass;
+	/**
+	 * Creates new cinema with given cinema ID and
+	 * number of seats.
+	 * @param cinemaId cinema's ID.
+	 * @param seatCount number of seats.
+	 */
 	public Cinema(int cinemaId, int seatCount) {
 		this.cinemaId = cinemaId;
 		for (int i = 0; i < seatCount; i++) {
 			seat[i] = new CinemaSeats(i);
 		}
 	}
-
+	/**
+	 * Gets cinema's ID.
+	 * @return this cinema's ID.
+	 */
 	public int getCinemaId() {
 		return cinemaId;
 	}
-
+	/**
+	 * Sets cinema's ID.
+	 * @param cinemaId cinema's ID.
+	 */
 	public void setCinemaId(int cinemaId) {
 		this.cinemaId = cinemaId;
 	}
-
+	/**
+	 * Gets number of seats.
+	 * @return this number of seats.
+	 */
 	public static int getSeatCount() {
 		return seatCount;
 	}
-
-	public void setSeatCount(int status) {
+	/**
+	 * Sets number of seats.
+	 * @param seatCount number of seats.
+	 */
+	public void setSeatCount(int seatCount) {
 		this.seatCount = seatCount;
 	}
-
+	/**
+	 * Gets status of a cinema.
+	 * @return this cinema's status.
+	 */
 	public int getStatus() {
 		return status;
 	}
-
+	/**
+	 * Sets status of a cinema.
+	 * @param status cinema's status.
+	 */
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
+	/**
+	 * Gets the class of a cinema.
+	 * @return this cinema's class.
+	 */
 	public static String getCinemaClass() {
 		return cinemaClass;
 	}
-
+	/**
+	 * Sets the class of a cinema.
+	 * @param cinemaClass cinema's class.
+	 */
 	public void setCinemaClass(String cinemaClass) {
 		this.cinemaClass = cinemaClass;
 
 	}
-
+	/**
+	 * Print the layout of the cinema based on the
+	 * number of seats.
+	 * @param seatId number of seats.
+	 */
 	public void cinemaLayout(int seatId) {
 		int size = 50; // seatCount
 
@@ -108,7 +162,13 @@ public class Cinema extends Cineplex {
 		}
 		System.out.print("\n");
 	}
-
+	/**
+	 * Assigning of seats based on seatId.
+	 * Able to check if the selected seat will leave a single
+	 * blank seat, which is not allowed.
+	 * If couple seats is chosen, 2 seats will be assigned.
+	 * @param seatId seat ID
+	 */
 	public void assignSeat(int seatId) {
 		while (true) {
 			if (seat[seatId].isOccupied() == true) {
