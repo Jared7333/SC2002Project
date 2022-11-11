@@ -155,7 +155,7 @@ public class AssignScreening {
 				for (int i = arrayMovieCount; i <= totalMovies; i++) {
 					screeningMovieList = new ArrayList<Screening>();
 
-					for (int j = 0; j <= totalShowtimes; j += 5) {
+					for (int j = 0; j <= totalShowtimes; j++) {
 						Screening newScreening = new Screening(movieID, chosenShowtime);
 						screeningMovieList.add(newScreening);
 					}
