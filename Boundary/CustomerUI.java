@@ -16,7 +16,10 @@ import Body.listOfMoviesForCustomers;
 public class CustomerUI {
 	int sayNoToReinitilisationAgain = 0;
 	Transactions newTransaction = new TransactionID();
-	ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = null;
+//	ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = null;
+	ArrayList<ArrayList<ArrayList<Screening>>> dayScreeningList = null;
+
+	ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> cineplexDayScreeningList = null;
 
 	public void main(int CustomerID, ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
@@ -24,6 +27,8 @@ public class CustomerUI {
 		String movieName = null;
 		int movieID = 0;
 		int seatId;
+		String chosenDay = null;
+		int chosenDayID = 0;
 		newTransaction.setIDForFirstTimeUser(CustomerID);
 		String filenameMovie = "newMovie.txt";
 		File f = new File(filenameMovie);
@@ -34,7 +39,7 @@ public class CustomerUI {
 		boolean loop1 = true;
 
 		if (sayNoToReinitilisationAgain == 0) {
-			cineplexScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
+			cineplexDayScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
 			sayNoToReinitilisationAgain++;
 		}
 
@@ -75,6 +80,8 @@ public class CustomerUI {
 					case "2":
 
 						// Assign Movies and show times to each individual screenings(or Cinema Layouts)
+						chosenDayID = testAssignScreening.chooseDayID();
+						chosenDay = testAssignScreening.getChosenDay(chosenDayID);
 						movieName = testAssignScreening.chooseMovie(movieList);
 						if (movieName.equals("Movie not Available")) {
 							continue;
@@ -84,38 +91,42 @@ public class CustomerUI {
 						// End of Assign Movies and show times to each individual screenings(or Cinema
 						// Layouts)
 
-						cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime)
+						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime)
 								.setMovieTitle(movieName);
 
-						cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime)
-								.setDayOfWeek("Wednesday");
+						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime)
+								.setDayOfWeek(chosenDay);
 
-						cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime)
+						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime)
 								.setTime(chosenShowtime);
 
 						System.out.println("Choose your Cinema Class");
 						String cinemaClass = sc.nextLine();
 
-						cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime)
+						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime)
 								.setCinemaClass(cinemaClass);
 
-						cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime).cinemaLayout(0);
+						System.out.println(chosenDay + " at " + Cineplex.getCineplexName()[cineplex - 1]);
+
+						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime)
+								.cinemaLayout(0);
 
 						System.out.println("Choose your seat");
 						seatId = sc.nextInt();
 
-						cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime).setSeatId(seatId);
+						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID).get(chosenShowtime)
+								.setSeatId(seatId);
 
 						seatId--;
 
 						newTransaction.buyTicket(CustomerID, movieName, chosenCineplex);
 						sc.nextLine();
 
-						cineplexScreeningList.get(chosenCineplex).get(movieID).get(chosenShowtime).tickets[seatId]
-								.setageOfCust(newTransaction.getAge(CustomerID));
+						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
+								.get(chosenShowtime).tickets[seatId].setageOfCust(newTransaction.getAge(CustomerID));
 
-						System.out.println("Price: $" + cineplexScreeningList.get(chosenCineplex).get(movieID)
-								.get(chosenShowtime).tickets[seatId].calculateAndGetPrice()); // print
+						System.out.println("Price: $" + cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID)
+								.get(movieID).get(chosenShowtime).tickets[seatId].calculateAndGetPrice()); // print
 						// out
 
 						System.out.println();
