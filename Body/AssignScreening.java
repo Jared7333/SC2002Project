@@ -166,7 +166,6 @@ public class AssignScreening {
 				}
 				dayScreeningList.add(new ArrayList<ArrayList<Screening>>(screeningList));
 				screeningList.removeAll(screeningMovieList);
-				System.out.println("hey");
 				countForDays++;
 
 //			arrayMovieCount = totalMovies;
@@ -174,7 +173,6 @@ public class AssignScreening {
 			}
 			countForDays = 0;
 			cineplexDayScreeningList.add(new ArrayList<ArrayList<ArrayList<Screening>>>(dayScreeningList));
-			System.out.println("hi");
 			dayScreeningList.removeAll(screeningList);
 			countForCineplex++;
 		}
