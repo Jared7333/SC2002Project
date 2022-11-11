@@ -106,6 +106,7 @@ public class AssignScreening {
 			throws IOException, ClassNotFoundException {
 		int k = 1;
 		int count = 1;
+		int countShowTimes = 0;
 
 //		newMovieList = s.importMovie(filenameMovie);
 		System.out.println("Select Showtime: ");
@@ -120,7 +121,12 @@ public class AssignScreening {
 		while (true) {
 			for (Integer element : movieList.get(selectedMovie).getShowtimes()) {
 				if (count == selectedShowtime) {
-					return element;
+					for (int i = 0; i < 2201; i += 200) {
+						if (element.equals(i)) {
+							return countShowTimes;
+						}
+						countShowTimes++;
+					}
 				}
 				count++;
 			}
@@ -143,7 +149,7 @@ public class AssignScreening {
 		int countForDays = 0;
 		int countForCineplex = 0;
 
-		int totalShowtimes = 2360;
+		int totalShowtimes = 24;
 		while (countForCineplex < 3) {
 			dayScreeningList = new ArrayList<ArrayList<ArrayList<Screening>>>();
 
