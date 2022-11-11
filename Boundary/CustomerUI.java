@@ -43,7 +43,6 @@ public class CustomerUI {
 			sayNoToReinitilisationAgain++;
 		}
 
-		System.out.println("send help");
 		while (loop1) {
 			int chosenCineplex;
 			System.out.println("""
