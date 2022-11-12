@@ -2,12 +2,14 @@ package Boundary;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import Body.AssignScreening;
 import Body.Cineplex;
 import Body.Movie;
+import Body.PublicHoliday;
 import Body.Screening;
 import Body.TransactionID;
 import Body.Transactions;
@@ -86,6 +88,7 @@ public class CustomerUI {
 						// Assign Movies and show times to each individual screenings(or Cinema Layouts)
 						chosenDayID = testAssignScreening.chooseDayID();
 						chosenDay = testAssignScreening.getChosenDay(chosenDayID);
+						LocalDate chosenDate = testAssignScreening.getChosenDate(chosenDayID);
 						movieName = testAssignScreening.chooseMovie(movieList);
 						if (movieName.equals("Movie not Available")) {
 							continue;
@@ -126,7 +129,7 @@ public class CustomerUI {
 
 						seatId--;
 
-						System.out.println("Are you a Student?" + "\n(1) Yes" + "\n(2) No");
+						System.out.println("Are you a Student?" + "\n(1) Yes" + "\n(2) No"); //check for student
 						choice = sc.nextLine();
 						switch (choice) {
 						case "1":
@@ -139,8 +142,7 @@ public class CustomerUI {
 							break;
 						}
 
-						System.out
-								.println("Do you have a preferred credit or loyalty card?" + "\n(1) Yes" + "\n(2) No");
+						System.out.println("Do you have a preferred credit or loyalty card?" + "\n(1) Yes" + "\n(2) No"); //check for student
 						choice = sc.nextLine();
 						switch (choice) {
 						case "1":
@@ -152,14 +154,23 @@ public class CustomerUI {
 									.get(chosenShowtime).tickets[seatId].setPreferredCreditAndLoyaltyCards(false);
 							break;
 						}
-
+						
+						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
+						.get(chosenShowtime).tickets[seatId].setthreeD(movieList.get(movieID).getThreeD()); //check for 3d
+						
+						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
+						.get(chosenShowtime).tickets[seatId].setpublicHolidayOrEve(PublicHoliday.checkForPHOrEve(chosenDate)); //check for public holiday
+						
 						newTransaction.buyTicket(CustomerID, movieName, chosenCineplex);
 						// sc.nextLine();
 						movieList.get(movieID).setTicketSales(movieList.get(movieID).getTicketSales() + 1);
 
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
 								.get(chosenShowtime).tickets[seatId].setageOfCust(newTransaction.getAge(CustomerID));
-
+						
+//						System.out.println(cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID)
+//								.get(movieID).get(chosenShowtime).tickets[seatId].toString());
+						
 						System.out.println("Price: $" + cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID)
 								.get(movieID).get(chosenShowtime).tickets[seatId].calculateAndGetPrice()); // print
 
