@@ -54,7 +54,7 @@ public class movieMethods {
 		printSummarised(movieList);
 		boolean loop = true;
 		while (loop) {
-			System.out.println("\nEnter '0' to Cancel\nSelect Row ID to Print Full Information: ");
+			System.out.println("\n(0) Exit\nSelect Row ID to Print Full Information: ");
 			int rowID = sc.nextInt();
 			sc.nextLine();
 			if (rowID == 0) {
@@ -101,7 +101,7 @@ public class movieMethods {
 		boolean loop = true;
 		printSummarised(movieList);
 		while (loop) {
-			System.out.println("Enter '0' to Cancel\nEnter Row ID to Remove: ");
+			System.out.println("(0) Exit\nEnter Row ID to Remove: ");
 			int rowID = sc.nextInt();
 			sc.nextLine();
 			if (rowID == 0) {
@@ -157,7 +157,7 @@ public class movieMethods {
 		switch (colName) {
 		case "1": // movie name
 			System.out.println("Current Name: " + movieList.get(rowID).getName());
-			System.out.println("Enter '0' to Cancel\nEnter New Name: ");
+			System.out.println("(0) Exit\nEnter New Name: ");
 			String newName = sc.nextLine();
 			if (newName.equals("0")) {
 				break;
@@ -166,7 +166,7 @@ public class movieMethods {
 			break;
 		case "2": // movie id
 			System.out.println("Current Movie ID: " + movieList.get(rowID).getMovieId());
-			System.out.println("Enter '0' to Cancel\nEnter New Movie ID: ");
+			System.out.println("(0) Exit\nEnter New Movie ID: ");
 			int newID = sc.nextInt();
 			sc.nextLine();
 			if (newID == 0) {
@@ -335,8 +335,24 @@ public class movieMethods {
 					}
 				}
 				Collections.sort(takenTimes);
-				System.out.printf("Current Showtimes in the same Cinema %s:%s\n(1) Add\n(2) Remove\n(0) Exit\n",
-						moviesWithinSameCinema, takenTimes);
+				System.out.printf("Current Showtimes in the same Cinema %s", moviesWithinSameCinema);
+
+				System.out.print(":[");
+				for (int i = 0; i < takenTimes.size(); i++) {
+					if (takenTimes.get(i) == 0) {
+						System.out.print("000" + takenTimes.get(i));
+					} else if (takenTimes.get(i) < 1000) {
+						System.out.print("0" + takenTimes.get(i));
+					} else {
+						System.out.print(takenTimes.get(i));
+					}
+					if ((i + 1) < takenTimes.size()) {
+						System.out.print(" ");
+					}
+				}
+				System.out.println("]");
+
+				System.out.println("(1) Add\n(2) Remove\n(0) Exit");
 				if (movieList.get(rowID).getShowtimes().size() <= 0) // alert user that movie has no time slot
 					System.out.printf("Note: %s currently has no time slot\n", movieList.get(rowID).getName());
 				String choice = sc.nextLine();
@@ -345,13 +361,13 @@ public class movieMethods {
 				case "1", "add" -> {
 					while (true) {
 						boolean invalidTimeSlot = false; // used to keep track whether there is a clash
-						System.out.println("Enter New Showtime (must in an hour):\n(-1) Exit");
+						System.out.println("Enter New Showtime (must be in hour):\n(-1) Exit");
 						int newTime = sc.nextInt();
 						sc.nextLine();
 						if (newTime <= -1)
 							break;
 						if (newTime % 100 != 0) {
-							System.out.println("Time must be an hour!");
+							System.out.println("Time must be in hour!");
 							continue;
 						}
 						newTime = newTime % 2400;
@@ -368,7 +384,21 @@ public class movieMethods {
 						}
 						if (invalidTimeSlot) { // there is a clash
 							System.out.println("New Showtime cannot be added to this time slot");
-							System.out.printf("Current Showtimes in the same Cinema:%s\n", takenTimes);
+							System.out.printf("Current Showtimes in the same Cinema:");
+							System.out.print("[");
+							for (int i = 0; i < takenTimes.size(); i++) {
+								if (takenTimes.get(i) == 0) {
+									System.out.print("000" + takenTimes.get(i));
+								} else if (takenTimes.get(i) < 1000) {
+									System.out.print("0" + takenTimes.get(i));
+								} else {
+									System.out.print(takenTimes.get(i));
+								}
+								if ((i + 1) < takenTimes.size()) {
+									System.out.print(" ");
+								}
+							}
+							System.out.println("]");
 							continue;
 						}
 						currentTimes.add(newTime); // add time if chosen time slot has no clash
@@ -414,7 +444,7 @@ public class movieMethods {
 			break;
 		case "10": // cinema number
 			System.out.println("Current Cinema No.: " + movieList.get(rowID).getCinemaNo());
-			System.out.println("Enter '0' to Cancel\nEnter New Cinema No.: ");
+			System.out.println("(0) Exit\nEnter New Cinema No.: ");
 			int newCinema = sc.nextInt();
 			sc.nextLine();
 			if (newCinema == 0) {
