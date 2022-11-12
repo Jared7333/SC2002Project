@@ -2,6 +2,8 @@ package Body;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -35,9 +37,22 @@ public class movieMethods {
 			for (String s : showTimes1) {
 				showTimes2.add(Integer.parseInt(s));
 			}
+
+			int d, m, y;
+			String[] date1 = info[13].split(",");
+			ArrayList<LocalDate> date2 = new ArrayList<LocalDate>();
+			for (String d1 : date1) {
+				String[] parts = d1.split("/"); // split the string to get dd, MM and YYYY individually
+				d = Integer.parseInt(parts[0]);
+				m = Integer.parseInt(parts[1]);
+				y = Integer.parseInt(parts[2]);
+				LocalDate ld = LocalDate.of(y, m, d);
+				date2.add(ld);
+
+			}
 			movieList.add(new Movie(info[0], Integer.parseInt(info[1]), Boolean.parseBoolean(info[2]),
 					Boolean.parseBoolean(info[3]), info[4], info[5], info[6], casts2, info[8], pastReview2,
-					Integer.parseInt(info[10]), showTimes2, Integer.parseInt(info[12])));
+					Integer.parseInt(info[10]), showTimes2, Integer.parseInt(info[12]), date2));
 		}
 	}
 
@@ -229,6 +244,7 @@ public class movieMethods {
 			System.out.println("(0) Exit");
 
 			int newStatusID = sc.nextInt();
+			String dateInString;
 			if (newStatusID == 0) {
 				break;
 			}
@@ -241,6 +257,54 @@ public class movieMethods {
 				newStatus = "Coming Soon";
 			} else if (newStatusID == 4) {
 				newStatus = "End Of Showing";
+				System.out.println("Please select which date to end this show");
+				for (int i = 0; i < movieList.get(rowID).getDate().size(); i++) {
+
+					System.out.println(movieList.get(rowID).getDate().get(i));
+				}
+
+				int y, m, d;
+				sc.nextLine();
+
+				while (true) {
+					System.out.println("Enter the date to delete in dd/MM/yyyy format:");
+					String date = sc.nextLine();
+					String[] parts = date.split("/"); // split the string to get dd, MM and YYYY individually
+					try {
+						d = Integer.parseInt(parts[0]);
+						m = Integer.parseInt(parts[1]);
+						y = Integer.parseInt(parts[2]);
+						if (y < 0 || m < 1 || m > 12 || d < 1) { // invalid date years and months
+							System.out.println("Please enter valid Date");
+							continue;
+						}
+						YearMonth yearMonthObject = YearMonth.of(y, m);
+						int daysInMonth = yearMonthObject.lengthOfMonth(); // check how many days in a particular
+																			// month and
+																			// year
+						if (d > daysInMonth) {
+							System.out.println("Please enter valid Date");
+							continue;
+						}
+					} catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+						System.out.println("Please enter valid Date");
+						continue;
+					}
+					break;
+
+				}
+				LocalDate removeDate = LocalDate.of(y, m, d);
+
+				for (int i = 0; i < movieList.get(rowID).getDate().size(); i++) {
+					if (removeDate.equals(movieList.get(rowID).getDate().get(i))) {
+						int deleteDate = i;
+						while (i < movieList.get(rowID).getDate().size()) {
+							movieList.get(rowID).getDate().remove(deleteDate);
+						}
+
+					}
+				}
+				System.out.println(movieList.get(rowID).getDate());
 			} else {
 				System.out.println("Invalid Choice");
 				break;

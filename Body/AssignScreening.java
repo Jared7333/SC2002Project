@@ -21,8 +21,9 @@ public class AssignScreening {
 		while (true) {
 			System.out.println("Select which date do you want to watch: ");
 			System.out.println("(1) 31st December 2021(Monday)" + "\n(2) 1st January 2022(Tuesday)"
-					+ "\n(3) 2nd January 2022(Wednesday) " + "\n(4) 3rd January 2022(Thursday)" + "\n(5) 4th January 2022(Friday)"
-					+ "\n(6) 5th January 2022(Saturday)" + "\n(7) 6th January 2022(Sunday)");
+					+ "\n(3) 2nd January 2022(Wednesday) " + "\n(4) 3rd January 2022(Thursday)"
+					+ "\n(5) 4th January 2022(Friday)" + "\n(6) 5th January 2022(Saturday)"
+					+ "\n(7) 6th January 2022(Sunday)");
 			int pickDay = sc.nextInt();
 			return (pickDay - 1);
 
@@ -45,34 +46,30 @@ public class AssignScreening {
 		}
 		return "Sunday";
 	}
-	
+
 	public LocalDate getChosenDate(int ChosenDay) {
 		LocalDate ld;
 		if (ChosenDay == 0) {
-			return ld = LocalDate.of( 2021 , 12 , 31 );
-		} 
-		else if (ChosenDay == 1) {
-			return ld = LocalDate.of( 2022 , 01 , 01 );
-		} 
-		else if (ChosenDay == 2) {
-			return ld = LocalDate.of( 2022 , 01 , 02 );
-		} 
-		else if (ChosenDay == 3) {
-			return ld = LocalDate.of( 2022 , 01 , 03 );
-		} 
-		else if (ChosenDay == 4) {
-			return ld = LocalDate.of( 2022 , 01 , 04 );
-		} 
-		else if (ChosenDay == 5) {
-			return ld = LocalDate.of( 2022 , 01 , 05 );
+			return ld = LocalDate.of(2021, 12, 31);
+		} else if (ChosenDay == 1) {
+			return ld = LocalDate.of(2022, 01, 01);
+		} else if (ChosenDay == 2) {
+			return ld = LocalDate.of(2022, 01, 02);
+		} else if (ChosenDay == 3) {
+			return ld = LocalDate.of(2022, 01, 03);
+		} else if (ChosenDay == 4) {
+			return ld = LocalDate.of(2022, 01, 04);
+		} else if (ChosenDay == 5) {
+			return ld = LocalDate.of(2022, 01, 05);
 		}
-		return ld = LocalDate.of( 2022 , 01 , 06 );
+		return ld = LocalDate.of(2022, 01, 06);
 	}
 
-	public String chooseMovie(ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
+	public String chooseMovie(ArrayList<Movie> movieList, LocalDate date) throws IOException, ClassNotFoundException {
 
 		String movieName = null;
 		int selectedMovie = 0;
+		int someInt = 0;
 		if (movieList.size() == 0) {
 			System.out.println("There are no movies currently showing.");
 			return "Movie not Available";
@@ -80,8 +77,20 @@ public class AssignScreening {
 		while (true) {
 			System.out.println("Select Movies: ");
 			for (int i = 0; i < movieList.size(); i++) {
-				if (movieList.get(i).getStatus().equals("Coming Soon")
-						|| movieList.get(i).getStatus().equals("End Of Showing")) {
+
+				if (movieList.get(i).getStatus().equals("End Of Showing")) {
+					for (int j = 0; j < movieList.get(i).getDate().size(); j++) {
+						if (date.isAfter(movieList.get(i).getDate().get(j))) {
+							someInt++;
+						}
+					}
+					if (someInt > 0) {
+						someInt = 0;
+						continue;
+					}
+				}
+
+				if (movieList.get(i).getStatus().equals("Coming Soon")) {
 					continue;
 				} else {
 					if (movieList.get(i).getStatus().equals("Preview")) {
