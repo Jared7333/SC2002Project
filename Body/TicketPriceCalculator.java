@@ -1,6 +1,19 @@
 package Body;
 
+/**
+ * Utility class for calculating the price of a ticket.
+ */
 public class TicketPriceCalculator {
+	/**
+	 * Calculate a ticket's price based on various factors such as 
+	 * the day of the week,
+	 * public holiday status,
+	 * movie attributes,
+	 * customer attributes,
+	 * and seat number.
+	 * @param ticket ticket for which price to be calculated
+	 * @return ticket price
+	 */
 	public static double calculatePrice(Ticket ticket) {
 		String dayOfWeek = ticket.getdayOfWeek();
 		boolean threeD = ticket.isthreeD();
