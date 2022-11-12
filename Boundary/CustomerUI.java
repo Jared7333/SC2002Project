@@ -91,10 +91,6 @@ public class CustomerUI {
 						chosenDay = testAssignScreening.getChosenDay(chosenDayID);
 						chosenDate = testAssignScreening.getChosenDate(chosenDayID);
 						movieName = testAssignScreening.chooseMovie(movieList, chosenDate);
-//						for (int i = 0; i < movieList.size(); i++) {
-//							System.out.println(movieList.get(i).getName());
-//							System.out.println(movieList.get(i).getMovieId());
-//						}
 						if (movieName.equals("Movie not Available")) {
 							continue;
 						}
@@ -119,8 +115,6 @@ public class CustomerUI {
 						if (movieList.get(movieID).getCinemaNo() == 3) {
 							System.out.println("Platinum Class : Cinema ID " + movieList.get(movieID).getCinemaNo());
 						} else {
-//							System.out.println(movieList.get(movieID).getName());
-
 							System.out.println("Normal Class : Cinema ID " + movieList.get(movieID).getCinemaNo());
 						}
 						System.out.println(chosenDay + " at " + Cineplex.getCineplexName()[cineplex - 1] + " Cineplex");
@@ -168,7 +162,9 @@ public class CustomerUI {
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
 								.get(chosenShowtime).tickets[seatId].setthreeD(movieList.get(movieID).getThreeD()); // check
 																													// for
-																													// 3d
+						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
+						.get(chosenShowtime).tickets[seatId].setblockbuster(movieList.get(movieID).getBlockbuster());																					// 3d
+						
 
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
 								.get(chosenShowtime).tickets[seatId]
@@ -187,6 +183,7 @@ public class CustomerUI {
 
 						System.out.println("Price: $" + cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID)
 								.get(movieID).get(chosenShowtime).tickets[seatId].calculateAndGetPrice()); // print
+						
 
 						// out
 						if (movieList.get(movieID).getCinemaNo() == 3) {
