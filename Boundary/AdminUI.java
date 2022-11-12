@@ -18,20 +18,20 @@ public class AdminUI {
 			System.out.println("""
 
 					Select Action
-					(1)Upload Movie
-					(2)See All Movies
-					(3)Update Movie Information
-					(4)Remove Movie
-					(5)Admin Account Related
-					(6)Delete Admin Account (ONLY FOR MAIN ADMIN)
-					(0)Exit""");
+					(1) Upload Movie
+					(2) See All Movies
+					(3) Update Movie Information
+					(4) Remove Movie
+					(5) Admin Account Related
+					(6) Delete Admin Account (ONLY FOR MAIN ADMIN)
+					(0) Logout""");
 			String choice = sc.nextLine();
 			switch (choice) {
 			case "1": // Upload new movies via csv to simulate getting information from webscrapping
 				inUse.uploadMovie(movieList);
 				break;
 			case "2": // Printing of movie information in 2 ways
-				System.out.println("(1)Summarised\n(2)Detailed\n(3)Sorted by Ticket Sales\n(4)Sorted by Rating");
+				System.out.println("(1) Summarised\n(2) Detailed\n(3) Sorted by Ticket Sales\n(4) Sorted by Rating");
 				int printChoice = sc.nextInt();
 				sc.nextLine();
 				if (printChoice == 1) {
