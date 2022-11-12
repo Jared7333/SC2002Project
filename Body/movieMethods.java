@@ -338,9 +338,14 @@ public class movieMethods {
 						System.out.println("Enter New Showtime (must in an hour):\n(-1) Exit");
 						int newTime = sc.nextInt();
 						sc.nextLine();
-						newTime = newTime%2400;
 						if (newTime <= -1)
 							break;
+						if(newTime%100!=0) {
+							System.out.println("Time must be an hour!");
+							continue;
+						}
+						newTime = newTime%2400;
+						
 						for (int i = 0; i < takenTimes.size(); i++) { // check if the entered time slot has any clash
 							if ( newTime == (takenTimes.get(i)-200)%2400 ||newTime == (takenTimes.get(i)-100)%2400 || newTime == takenTimes.get(i) || newTime == (takenTimes.get(i) + 100)%2400 || newTime == (takenTimes.get(i) + 200)%2400) { // when the chosen time slot is within the 3
 																		// hours window of another time slot
@@ -350,14 +355,12 @@ public class movieMethods {
 						if (invalidTimeSlot) { // there is a clash
 							System.out.println("New Showtime cannot be added to this time slot");
 							System.out.printf("Current Showtimes in the same Cinema:%s\n", takenTimes);
+							continue;
 						}
-
-						else {
 							currentTimes.add(newTime); // add time if chosen time slot has no clash
 							Collections.sort(currentTimes); // sort time for better display
 							movieList.get(rowID).setShowTimes(currentTimes);
 							break;
-						}
 					}
 				}
 				case "2", "remove" -> {
