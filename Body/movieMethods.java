@@ -6,19 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-/**
- * Methods for manipulating the list of movies shown in MOBLIMA.
- * Movies are imported from a text file, and there are additional
- * methods for viewing and updating the list. 
- */
 public class movieMethods {
-	
-    /** 
-     * Reads csv and imports movies.
-     * @param movieList list of movies to import to.
-     * @throws FileNotFoundException
-     */
-    public static void create(ArrayList<Movie> movieList) throws FileNotFoundException {
+	public static void create(ArrayList<Movie> movieList) throws FileNotFoundException {
+		// reads csv and import movies
 		String path = System.getProperty("user.dir") + "\\src\\Body\\" + "newMovies.txt";
 		Scanner file = new Scanner(new File(path));
 		while (file.hasNextLine()) {
@@ -51,12 +41,7 @@ public class movieMethods {
 		}
 	}
 
-	
-    /** 
-     * Print list of movies.
-     * @param movieList
-     */
-    public static void printSummarised(ArrayList<Movie> movieList) {
+	public static void printSummarised(ArrayList<Movie> movieList) {
 		System.out.println("List of Movies:");
 		for (int i = 0; i < movieList.size(); i++) {
 			System.out.printf("(%d): %s \n", i + 1, movieList.get(i).getName());
@@ -64,12 +49,7 @@ public class movieMethods {
 		System.out.println();
 	}
 
-	
-    /** 
-     * Select a movie to print the full information of.
-     * @param movieList Current list of movies.
-     */
-    public static void printDetailed(ArrayList<Movie> movieList) {
+	public static void printDetailed(ArrayList<Movie> movieList) {
 		Scanner sc = new Scanner(System.in);
 		printSummarised(movieList);
 		boolean loop = true;
@@ -88,12 +68,7 @@ public class movieMethods {
 		}
 	}
 
-	
-    /** 
-     * Print movies sorted by sales.
-     * @param movieList Current list of movies.
-     */
-    public static void sortBySales(ArrayList<Movie> movieList) {
+	public static void sortBySales(ArrayList<Movie> movieList) {
 		ArrayList<Movie> tempList = new ArrayList<>(movieList);
 		System.out.println("Sorted by Ticket Sales:");
 		Collections.sort(tempList, Movie.byTicketSales);
@@ -107,12 +82,7 @@ public class movieMethods {
 		}
 	}
 
-	
-    /** 
-     * Print movies sorted by rating.
-     * @param movieList Current list of movies.
-     */
-    public static void sortByRating(ArrayList<Movie> movieList) {
+	public static void sortByRating(ArrayList<Movie> movieList) {
 		ArrayList<Movie> tempList = new ArrayList<>(movieList);
 		System.out.println("Sorted by Rating:");
 		Collections.sort(tempList, Movie.byRating);
@@ -126,12 +96,7 @@ public class movieMethods {
 		}
 	}
 
-	
-    /** 
-     * Delete a movie from the list.
-     * @param movieList Current list of movies.
-     */
-    public static void deleteMovie(ArrayList<Movie> movieList) {
+	public static void deleteMovie(ArrayList<Movie> movieList) {
 		Scanner sc = new Scanner(System.in);
 		boolean loop = true;
 		printSummarised(movieList);
@@ -151,12 +116,7 @@ public class movieMethods {
 		}
 	}
 
-	
-    /** 
-     * Change a movie's information.
-     * @param movieList Current list of movies.
-     */
-    public static void updateInfo(ArrayList<Movie> movieList) {
+	public static void updateInfo(ArrayList<Movie> movieList) {
 		Scanner sc = new Scanner(System.in);
 		printSummarised(movieList);
 		int rowID = 0;
@@ -166,10 +126,13 @@ public class movieMethods {
 			return;
 		}
 		while (loop) {
-
+			System.out.println("(0) Exit");
 			System.out.println("Enter Row ID to Update: ");
 			rowID = sc.nextInt();
 			sc.nextLine();
+			if (rowID == 0) {
+				return;
+			}
 			if (rowID <= 0 || rowID > movieList.size()) {
 				System.out.println("Invalid Row ID");
 			} else {
