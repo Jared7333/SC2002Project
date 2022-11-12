@@ -79,13 +79,7 @@ public class AssignScreening {
 			for (int i = 0; i < movieList.size(); i++) {
 
 				if (movieList.get(i).getStatus().equals("End Of Showing")) {
-					for (int j = 0; j < movieList.get(i).getDate().size(); j++) {
-						if (date.isAfter(movieList.get(i).getDate().get(j))) {
-							someInt++;
-						}
-					}
-					if (someInt > 0) {
-						someInt = 0;
+					if (date.isAfter(movieList.get(i).getDate().get(movieList.get(i).getDate().size() - 1))) {
 						continue;
 					}
 				}
@@ -110,12 +104,14 @@ public class AssignScreening {
 				continue;
 			}
 
-			if (movieList.get(selectedMovie - 1).getStatus().equals("Coming Soon")
-					|| movieList.get(selectedMovie - 1).getStatus().equals("End Of Showing")) {
+			if (movieList.get(selectedMovie - 1).getStatus().equals("Coming Soon")) {
 				System.out.println("Please select a valid Movie");
 				continue;
 			} else {
+				int movieDateSize = (movieList.get(selectedMovie - 1).getDate().size() - 1);
+
 				for (int i = 0; i < movieList.size(); i++) {
+
 					if (selectedMovie == movieList.get(i).getMovieId()) {
 						movieName = movieList.get(i).getName();
 					}
@@ -149,6 +145,7 @@ public class AssignScreening {
 		int selectedShowtime = 0;
 
 		System.out.println("Select Showtime: ");
+		System.out.println(movieList.get(selectedShowtime).getName());
 		for (Integer element : movieList.get(selectedMovie).getShowtimes()) {
 			if (element == 0) {
 				System.out.print("(" + k + ")" + " 000" + element + " ");
