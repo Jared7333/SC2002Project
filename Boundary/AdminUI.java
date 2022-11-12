@@ -31,7 +31,8 @@ public class AdminUI {
 				inUse.uploadMovie(movieList);
 				break;
 			case "2": // Printing of movie information in 2 ways
-				System.out.println("(1) Summarised\n(2) Detailed\n(3) Sorted by Ticket Sales\n(4) Sorted by Rating");
+				System.out.println(
+						"(1) Summarised\n(2) Detailed\n(3) Sorted by Ticket Sales\n(4) Sorted by Rating\n(0) Exit");
 				int printChoice = sc.nextInt();
 				sc.nextLine();
 				if (printChoice == 1) {
@@ -42,8 +43,11 @@ public class AdminUI {
 					inUse.printMovieSales(movieList);
 				} else if (printChoice == 4) {
 					inUse.printMovieRating(movieList);
+				} else if (printChoice == 0) {
+					break;
 				} else {
 					System.out.println("Invalid Selection");
+					continue;
 				}
 				break;
 			case "3": // Update movie information
