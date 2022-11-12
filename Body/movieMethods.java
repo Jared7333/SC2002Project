@@ -190,8 +190,7 @@ public class movieMethods {
 				System.out.println("Is Movie 3D? [Y/N]");
 				newThreeD = sc.nextLine();
 				newThreeD.toLowerCase();
-
-				if (newThreeD.matches("y")) {
+				if (newThreeD.matches("y") || newThreeD.matches("n")) {
 					break;
 				}
 			}
@@ -199,7 +198,7 @@ public class movieMethods {
 				System.out.println("Is Movie Blockbuster? [Y/N]");
 				newBlockbuster = sc.nextLine();
 				newBlockbuster.toLowerCase();
-				if (newBlockbuster.matches("y")) {
+				if (newBlockbuster.matches("y") || newBlockbuster.matches("n")) {
 					break;
 				}
 			}
