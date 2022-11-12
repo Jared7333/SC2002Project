@@ -3,7 +3,17 @@ package Body;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Handles displaying movies for customer.
+ */
 public class listOfMoviesForCustomers {
+
+	/**
+	 * Displays list of current movies, their showing status, and their overall ratings.
+	 * @param movieList list of current movies.
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static void browseMovies(ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
 		int totalRating = 0;
 
