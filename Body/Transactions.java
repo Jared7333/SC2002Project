@@ -4,18 +4,41 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Class that handles the action of a customer buying a ticket.
+ * Creates and contains the list of customers.
+ * Also contains related methods such as displaying 
+ * displaying a customer's booking history,
+ * and updating a movie's rating after a customer has
+ * rated it.
+ */
 abstract public class Transactions {
 	static ArrayList<Customer> customerList = new ArrayList();
 	private int arrayCount = 0;
 
+	/**
+	 * Create list of customers.
+	 */
 	public Transactions() {
 		customerList = new ArrayList<Customer>();
 	}
 
+	/**
+	 * Display a customer's booking history.
+	 * @param iD the cutomer's ID.
+	 */
 	public void customerBookingHistory(int iD) {
 		customerList.get(iD).checkBookingHistory();
 	}
 
+	/**
+	 * Updates the customer's booking history and ticket ID.
+	 * Has the customer input their details if they
+	 * have not vought a ticket before.
+	 * @param iD the customer's ID.
+	 * @param movieTitle the movie's title.
+	 * @param chosenCineplex cineplex the customer has chosen.
+	 */
 	public void buyTicket(int iD, String movieTitle, int chosenCineplex) {
 		String Transact;
 		Scanner sc = new Scanner(System.in);
@@ -82,10 +105,19 @@ abstract public class Transactions {
 
 	}
 
+	/**
+	 * Get customer's age.
+	 * @param iD customer's ID.
+	 * @return customer's age.
+	 */
 	public int getAge(int iD) {
 		return customerList.get(iD).getAge();
 	};
 
+	/**
+	 * Adds new customers to the customer list and updates their ID.
+	 * @param iD the customer's ID.
+	 */
 	public void setIDForFirstTimeUser(int iD) {
 		if (arrayCount < iD) { // create new element each time there is new iD
 
@@ -97,6 +129,13 @@ abstract public class Transactions {
 		customerList.get(iD).setID(iD);
 	}
 
+	/**
+	 * Updates a movie's rating from a customer's rating.
+	 * @param movieTitle the movie's title.
+	 * @param iD the cutomer's ID.
+	 * @param movieID the movie's ID.
+	 * @param movieList the current list of movies.
+	 */
 	public static void rateMovie(String movieTitle, int iD, int movieID, ArrayList<Movie> movieList) {
 		String ratingInString = "0";
 		String ratingAndReview = customerList.get(iD).rankMovies(movieTitle);
