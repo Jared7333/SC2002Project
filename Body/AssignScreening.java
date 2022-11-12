@@ -60,8 +60,13 @@ public class AssignScreening {
 						|| movieList.get(i).getStatus().equals("End Of Showing")) {
 					continue;
 				} else {
-					System.out.print(i + 1 + ": ");
-					System.out.println(movieList.get(i).getName());
+					if (movieList.get(i).getStatus().equals("Preview")) {
+						System.out.print(i + 1 + ": ");
+						System.out.println(movieList.get(i).getName() + ": Preview");
+					} else {
+						System.out.print(i + 1 + ": ");
+						System.out.println(movieList.get(i).getName());
+					}
 				}
 			}
 			selectedMovie = sc.nextInt();
