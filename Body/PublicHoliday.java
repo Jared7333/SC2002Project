@@ -8,9 +8,6 @@ import java.util.Scanner;
 
 public class PublicHoliday {
 	private static HashMap<LocalDate, String> holiday = new HashMap<LocalDate, String>();
-	public PublicHoliday() {
-	}
-	
 	
 	public static void configureHoliday() {
 		Scanner sc = new Scanner(System.in);
@@ -162,6 +159,15 @@ public class PublicHoliday {
 			}
 			else
 				System.out.println("Date entered does not exist, remove unsuccessful");
+		}
+	}
+	
+	public static boolean checkForPHOrEve(LocalDate ld) {
+		if(holiday.containsKey(ld)) {
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 
