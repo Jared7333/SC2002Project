@@ -14,8 +14,12 @@ public class listOfMoviesForCustomers {
 		}
 
 		for (int i = 0; i < movieList.size(); i++) {
-			if (movieList.get(i).getStatus().equals("Coming Soon")) {
+			if (movieList.get(i).getStatus().equals("End Of Showing")) {
+				System.out.println(movieList.get(i).getName() + ": End Of Showing");
+			} else if (movieList.get(i).getStatus().equals("Coming Soon")) {
 				System.out.println(movieList.get(i).getName() + ": Coming Soon!");
+			} else if (movieList.get(i).getStatus().equals("Preview")) {
+				System.out.println(movieList.get(i).getName() + ": Preview");
 			} else {
 				System.out.println(movieList.get(i).getName());
 			}
