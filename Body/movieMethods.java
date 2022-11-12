@@ -139,17 +139,17 @@ public class movieMethods {
 		}
 		System.out.println("""
 				Enter Column to Update:
-				(1)Movie Name
-				(2)Movie ID
-				(3)3D / Blockbuster
-				(4)Movie Status
-				(5)Synopsis
-				(6)Director
-				(7)Casts
-				(8)Age Rating
-				(9)Showtimes
-				(10)Cinema Number
-				(0)Exit""");
+				(1) Movie Name
+				(2) Movie ID
+				(3) 3D / Blockbuster
+				(4) Movie Status
+				(5) Synopsis
+				(6) Director
+				(7) Casts
+				(8) Age Rating
+				(9) Showtimes
+				(10) Cinema Number
+				(0) Exit""");
 		String colName = sc.nextLine();
 		switch (colName) {
 		case "1": // movie name

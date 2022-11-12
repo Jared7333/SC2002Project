@@ -82,7 +82,7 @@ public class Admin implements Serializable{
         System.out.println("System Settings");
         loop = true;
         while(loop){
-            System.out.println("Select Action\n(1)Change Password\n(2)Add New Admin");
+            System.out.println("Select Action\n(1) Change Password\n(2) Add New Admin");
             int setting = sc.nextInt(); sc.nextLine();
             switch (setting) {
                 case 1 -> { // Change Password
@@ -104,5 +104,4 @@ public class Admin implements Serializable{
         }
     }
 }
-
 
