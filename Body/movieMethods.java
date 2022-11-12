@@ -222,7 +222,7 @@ public class movieMethods {
 			if (newStatusID == 0) {
 				break;
 			}
-			String newStatus = "Showing";
+			String newStatus = "Now Showing";
 			if (newStatusID == 1) {
 				newStatus = "Showing";
 			} else if (newStatusID == 2) {
@@ -236,6 +236,7 @@ public class movieMethods {
 				break;
 			}
 			movieList.get(rowID).setStatus(newStatus);
+			System.out.println(movieList.get(rowID).getName() + " is now set to " + newStatus + ".");
 			break;
 		case "5": // synopsis
 			System.out.println("Current Synopsis: " + movieList.get(rowID).getSynopsis());
