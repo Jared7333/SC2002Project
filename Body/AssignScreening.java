@@ -1,6 +1,7 @@
 package Body;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,9 +20,9 @@ public class AssignScreening {
 	public int chooseDayID() {
 		while (true) {
 			System.out.println("Select which date do you want to watch: ");
-			System.out.println("(1) 31st December(Monday)" + "\n(2) 1st January(Tuesday)"
-					+ "\n(3) 2nd January(Wednesday) " + "\n(4) 3rd January(Thursday)" + "\n(5) 4th January(Friday)"
-					+ "\n(6) 5th January(Saturday)" + "\n(7) 6th January(Sunday)");
+			System.out.println("(1) 31st December 2021(Monday)" + "\n(2) 1st January 2022(Tuesday)"
+					+ "\n(3) 2nd January 2022(Wednesday) " + "\n(4) 3rd January 2022(Thursday)" + "\n(5) 4th January 2022(Friday)"
+					+ "\n(6) 5th January 2022(Saturday)" + "\n(7) 6th January 2022(Sunday)");
 			int pickDay = sc.nextInt();
 			return (pickDay - 1);
 
@@ -43,6 +44,29 @@ public class AssignScreening {
 			return "Saturday";
 		}
 		return "Sunday";
+	}
+	
+	public LocalDate getChosenDate(int ChosenDay) {
+		LocalDate ld;
+		if (ChosenDay == 0) {
+			return ld = LocalDate.of( 2021 , 12 , 31 );
+		} 
+		else if (ChosenDay == 1) {
+			return ld = LocalDate.of( 2022 , 01 , 01 );
+		} 
+		else if (ChosenDay == 2) {
+			return ld = LocalDate.of( 2022 , 01 , 02 );
+		} 
+		else if (ChosenDay == 3) {
+			return ld = LocalDate.of( 2022 , 01 , 03 );
+		} 
+		else if (ChosenDay == 4) {
+			return ld = LocalDate.of( 2022 , 01 , 04 );
+		} 
+		else if (ChosenDay == 5) {
+			return ld = LocalDate.of( 2022 , 01 , 05 );
+		}
+		return ld = LocalDate.of( 2022 , 01 , 06 );
 	}
 
 	public String chooseMovie(ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
