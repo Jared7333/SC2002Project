@@ -335,16 +335,14 @@ public class movieMethods {
 				case "1", "add" -> {
 					while (true) {
 						boolean invalidTimeSlot = false; // used to keep track whether there is a clash
-						System.out.println("Enter New Showtime:\n(-1) Exit");
+						System.out.println("Enter New Showtime (must in an hour):\n(-1) Exit");
 						int newTime = sc.nextInt();
 						sc.nextLine();
-						// newTime = newTime%2400;
+						newTime = newTime%2400;
 						if (newTime <= -1)
 							break;
 						for (int i = 0; i < takenTimes.size(); i++) { // check if the entered time slot has any clash
-							if ((newTime > takenTimes.get(i) && newTime < takenTimes.get(i) + 300)
-									|| (newTime < takenTimes.get(i) && newTime > takenTimes.get(i) - 300)
-									|| newTime == takenTimes.get(i)) { // when the chosen time slot is within the 3
+							if ( newTime == (takenTimes.get(i)-200)%2400 ||newTime == (takenTimes.get(i)-100)%2400 || newTime == takenTimes.get(i) || newTime == (takenTimes.get(i) + 100)%2400 || newTime == (takenTimes.get(i) + 200)%2400) { // when the chosen time slot is within the 3
 																		// hours window of another time slot
 								invalidTimeSlot = true; // a clash is found
 							}
