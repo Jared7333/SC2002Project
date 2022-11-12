@@ -61,10 +61,10 @@ public class AssignScreening {
 					continue;
 				} else {
 					if (movieList.get(i).getStatus().equals("Preview")) {
-						System.out.print(i + 1 + ": ");
+						System.out.print("(" + (i + 1) + ") ");
 						System.out.println(movieList.get(i).getName() + ": Preview");
 					} else {
-						System.out.print(i + 1 + ": ");
+						System.out.print("(" + (i + 1) + ") ");
 						System.out.println(movieList.get(i).getName());
 					}
 				}
@@ -118,11 +118,11 @@ public class AssignScreening {
 		System.out.println("Select Showtime: ");
 		for (Integer element : movieList.get(selectedMovie).getShowtimes()) {
 			if (element == 0) {
-				System.out.print(k + ": 000" + element + " ");
+				System.out.print("(" + k + ")" + " 000" + element + " ");
 			} else if (element < 1000) {
-				System.out.print(k + ": 0" + element + " ");
+				System.out.print("(" + k + ")" + " 0" + element + " ");
 			} else {
-				System.out.print(k + ": " + element + " ");
+				System.out.print("(" + k + ")" + " " + element + " ");
 			}
 			k++;
 		}
@@ -164,16 +164,7 @@ public class AssignScreening {
 	}
 
 	public String chooseClass(String movieName, ArrayList<Movie> movieList) {
-//		String cinemaClass;
-//		System.out.println("Choose your Cinema Class");
-//		System.out.println("(1) Normal, (2) Platinum");
-//		int CinemaClassID = sc.nextInt();
-//
-//		if (CinemaClassID == 2) {
-//			return "Platinum";
-//		} else {
-//			return "Normal";
-//		}
+
 		for (int i = 0; i < movieList.size(); i++) {
 			if (movieName.equals(movieList.get(i).getName())) {
 				if (movieList.get(i).getCinemaNo() == 3) {
@@ -190,8 +181,6 @@ public class AssignScreening {
 
 	public static ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> allScreenings(int chosenShowtime, int movieID,
 			ArrayList<Movie> movieList) {
-//		ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
-//		ArrayList<Screening> screeningMovieList = new ArrayList<Screening>();
 		ArrayList<Screening> screeningMovieList = null;
 		ArrayList<ArrayList<Screening>> screeningList = null;
 		ArrayList<ArrayList<ArrayList<Screening>>> dayScreeningList = null;
@@ -206,7 +195,6 @@ public class AssignScreening {
 			dayScreeningList = new ArrayList<ArrayList<ArrayList<Screening>>>();
 
 			while (countForDays < 7) {
-//				ArrayList<ArrayList<Screening>> screeningList = new ArrayList<ArrayList<Screening>>();
 
 				screeningList = new ArrayList<ArrayList<Screening>>();
 
@@ -225,8 +213,6 @@ public class AssignScreening {
 				screeningList.removeAll(screeningMovieList);
 				countForDays++;
 
-//			arrayMovieCount = totalMovies;
-//			arrayShowtimes = totalShowtimes;
 			}
 			countForDays = 0;
 			cineplexDayScreeningList.add(new ArrayList<ArrayList<ArrayList<Screening>>>(dayScreeningList));
