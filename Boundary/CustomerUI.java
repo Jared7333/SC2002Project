@@ -39,7 +39,11 @@ public class CustomerUI {
 		boolean loop1 = true;
 
 		if (sayNoToReinitilisationAgain == 0) {
-			cineplexDayScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
+			try {
+				cineplexDayScreeningList = AssignScreening.allScreenings(1000, 1, movieList);
+			} catch (NullPointerException e) {
+				sayNoToReinitilisationAgain--;
+			}
 			sayNoToReinitilisationAgain++;
 		}
 
