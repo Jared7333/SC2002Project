@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import Body.Admin;
 import Body.Movie;
+import Body.PublicHoliday;
 
 public class AdminUI {
 	// login
@@ -24,6 +25,7 @@ public class AdminUI {
 					(4) Remove Movie
 					(5) Admin Account Related
 					(6) Delete Admin Account (ONLY FOR MAIN ADMIN)
+					(7) Configure Holiday
 					(0) Logout""");
 			String choice = sc.nextLine();
 			switch (choice) {
@@ -85,6 +87,10 @@ public class AdminUI {
 				} else {
 					System.out.println("Not Main Admin");
 				}
+				break;
+				
+			case "7": 
+				PublicHoliday.configureHoliday();
 				break;
 			case "0": // Exit
 				loop = false;
