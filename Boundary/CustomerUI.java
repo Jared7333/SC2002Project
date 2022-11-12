@@ -155,6 +155,7 @@ public class CustomerUI {
 
 						newTransaction.buyTicket(CustomerID, movieName, chosenCineplex);
 						// sc.nextLine();
+						movieList.get(movieID).setTicketSales(movieList.get(movieID).getTicketSales() + 1);
 
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
 								.get(chosenShowtime).tickets[seatId].setageOfCust(newTransaction.getAge(CustomerID));
@@ -163,6 +164,13 @@ public class CustomerUI {
 								.get(movieID).get(chosenShowtime).tickets[seatId].calculateAndGetPrice()); // print
 
 						// out
+						if (movieList.get(movieID).getCinemaNo() == 3) {
+							System.out.println(
+									movieName + " Class at " + Cineplex.getCineplexName()[cineplex - 1] + " Cineplex");
+						} else {
+							System.out.println(
+									movieName + " at " + Cineplex.getCineplexName()[cineplex - 1] + " Cineplex");
+						}
 
 						System.out.println();
 
