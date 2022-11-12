@@ -86,7 +86,7 @@ public class CustomerUI {
 						if (movieName.equals("Movie not Available")) {
 							continue;
 						}
-						String cinemaClass = testAssignScreening.chooseClass();
+						String cinemaClass = testAssignScreening.chooseClass(movieName, movieList);
 						movieID = testAssignScreening.getMovieId(movieName, movieList, cinemaClass);
 						int chosenShowtime = testAssignScreening.chooseShowtime(movieID, movieList);
 						// End of Assign Movies and show times to each individual screenings(or Cinema
