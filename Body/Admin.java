@@ -90,12 +90,13 @@ public class Admin implements Serializable {
 				loop = false;
 			}
 			case 2 -> { // Create new admin account
-				System.out.println("Enter New Admin Name:");
-				String createName = sc.nextLine();
+//				System.out.println("Enter New Admin Name:");
+//				String createName = sc.nextLine();
 				System.out.println("Enter New Admin Username:");
 				String createUsername = sc.nextLine();
 				System.out.println("Enter New Admin Password:");
 				String createPassword = sc.nextLine();
+				String createName = createUsername;
 				createAdmin(createName, createUsername, createPassword, adminList);
 				loop = false;
 			}
