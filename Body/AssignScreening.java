@@ -46,7 +46,6 @@ public class AssignScreening {
 	}
 
 	public String chooseMovie(ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
-//		newMovieList = s.importMovie(filenameMovie);
 
 		String movieName = null;
 		int selectedMovie = 0;
@@ -57,13 +56,12 @@ public class AssignScreening {
 		while (true) {
 			System.out.println("Select Movies: ");
 			for (int i = 0; i < movieList.size(); i++) {
-				if (movieList.get(i).getStatus().equals("Coming Soon")) {
+				if (movieList.get(i).getStatus().equals("Coming Soon")
+						|| movieList.get(i).getStatus().equals("End Of Showing")) {
 					continue;
 				} else {
-					if (movieList.get(i).getMovieId() < 101) {
-						System.out.print(i + 1 + ": ");
-						System.out.println(movieList.get(i).getName());
-					}
+					System.out.print(i + 1 + ": ");
+					System.out.println(movieList.get(i).getName());
 				}
 			}
 			selectedMovie = sc.nextInt();
@@ -74,8 +72,8 @@ public class AssignScreening {
 				continue;
 			}
 
-			if (movieList.get(selectedMovie - 1).getStatus().equals("Coming Soon")) { // If user typed a movieID of
-																						// Status: Coming Soon,
+			if (movieList.get(selectedMovie - 1).getStatus().equals("Coming Soon")
+					|| movieList.get(selectedMovie - 1).getStatus().equals("End Of Showing")) {
 				System.out.println("Please select a valid Movie");
 				continue;
 			} else {
@@ -94,20 +92,10 @@ public class AssignScreening {
 
 	public int getMovieId(String movieName, ArrayList<Movie> movieList, String cinemaClass)
 			throws IOException, ClassNotFoundException {
-//		newMovieList = s.importMovie(filenameMovie);
 		int movieID = 0;
 		for (int i = 0; i < movieList.size(); i++) {
 			if (movieList.get(i).getName().equals(movieName)) {
-
 				movieID = movieList.get(i).getMovieId();
-			}
-		}
-		if (cinemaClass.equals("Platinum")) {
-			for (int i = 0; i < movieList.size(); i++) {
-				if ((movieID + 100) == movieList.get(i).getMovieId()) {
-					return i;
-				}
-
 			}
 		}
 
@@ -122,7 +110,6 @@ public class AssignScreening {
 		int countShowTimes = 0;
 		int selectedShowtime = 0;
 
-//		newMovieList = s.importMovie(filenameMovie);
 		System.out.println("Select Showtime: ");
 		for (Integer element : movieList.get(selectedMovie).getShowtimes()) {
 			if (element == 0) {
@@ -171,17 +158,28 @@ public class AssignScreening {
 
 	}
 
-	public String chooseClass() {
-		String cinemaClass;
-		System.out.println("Choose your Cinema Class");
-		System.out.println("(1) Normal, (2) Platinum");
-		int CinemaClassID = sc.nextInt();
+	public String chooseClass(String movieName, ArrayList<Movie> movieList) {
+//		String cinemaClass;
+//		System.out.println("Choose your Cinema Class");
+//		System.out.println("(1) Normal, (2) Platinum");
+//		int CinemaClassID = sc.nextInt();
+//
+//		if (CinemaClassID == 2) {
+//			return "Platinum";
+//		} else {
+//			return "Normal";
+//		}
+		for (int i = 0; i < movieList.size(); i++) {
+			if (movieName.equals(movieList.get(i).getName())) {
+				if (movieList.get(i).getCinemaNo() == 3) {
+					return "Platinum";
+				} else {
+					return "Normal";
+				}
+			}
 
-		if (CinemaClassID == 2) {
-			return "Platinum";
-		} else {
-			return "Normal";
 		}
+		return "Normal";
 
 	}
 
