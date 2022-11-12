@@ -59,8 +59,8 @@ public class LoginUI {
 
 		// Login logic
 		boolean login = false;
-		System.out.println("mainADMIN");
-		System.out.println("adminPASSWORD");
+		System.out.println("Programmer Note: Username: mainADMIN");
+		System.out.println("Programer Note: Password: adminPASSWORD");
 		while (!login) {
 			System.out.println("Enter Admin Username:");
 			String username = sc.nextLine();
