@@ -172,8 +172,8 @@ public class movieMethods {
 			movieList.get(rowID).setMovieId(newID);
 			break;
 		case "3": // 3D or blockbuster
-			String newThreeD = null;
-			String newBlockbuster = null;
+			String newThreeD = "g";
+			String newBlockbuster = "g";
 			System.out.println("Current Movie Type:");
 			if (movieList.get(rowID).getThreeD()) {
 				System.out.print("3D");
@@ -186,16 +186,24 @@ public class movieMethods {
 				System.out.print(" and NOT Blockbuster");
 			}
 			System.out.println("Enter New Movie Type: ");
-			while (!newThreeD.matches("y") || !newThreeD.matches("n")) {
+			while ((!newThreeD.matches("y")) || !newThreeD.matches("n")) {
 				System.out.println("Is Movie 3D? [Y/N]");
 				newThreeD = sc.nextLine();
 				newThreeD.toLowerCase();
+
+				if (newThreeD.matches("y")) {
+					break;
+				}
 			}
 			while (!newBlockbuster.matches("y") || !newBlockbuster.matches("n")) {
 				System.out.println("Is Movie Blockbuster? [Y/N]");
 				newBlockbuster = sc.nextLine();
 				newBlockbuster.toLowerCase();
+				if (newBlockbuster.matches("y")) {
+					break;
+				}
 			}
+
 			if (newThreeD.matches("y")) {
 				newThreeD = "true";
 			} else {
@@ -340,15 +348,19 @@ public class movieMethods {
 						sc.nextLine();
 						if (newTime <= -1)
 							break;
-						if(newTime%100!=0) {
+						if (newTime % 100 != 0) {
 							System.out.println("Time must be an hour!");
 							continue;
 						}
-						newTime = newTime%2400;
-						
+						newTime = newTime % 2400;
+
 						for (int i = 0; i < takenTimes.size(); i++) { // check if the entered time slot has any clash
-							if ( newTime == (takenTimes.get(i)-200)%2400 ||newTime == (takenTimes.get(i)-100)%2400 || newTime == takenTimes.get(i) || newTime == (takenTimes.get(i) + 100)%2400 || newTime == (takenTimes.get(i) + 200)%2400) { // when the chosen time slot is within the 3
-																		// hours window of another time slot
+							if (newTime == (takenTimes.get(i) - 200) % 2400
+									|| newTime == (takenTimes.get(i) - 100) % 2400 || newTime == takenTimes.get(i)
+									|| newTime == (takenTimes.get(i) + 100) % 2400
+									|| newTime == (takenTimes.get(i) + 200) % 2400) { // when the chosen time slot is
+																						// within the 3
+								// hours window of another time slot
 								invalidTimeSlot = true; // a clash is found
 							}
 						}
@@ -357,10 +369,10 @@ public class movieMethods {
 							System.out.printf("Current Showtimes in the same Cinema:%s\n", takenTimes);
 							continue;
 						}
-							currentTimes.add(newTime); // add time if chosen time slot has no clash
-							Collections.sort(currentTimes); // sort time for better display
-							movieList.get(rowID).setShowTimes(currentTimes);
-							break;
+						currentTimes.add(newTime); // add time if chosen time slot has no clash
+						Collections.sort(currentTimes); // sort time for better display
+						movieList.get(rowID).setShowTimes(currentTimes);
+						break;
 					}
 				}
 				case "2", "remove" -> {
