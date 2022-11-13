@@ -191,7 +191,7 @@ public class CustomerUI {
 								.setpublicHolidayOrEve(PublicHoliday.checkForPHOrEve(chosenDate)); // check for public
 																									// holiday
 
-						newTransaction.buyTicket(CustomerID, movieName, chosenCineplex);
+						newTransaction.buyTicket(CustomerID, movieName, chosenCineplex, chosenDate);
 						movieList.get(movieID).setTicketSales(movieList.get(movieID).getTicketSales() + 1);
 
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
