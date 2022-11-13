@@ -9,7 +9,9 @@ import java.util.ArrayList;
 public class listOfMoviesForCustomers {
 
 	/**
-	 * Displays list of current movies, their showing status, and their overall ratings.
+	 * Displays list of current movies, their showing status, and their overall
+	 * ratings.
+	 * 
 	 * @param movieList list of current movies.
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -26,12 +28,12 @@ public class listOfMoviesForCustomers {
 
 		for (int i = 0; i < movieList.size(); i++) {
 			if (movieList.get(i).getStatus().equals("End Of Showing")) {
-				System.out.print(movieList.get(i).getName() + ": End Of Showing");
+				System.out.println(movieList.get(i).getName() + ": End Of Showing");
 
 			} else if (movieList.get(i).getStatus().equals("Coming Soon")) {
-				System.out.println(movieList.get(i).getName() + ": Coming Soon!");
+				System.out.print(movieList.get(i).getName() + ": Coming Soon!");
 			} else if (movieList.get(i).getStatus().equals("Preview")) {
-				System.out.println(movieList.get(i).getName() + ": Preview");
+				System.out.print(movieList.get(i).getName() + ": Preview");
 				for (int j = 0; j < movieList.get(i).getPastReview().size(); j++) {
 					totalRating += movieList.get(i).getPastReview().get(j);
 				}
