@@ -2,8 +2,21 @@ package Body;
 
 import java.util.ArrayList;
 
+/**
+ * Handles displaying booking history of customers.
+ */
 public class BookingHistory {
 
+	/**
+	 * Displays past bookings for movies that customers made.
+	 * For each booking, display the movie title,
+	 * transaction ID,
+	 * purchase date and time, and
+	 * location bought (cineplex). 
+	 * @param pastMoviesTitles list of past movies booked.
+	 * @param pastTID list of past ticket IDs.
+	 * @param pastCineplex list of past cineplexes.
+	 */
 	public void pastBookings(ArrayList<String> pastMoviesTitles, ArrayList<String> pastTID,
 			ArrayList<Integer> pastCineplex) { // display past movies
 		// that
