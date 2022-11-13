@@ -19,18 +19,28 @@ import Body.listOfMoviesForCustomers;
  * User interface for customer .
  */
 public class CustomerUI {
+	/**
+	 * A counter to help initialize only once when customer UI first called
+	 */
 	int sayNoToReinitilisationAgain = 0;
+	/**
+	 * An object created from TransactionID to generate Transaction ID
+	 */
 	Transactions newTransaction = new TransactionID();
-//	ArrayList<ArrayList<ArrayList<Screening>>> cineplexScreeningList = null;
-	ArrayList<ArrayList<ArrayList<Screening>>> dayScreeningList = null;
 
+	/**
+	 * A size of 3 4D array list that stores an array list of number of days that
+	 * stores an array list of number of movies that stores an array list of number
+	 * of show times Hence it contains all screenings available
+	 */
 	ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> cineplexDayScreeningList = null;
 
 	/**
-	 * Handles UI logic for customers. Allow customers to 
-	 * make bookings and view their past booking history.
+	 * Handles UI logic for customers. Allow customers to make bookings, browse
+	 * movies, rate movies and view their own past booking history.
+	 * 
 	 * @param CustomerID the customer's ID.
-	 * @param movieList the list of current movies.
+	 * @param movieList  the list of current movies.
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
@@ -155,9 +165,8 @@ public class CustomerUI {
 						}
 
 						System.out
-								.println("Do you have a preferred credit or loyalty card?" + "\n(1) Yes" + "\n(2) No"); // check
-																														// for
-																														// student
+								.println("Do you have a preferred credit or loyalty card?" + "\n(1) Yes" + "\n(2) No");
+
 						choice = sc.nextLine();
 						switch (choice) {
 						case "1":
@@ -171,11 +180,11 @@ public class CustomerUI {
 						}
 
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
-								.get(chosenShowtime).tickets[seatId].setthreeD(movieList.get(movieID).getThreeD()); // check
-																													// for
+								.get(chosenShowtime).tickets[seatId].setthreeD(movieList.get(movieID).getThreeD());
+
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
-						.get(chosenShowtime).tickets[seatId].setblockbuster(movieList.get(movieID).getBlockbuster());																					// 3d
-						
+								.get(chosenShowtime).tickets[seatId]
+								.setblockbuster(movieList.get(movieID).getBlockbuster()); // 3d
 
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
 								.get(chosenShowtime).tickets[seatId]
@@ -183,20 +192,14 @@ public class CustomerUI {
 																									// holiday
 
 						newTransaction.buyTicket(CustomerID, movieName, chosenCineplex);
-						// sc.nextLine();
 						movieList.get(movieID).setTicketSales(movieList.get(movieID).getTicketSales() + 1);
 
 						cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID).get(movieID)
 								.get(chosenShowtime).tickets[seatId].setageOfCust(newTransaction.getAge(CustomerID));
 
-//						System.out.println(cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID)
-//								.get(movieID).get(chosenShowtime).tickets[seatId].toString());
-
 						System.out.println("Price: $" + cineplexDayScreeningList.get(chosenCineplex).get(chosenDayID)
-								.get(movieID).get(chosenShowtime).tickets[seatId].calculateAndGetPrice()); // print
-						
+								.get(movieID).get(chosenShowtime).tickets[seatId].calculateAndGetPrice());
 
-						// out
 						if (movieList.get(movieID).getCinemaNo() == 3) {
 							System.out.println(
 									movieName + " Class at " + Cineplex.getCineplexName()[cineplex - 1] + " Cineplex");
