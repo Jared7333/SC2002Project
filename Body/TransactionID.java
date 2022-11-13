@@ -1,18 +1,21 @@
 package Body;
 
+import java.time.LocalDate;
+
 /**
  * Class that handles generation of ticket IDs.
  */
 public class TransactionID extends Transactions { // Implement a design pattern known as template method
 
 	/**
-	 * Generates a unique ID for each ticket using the movie's name,
-	 * and the current date and time.
-	 * @param iD customer's ID.
+	 * Generates a unique ID for each ticket using the movie's name, and the current
+	 * date and time.
+	 * 
+	 * @param iD         customer's ID.
 	 * @param movieTitle the movie's title.
 	 * @return the ticket ID.
 	 */
-	public static String generateTID(int iD, String movieTitle) { // generate TID, TID (3
+	public static String generateTID(int iD, String movieTitle, LocalDate chosenDate) { // generate TID, TID (3
 		// letter code for Movie
 		// + date + hour +
 		// minute)
@@ -43,7 +46,7 @@ public class TransactionID extends Transactions { // Implement a design pattern 
 
 		// Conversion of real date to String (and removal of '-')
 		String date = "";
-		String localDate = java.time.LocalDate.now().toString();
+		String localDate = chosenDate.toString();
 		for (int i = 0; i < localDate.length(); i++) {
 			if (localDate.charAt(i) == '-') {
 				continue;

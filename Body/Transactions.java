@@ -1,5 +1,6 @@
 package Body;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -38,7 +39,7 @@ abstract public class Transactions {
 	 * @param movieTitle     the movie's title.
 	 * @param chosenCineplex cineplex the customer has chosen.
 	 */
-	public void buyTicket(int iD, String movieTitle, int chosenCineplex) {
+	public void buyTicket(int iD, String movieTitle, int chosenCineplex, LocalDate chosenDate) {
 		String Transact;
 		Scanner sc = new Scanner(System.in);
 		int phone;
@@ -90,7 +91,9 @@ abstract public class Transactions {
 		System.out.println("Customer's Email: " + customerList.get(iD).getEmail());
 		System.out.println("Customer's Age: " + customerList.get(iD).getAge());
 		customerList.get(iD).pastMoviesTitles.add(movieTitle); // update customer's watch history
-		customerList.get(iD).pastTID.add(Transact = TransactionID.generateTID(iD, movieTitle)); // update Customer's TID
+		customerList.get(iD).pastTID.add(Transact = TransactionID.generateTID(iD, movieTitle, chosenDate)); // update
+																											// Customer's
+																											// TID
 		customerList.get(iD).pastCineplex.add(chosenCineplex);
 
 	}
