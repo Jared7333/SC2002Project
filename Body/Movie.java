@@ -5,6 +5,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * Contains Movie Information, the getters and setters, and
+ * printing method.
+ */
+
 public class Movie implements Serializable {
 	/*
 	 * enum Status{ COMING_SOON, PREVIEW, NOW_SHOWING, END_OF_SHOWING }
