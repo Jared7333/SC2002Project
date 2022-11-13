@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
- * Contains Movie Information, the getters and setters, and
- * printing method.
+ * Contains Movie Information, the getters and setters, and printing method.
  */
 
 public class Movie implements Serializable {
@@ -96,20 +95,20 @@ public class Movie implements Serializable {
 	/**
 	 * Declares Movie Object
 	 *
-	 * @param name
-	 * @param movieId
-	 * @param threeD
-	 * @param blockbuster
-	 * @param status
-	 * @param synopsis
-	 * @param director
-	 * @param casts
-	 * @param ageRating
-	 * @param pastReview
-	 * @param ticketSales
-	 * @param showTimes
-	 * @param cinema
-	 * @param date
+	 * @param name        Name of Movie.
+	 * @param movieId     Movie ID.
+	 * @param threeD      Check if movie is 3D.
+	 * @param blockbuster Check if movie is BlockBuster.
+	 * @param status      Movie Status
+	 * @param synopsis    Movie Synopsis.
+	 * @param director    Movie's Director.
+	 * @param casts       Movie's list of Cast.
+	 * @param ageRating   Movie's Age Rating.
+	 * @param pastReview  Movie's Past Reviews.
+	 * @param ticketSales Movie's ticket sales.
+	 * @param showTimes   Movie's show times.
+	 * @param cinema      Movie's cinema ID.
+	 * @param date        Movie's list of date shown.
 	 */
 	public Movie(String name, int movieId, boolean threeD, boolean blockbuster, String status, String synopsis,
 			String director, ArrayList<String> casts, String ageRating, ArrayList<Integer> pastReview, int ticketSales,
@@ -130,7 +129,6 @@ public class Movie implements Serializable {
 		this.cinema = cinema;
 		this.date = date;
 	}
-
 
 	/**
 	 * Sets the Movie's Name.
@@ -167,7 +165,6 @@ public class Movie implements Serializable {
 	public int getMovieId() {
 		return movieId;
 	}
-
 
 	/**
 	 * Gets Movie 3D status.
@@ -386,7 +383,8 @@ public class Movie implements Serializable {
 	}
 
 	/**
-	 * To allow customer to rate movie and calculate the average rating score thus far.\
+	 * To allow customer to rate movie and calculate the average rating score thus
+	 * far.\
 	 *
 	 * @param customerRating the rating customer gave to the movie.
 	 */

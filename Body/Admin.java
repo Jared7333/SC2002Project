@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Contains Admin information. Admin can choose to upload new movies,
- * update existing movies and remove movies.
- * Admin can also change their password and create new admins.
+ * Contains Admin information. Admin can choose to upload new movies, update
+ * existing movies and remove movies. Admin can also change their password and
+ * create new admins.
  */
 public class Admin implements Serializable {
 
@@ -35,9 +35,9 @@ public class Admin implements Serializable {
 	/**
 	 * Declare Admin Object
 	 *
-	 * @param name
-	 * @param loginID
-	 * @param password
+	 * @param name     Admin name.
+	 * @param loginID  Admin Username.
+	 * @param password Admin Password.
 	 */
 	public Admin(String name, String loginID, String password) {
 		this.name = name;
@@ -49,10 +49,10 @@ public class Admin implements Serializable {
 	/**
 	 * Allow existing Admin to create new Admin.
 	 *
-	 * @param name
-	 * @param loginID
-	 * @param password
-	 * @param adminList
+	 * @param name      New Admin name.
+	 * @param loginID   New Admin Username.
+	 * @param password  New Admin Password
+	 * @param adminList Array list that stores the admin accounts.
 	 */
 	public void createAdmin(String name, String loginID, String password, ArrayList<Admin> adminList) {
 		adminMethods.newAdmin(name, loginID, password, adminList);
@@ -115,7 +115,7 @@ public class Admin implements Serializable {
 	 * Allows Admin to upload new movies in a form of delimited file format.
 	 *
 	 * @param movieList adds newly added movie(s).
-	 * @throws FileNotFoundException
+	 * @throws FileNotFoundException Error check.
 	 */
 	public void uploadMovie(ArrayList<Movie> movieList) throws FileNotFoundException {
 		// reads csv and import movies
@@ -179,7 +179,8 @@ public class Admin implements Serializable {
 	/**
 	 * Allows Admin to select if they want to change password or create new admin
 	 *
-	 * @param adminList either to access current Admin account or add new Admin account to it.
+	 * @param adminList either to access current Admin account or add new Admin
+	 *                  account to it.
 	 */
 	public void configureSettings(ArrayList<Admin> adminList) { // Change password or create new admin account
 		Scanner sc = new Scanner(System.in);

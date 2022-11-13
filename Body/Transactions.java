@@ -38,6 +38,7 @@ abstract public class Transactions {
 	 * @param iD             the customer's ID.
 	 * @param movieTitle     the movie's title.
 	 * @param chosenCineplex cineplex the customer has chosen.
+	 * @param chosenDate     The chosen date by customer.
 	 */
 	public void buyTicket(int iD, String movieTitle, int chosenCineplex, LocalDate chosenDate) {
 		String Transact;

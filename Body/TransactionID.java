@@ -13,6 +13,7 @@ public class TransactionID extends Transactions { // Implement a design pattern 
 	 * 
 	 * @param iD         customer's ID.
 	 * @param movieTitle the movie's title.
+	 * @param chosenDate The date chosen by customer.
 	 * @return the ticket ID.
 	 */
 	public static String generateTID(int iD, String movieTitle, LocalDate chosenDate) { // generate TID, TID (3

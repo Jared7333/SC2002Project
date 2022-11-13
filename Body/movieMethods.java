@@ -15,11 +15,12 @@ import java.util.Scanner;
 public class movieMethods {
 
 	/**
-	 * Creates Movie Objects via a specified delimited file which contains movie information
-	 * in order of the declared variables.
+	 * Creates Movie Objects via a specified delimited file which contains movie
+	 * information in order of the declared variables.
 	 *
-	 * @param movieList to add the newly created Movie Objects into the list of movies.
-	 * @throws FileNotFoundException
+	 * @param movieList to add the newly created Movie Objects into the list of
+	 *                  movies.
+	 * @throws FileNotFoundException Error Check.
 	 */
 	public static void create(ArrayList<Movie> movieList) throws FileNotFoundException {
 		// reads csv and import movies
@@ -71,7 +72,8 @@ public class movieMethods {
 	/**
 	 * To print a list of existing movie names for ease of view.
 	 *
-	 * @param movieList to read the existing Movie Objects and call getName of each Movie Object.
+	 * @param movieList to read the existing Movie Objects and call getName of each
+	 *                  Movie Object.
 	 */
 	public static void printSummarised(ArrayList<Movie> movieList) {
 		System.out.println("List of Movies:");
@@ -108,7 +110,8 @@ public class movieMethods {
 	/**
 	 * To sort the existing movies by its sales.
 	 *
-	 * @param movieList access existing Movie Object's ticketSales and sort in descending order.
+	 * @param movieList access existing Movie Object's ticketSales and sort in
+	 *                  descending order.
 	 */
 	public static void sortBySales(ArrayList<Movie> movieList) {
 		ArrayList<Movie> tempList = new ArrayList<>(movieList);
@@ -127,7 +130,8 @@ public class movieMethods {
 	/**
 	 * To sort the existing movies by its rating.
 	 *
-	 * @param movieList access existing Movie Object's rating and sort in descending order.
+	 * @param movieList access existing Movie Object's rating and sort in descending
+	 *                  order.
 	 */
 	public static void sortByRating(ArrayList<Movie> movieList) {
 		ArrayList<Movie> tempList = new ArrayList<>(movieList);
@@ -171,7 +175,8 @@ public class movieMethods {
 	/**
 	 * Allows selected movie's information to be updated.
 	 *
-	 * @param movieList to select a Movie and editable information (Variables that have setters) to update.
+	 * @param movieList to select a Movie and editable information (Variables that
+	 *                  have setters) to update.
 	 */
 	public static void updateInfo(ArrayList<Movie> movieList) {
 		Scanner sc = new Scanner(System.in);

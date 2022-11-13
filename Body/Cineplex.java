@@ -3,33 +3,34 @@ package Body;
 import java.io.IOException;
 
 /**
- * Contains name of cineplex owned by vendor.
- * Able to show all the cineplex available.
+ * Contains name of cineplex owned by vendor. Able to show all the cineplex
+ * available.
  */
-public class Cineplex 
-{
+public class Cineplex {
 	/**
 	 * List of cineplex owned by vendor
 	 */
-	private static String[] cineplexName = {"Woodlands","Punggol","Changi"};
+	private static String[] cineplexName = { "Woodlands", "Punggol", "Changi" };
 	/**
 	 * Number of cinema per cineplex
 	 */
-	private int noOfCinema=3;
+	private int noOfCinema = 3;
+
 	/**
 	 * Display all the available cineplex
 	 * 
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * @throws IOException            Error check.
+	 * @throws ClassNotFoundException Error check.
 	 */
 	public static void showCineplex() throws IOException, ClassNotFoundException {
 		System.out.println("Available cineplexes: ");
 
 		for (int i = 0; i < getCineplexName().length; i++) {
-			System.out.println("("+(i+1)+") "+getCineplexName()[i]);
+			System.out.println("(" + (i + 1) + ") " + getCineplexName()[i]);
 		}
 		System.out.println();
 	}
+
 	/**
 	 * Gets cineplex name
 	 * 
@@ -38,6 +39,7 @@ public class Cineplex
 	public static String[] getCineplexName() {
 		return cineplexName;
 	}
+
 	/**
 	 * Sets the cineplex name
 	 * 

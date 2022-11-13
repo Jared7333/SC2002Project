@@ -13,8 +13,8 @@ public class listOfMoviesForCustomers {
 	 * ratings.
 	 * 
 	 * @param movieList list of current movies.
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * @throws IOException            Error check.
+	 * @throws ClassNotFoundException Error check.
 	 */
 	public static void browseMovies(ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
 		int totalRating = 0;
