@@ -10,7 +10,19 @@ import Body.Admin;
 import Body.Movie;
 import Body.serialise;
 
+/**
+ * User interface for main menu that users see.
+ */
 public class MainMenuUI {
+
+	/**
+	 * Main menu user interface that all users will use before selecting their purpose, like
+	 * Customer or Admin, and calls the user interface for the specified user.
+	 * Imports Movie and Admin Objects from the previously serialised file if it exists.
+	 *
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void main() throws IOException, ClassNotFoundException {
 
 		// Copied admin stuffs from mainAPP

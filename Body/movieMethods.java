@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * Utility methods used by Admin related to Movies.
+ */
+
 public class movieMethods {
 
 	/**

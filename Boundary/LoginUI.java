@@ -6,9 +6,18 @@ import java.util.Scanner;
 
 import Body.Admin;
 
+/**
+ * User interfaces that handles the login function for both Customer
+ * and Admin users.
+ */
 public class LoginUI {
 	Scanner sc = new Scanner(System.in);
 
+	/**
+	 * Login user interface for Customers.
+	 *
+	 * @return user ID if successful.
+	 */
 	public int customer() {// both customer and admin should login via here,
 		System.out.println("Programmer Note: Choose ID: 1 ~ 100");
 		System.out.println("Programmer Note: Password: customerPASSWORD");
@@ -53,7 +62,14 @@ public class LoginUI {
 		return 0;
 	}
 
-	public Admin admin(ArrayList<Admin> adminList, Admin inUse) {// both customer and admin should login via here,
+	/**
+	 * Login user interface for Admin.
+	 *
+	 * @param adminList list of Admin accounts to check if login is valid.
+	 * @param inUse Admin Object / Account that is logged in.
+	 * @return Admin account that has been logged in.
+	 */
+	public Admin admin(ArrayList<Admin> adminList, Admin inUse) {// admin should login via here,
 		System.out.println("Login for Admin");
 		// insert login admin here
 

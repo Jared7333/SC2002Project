@@ -8,8 +8,26 @@ import Body.Admin;
 import Body.Movie;
 import Body.PublicHoliday;
 
+/**
+ * User interface for Admin users to carry out their tasks.
+ */
+
 public class AdminUI {
 	// login
+
+	/**
+	 * User interface for Admin to be able to carry out their tasks like,
+	 * Uploading Movies, Checking Movie Information, Updating Movie Information,
+	 * Removing Movies no longer showing, Configure Holidays,
+	 * and other Admin account related activities.
+	 *
+	 * @param adminList list of Admin Objects / Account
+	 * @param inUse current Admin account that is logged in
+	 * @param mainAdmin Main Admin account
+	 * @param movieList list of Movie Objects used by the program
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void main(ArrayList<Admin> adminList, Admin inUse, Admin mainAdmin, ArrayList<Movie> movieList)
 			throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
