@@ -1,7 +1,17 @@
 package Body;
 
+/**
+ * Class that handles generation of ticket IDs.
+ */
 public class TransactionID extends Transactions { // Implement a design pattern known as template method
 
+	/**
+	 * Generates a unique ID for each ticket using the movie's name,
+	 * and the current date and time.
+	 * @param iD customer's ID.
+	 * @param movieTitle the movie's title.
+	 * @return the ticket ID.
+	 */
 	public static String generateTID(int iD, String movieTitle) { // generate TID, TID (3
 		// letter code for Movie
 		// + date + hour +
