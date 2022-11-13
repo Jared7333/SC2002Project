@@ -2,7 +2,7 @@ package Body;
 
 /**
  * Assigning of cinema seats based on customer's ID.
- * Will be able check if a seat is assigned or not.
+ * Will be able to check if a seat is assigned or not.
  */
 public class CinemaSeats {
 	/**
@@ -40,6 +40,7 @@ public class CinemaSeats {
 //	public boolean isAssigned() {
 //		return assigned;
 //	}
+
 	/**
 	 * Sets assigned to be assigned
 	 * 

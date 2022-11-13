@@ -201,15 +201,6 @@ public class Movie implements Serializable {
 	}
 
 	/**
-	 * Sets the Movie Status.
-	 *
-	 * @param status Movie's status.
-	 */
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	/**
 	 * Gets Movie Satus.
 	 *
 	 * @return this Movie status.
@@ -219,12 +210,12 @@ public class Movie implements Serializable {
 	}
 
 	/**
-	 * Sets the Movie's Synopsis.
+	 * Sets the Movie Status.
 	 *
-	 * @param synopsis Movie's synopsis.
+	 * @param status Movie's status.
 	 */
-	public void setSynopsis(String synopsis) {
-		this.synopsis = synopsis;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	/**
@@ -237,12 +228,12 @@ public class Movie implements Serializable {
 	}
 
 	/**
-	 * Sets the Movie's Director.
+	 * Sets the Movie's Synopsis.
 	 *
-	 * @param director Movie's director.
+	 * @param synopsis Movie's synopsis.
 	 */
-	public void setDirector(String director) {
-		this.director = director;
+	public void setSynopsis(String synopsis) {
+		this.synopsis = synopsis;
 	}
 
 	/**
@@ -255,12 +246,12 @@ public class Movie implements Serializable {
 	}
 
 	/**
-	 * Sets the Movie's Casts.
+	 * Sets the Movie's Director.
 	 *
-	 * @param casts Movie's casts.
+	 * @param director Movie's director.
 	 */
-	public void setCasts(ArrayList<String> casts) {
-		this.casts = casts;
+	public void setDirector(String director) {
+		this.director = director;
 	}
 
 	/**
@@ -273,12 +264,12 @@ public class Movie implements Serializable {
 	}
 
 	/**
-	 * Sets the Movie's Age Rating.
+	 * Sets the Movie's Casts.
 	 *
-	 * @param ageRating Movie's age rating.
+	 * @param casts Movie's casts.
 	 */
-	public void setAgerating(String ageRating) {
-		this.ageRating = ageRating;
+	public void setCasts(ArrayList<String> casts) {
+		this.casts = casts;
 	}
 
 	/**
@@ -291,12 +282,12 @@ public class Movie implements Serializable {
 	}
 
 	/**
-	 * Sets the Movie's Showtime.
+	 * Sets the Movie's Age Rating.
 	 *
-	 * @param showTimes Movie's showtimes.
+	 * @param ageRating Movie's age rating.
 	 */
-	public void setShowTimes(ArrayList<Integer> showTimes) {
-		this.showTimes = showTimes;
+	public void setAgerating(String ageRating) {
+		this.ageRating = ageRating;
 	}
 
 	/**
@@ -309,12 +300,12 @@ public class Movie implements Serializable {
 	}
 
 	/**
-	 * Sets the Movie's Ticket Sales.
+	 * Sets the Movie's Showtime.
 	 *
-	 * @param ticketSales Movie's ticket sales.
+	 * @param showTimes Movie's showtimes.
 	 */
-	public void setTicketSales(int ticketSales) {
-		this.ticketSales = ticketSales;
+	public void setShowTimes(ArrayList<Integer> showTimes) {
+		this.showTimes = showTimes;
 	}
 
 	/**
@@ -324,6 +315,15 @@ public class Movie implements Serializable {
 	 */
 	public int getTicketSales() {
 		return ticketSales;
+	}
+
+	/**
+	 * Sets the Movie's Ticket Sales.
+	 *
+	 * @param ticketSales Movie's ticket sales.
+	 */
+	public void setTicketSales(int ticketSales) {
+		this.ticketSales = ticketSales;
 	}
 
 	/**

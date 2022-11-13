@@ -7,10 +7,9 @@ import java.util.Scanner;
 /**
  * Class that handles the action of a customer buying a ticket.
  * Creates and contains the list of customers.
- * Also contains related methods such as displaying 
- * displaying a customer's booking history,
- * and updating a movie's rating after a customer has
- * rated it.
+ * Also contains related methods such as displaying
+ * a customer's booking history, and updating a movie's rating
+ * after a customer has rated it.
  */
 abstract public class Transactions {
 	static ArrayList<Customer> customerList = new ArrayList();
