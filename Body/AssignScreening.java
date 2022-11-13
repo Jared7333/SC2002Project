@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Handles some of the logic for when a customer books a movie.
- * Allows customer to select their booking date, movie, and
- * cinema class.
+ * Handles some of the logic for when a customer books a movie. Allows customer
+ * to select their booking date, movie, and cinema class.
  */
 public class AssignScreening {
 	String filenameMovie = "movie.txt";
@@ -24,6 +23,7 @@ public class AssignScreening {
 
 	/**
 	 * Allows customer to choose theri booking date.
+	 * 
 	 * @return date option chosen.
 	 */
 	public int chooseDayID() {
@@ -41,6 +41,7 @@ public class AssignScreening {
 
 	/**
 	 * Returns day of the week from customer's chosen day.
+	 * 
 	 * @param ChosenDay customer's chosen day.
 	 * @return day of the week.
 	 */
@@ -63,6 +64,7 @@ public class AssignScreening {
 
 	/**
 	 * Return date from customer's chosen day.
+	 * 
 	 * @param ChosenDay customer's chosen day.
 	 * @return date
 	 */
@@ -86,8 +88,9 @@ public class AssignScreening {
 
 	/**
 	 * Allows customer to choose which movie they will be booking.
+	 * 
 	 * @param movieList list of movies to choose from.
-	 * @param date current date.
+	 * @param date      current date.
 	 * @return chosen movie.
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -153,8 +156,9 @@ public class AssignScreening {
 
 	/**
 	 * Gets movie ID from list of movies.
-	 * @param movieName name of movie.
-	 * @param movieList current list of movies.
+	 * 
+	 * @param movieName   name of movie.
+	 * @param movieList   current list of movies.
 	 * @param cinemaClass cinema class.
 	 * @return movie ID.
 	 * @throws IOException
@@ -174,9 +178,11 @@ public class AssignScreening {
 	}
 
 	/**
-	 * Allows customer to choose which show time they will view for the movie they have booked.
+	 * Allows customer to choose which show time they will view for the movie they
+	 * have booked.
+	 * 
 	 * @param selectedMovie movie ID.
-	 * @param movieList list of current movies.
+	 * @param movieList     list of current movies.
 	 * @return show time.
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -189,7 +195,7 @@ public class AssignScreening {
 		int selectedShowtime = 0;
 
 		System.out.println("Select Showtime: ");
-		System.out.println(movieList.get(selectedShowtime).getName());
+		System.out.println(movieList.get(selectedMovie).getName());
 		for (Integer element : movieList.get(selectedMovie).getShowtimes()) {
 			if (element == 0) {
 				System.out.print("(" + k + ")" + " 000" + element + " ");
@@ -239,6 +245,7 @@ public class AssignScreening {
 
 	/**
 	 * Allows customer to choose the cinema class for their booking.
+	 * 
 	 * @param movieName name of movie.
 	 * @param movieList list of current movies.
 	 * @return cinema class.
@@ -261,9 +268,10 @@ public class AssignScreening {
 
 	/**
 	 * Initialises screening lists of a cineplex for the day.
+	 * 
 	 * @param chosenShowtime placeholder showtime.
-	 * @param movieID placeholder movie ID.
-	 * @param movieList list of current movies.
+	 * @param movieID        placeholder movie ID.
+	 * @param movieList      list of current movies.
 	 * @return
 	 */
 	public static ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> allScreenings(int chosenShowtime, int movieID,
