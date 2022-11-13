@@ -15,6 +15,9 @@ import Body.TransactionID;
 import Body.Transactions;
 import Body.listOfMoviesForCustomers;
 
+/**
+ * User interface for customer .
+ */
 public class CustomerUI {
 	int sayNoToReinitilisationAgain = 0;
 	Transactions newTransaction = new TransactionID();
@@ -23,6 +26,14 @@ public class CustomerUI {
 
 	ArrayList<ArrayList<ArrayList<ArrayList<Screening>>>> cineplexDayScreeningList = null;
 
+	/**
+	 * Handles UI logic for customers. Allow customers to 
+	 * make bookings and view their past booking history.
+	 * @param CustomerID the customer's ID.
+	 * @param movieList the list of current movies.
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void main(int CustomerID, ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 
