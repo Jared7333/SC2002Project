@@ -5,11 +5,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Class that handles the action of a customer buying a ticket.
- * Creates and contains the list of customers.
- * Also contains related methods such as displaying
- * a customer's booking history, and updating a movie's rating
- * after a customer has rated it.
+ * Class that handles the action of a customer buying a ticket. Creates and
+ * contains the list of customers. Also contains related methods such as
+ * displaying a customer's booking history, and updating a movie's rating after
+ * a customer has rated it.
  */
 abstract public class Transactions {
 	static ArrayList<Customer> customerList = new ArrayList();
@@ -24,6 +23,7 @@ abstract public class Transactions {
 
 	/**
 	 * Display a customer's booking history.
+	 * 
 	 * @param iD the cutomer's ID.
 	 */
 	public void customerBookingHistory(int iD) {
@@ -31,11 +31,11 @@ abstract public class Transactions {
 	}
 
 	/**
-	 * Updates the customer's booking history and ticket ID.
-	 * Has the customer input their details if they
-	 * have not vought a ticket before.
-	 * @param iD the customer's ID.
-	 * @param movieTitle the movie's title.
+	 * Updates the customer's booking history and ticket ID. Has the customer input
+	 * their details if they have not bought a ticket before.
+	 * 
+	 * @param iD             the customer's ID.
+	 * @param movieTitle     the movie's title.
 	 * @param chosenCineplex cineplex the customer has chosen.
 	 */
 	public void buyTicket(int iD, String movieTitle, int chosenCineplex) {
@@ -43,14 +43,6 @@ abstract public class Transactions {
 		Scanner sc = new Scanner(System.in);
 		int phone;
 		int age;
-
-//		if (arrayCount < iD) { // create new element each time there is new iD
-//
-//			for (int i = arrayCount; i <= iD; i++) {
-//				Customer c = new Customer();
-//				customerList.add(c);
-//			}
-//		}
 
 		if (customerList.get(iD).customerBoughtBefore() == true) { // check if customer has bought ticket before, if
 																	// yes, skip the personal details
@@ -85,7 +77,6 @@ abstract public class Transactions {
 				}
 			}
 
-//			customerList.get(iD).setID(iD);
 			customerList.get(iD).setName(name);
 			customerList.get(iD).setPhoneNo(phone);
 			customerList.get(iD).setEmail(email);
@@ -106,6 +97,7 @@ abstract public class Transactions {
 
 	/**
 	 * Get customer's age.
+	 * 
 	 * @param iD customer's ID.
 	 * @return customer's age.
 	 */
@@ -115,6 +107,7 @@ abstract public class Transactions {
 
 	/**
 	 * Adds new customers to the customer list and updates their ID.
+	 * 
 	 * @param iD the customer's ID.
 	 */
 	public void setIDForFirstTimeUser(int iD) {
@@ -130,10 +123,11 @@ abstract public class Transactions {
 
 	/**
 	 * Updates a movie's rating from a customer's rating.
+	 * 
 	 * @param movieTitle the movie's title.
-	 * @param iD the cutomer's ID.
-	 * @param movieID the movie's ID.
-	 * @param movieList the current list of movies.
+	 * @param iD         the cutomer's ID.
+	 * @param movieID    the movie's ID.
+	 * @param movieList  the current list of movies.
 	 */
 	public static void rateMovie(String movieTitle, int iD, int movieID, ArrayList<Movie> movieList) {
 		String ratingInString = "0";
