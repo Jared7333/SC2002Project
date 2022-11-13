@@ -6,9 +6,18 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Handles the configuration of holiday dates.
+ */
 public class PublicHoliday {
+	/**
+	 * List of holidays and what dates they correspond to.
+	 */
 	private static HashMap<LocalDate, String> holiday = new HashMap<LocalDate, String>();
 
+	/**
+	 * Main UI logic.
+	 */
 	public static void configureHoliday() {
 		Scanner sc = new Scanner(System.in);
 		while (true) {
@@ -28,6 +37,10 @@ public class PublicHoliday {
 		}
 	}
 
+	/**
+	 * View list of added holidays and their corresponding dates.
+	 * @return false if list of holidays are empty, true otherwise.
+	 */
 	private static boolean viewHoliday() {
 		if (holiday.isEmpty()) {
 			System.out.println("There are no Holidays added yet ");
@@ -41,6 +54,10 @@ public class PublicHoliday {
 
 	}
 
+	/**
+	 * Add a holiday to the list. Must input name and date of holiday.
+	 * Also handles adding the eve of the holiday.
+	 */
 	private static void addHoliday() {
 		Scanner sc = new Scanner(System.in);
 		Date date1;
@@ -97,6 +114,9 @@ public class PublicHoliday {
 
 	}
 
+	/**
+	 * Delete a holiday from the list.
+	 */
 	private static void deleteHoliday() {
 		if (!viewHoliday()) {
 			return;
@@ -161,12 +181,13 @@ public class PublicHoliday {
 		}
 	}
 
+	/**
+	 * Check whether a given date lands on a holiday or its eve.
+	 * @param ld the date.
+	 * @return true if the date lands on a holiday or its eve,
+	 * false otherwise.
+	 */
 	public static boolean checkForPHOrEve(LocalDate ld) {
-		if (holiday.containsKey(ld)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
+		return holiday.containsKey(ld);
+}
 }
