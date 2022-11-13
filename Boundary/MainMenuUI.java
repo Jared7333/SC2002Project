@@ -16,12 +16,13 @@ import Body.serialise;
 public class MainMenuUI {
 
 	/**
-	 * Main menu user interface that all users will use before selecting their purpose, like
-	 * Customer or Admin, and calls the user interface for the specified user.
-	 * Imports Movie and Admin Objects from the previously serialised file if it exists.
+	 * Main menu user interface that all users will use before selecting their
+	 * purpose, like Customer or Admin, and calls the user interface for the
+	 * specified user. Imports Movie and Admin Objects from the previously
+	 * serialised file if it exists.
 	 *
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * @throws IOException            Error check.
+	 * @throws ClassNotFoundException Error check.
 	 */
 	public void main() throws IOException, ClassNotFoundException {
 

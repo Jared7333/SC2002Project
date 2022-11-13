@@ -41,8 +41,8 @@ public class CustomerUI {
 	 * 
 	 * @param CustomerID the customer's ID.
 	 * @param movieList  the list of current movies.
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * @throws IOException            Error check.
+	 * @throws ClassNotFoundException Error check
 	 */
 	public void main(int CustomerID, ArrayList<Movie> movieList) throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);

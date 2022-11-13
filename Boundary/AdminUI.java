@@ -16,17 +16,17 @@ public class AdminUI {
 	// login
 
 	/**
-	 * User interface for Admin to be able to carry out their tasks like,
-	 * Uploading Movies, Checking Movie Information, Updating Movie Information,
-	 * Removing Movies no longer showing, Configure Holidays,
-	 * and other Admin account related activities.
+	 * User interface for Admin to be able to carry out their tasks like, Uploading
+	 * Movies, Checking Movie Information, Updating Movie Information, Removing
+	 * Movies no longer showing, Configure Holidays, and other Admin account related
+	 * activities.
 	 *
 	 * @param adminList list of Admin Objects / Account
-	 * @param inUse current Admin account that is logged in
+	 * @param inUse     current Admin account that is logged in
 	 * @param mainAdmin Main Admin account
 	 * @param movieList list of Movie Objects used by the program
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * @throws IOException            Error Check
+	 * @throws ClassNotFoundException Error Check
 	 */
 	public void main(ArrayList<Admin> adminList, Admin inUse, Admin mainAdmin, ArrayList<Movie> movieList)
 			throws IOException, ClassNotFoundException {
@@ -106,8 +106,8 @@ public class AdminUI {
 					System.out.println("Not Main Admin");
 				}
 				break;
-				
-			case "7": 
+
+			case "7":
 				PublicHoliday.configureHoliday();
 				break;
 			case "0": // Exit
